@@ -1,0 +1,44 @@
+/** {
+  border: 1px dashed black;
+  padding: 10px;
+  margin: 10px;
+}*/
+
+.main-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.lp-element {
+  display: inline-block;
+}
+
+.lp-form-container {
+  height: 100%;
+  width: 30%;
+  vertical-align: top;
+  position: relative;
+}
+
+.lp-form {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  -webkit-transform: translate(-50%, -50%);
+}
+
+.lp-form-element {
+  display: block;
+  width: 200;
+  height: 40px;
+  text-align: center;
+}
+
+.landing-page-divider {
+  box-sizing: border-box;
+  width: 1px;
+  border-left: 1px solid black;
+  height: 50%;
+}

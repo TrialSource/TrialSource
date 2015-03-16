@@ -11,16 +11,22 @@
       <a class="nav-link nav-link-about">something</a>
     </nav>
 
-    <div id="main-content">
+    <div id="main-content"></div>
+
+    <nav class="footer-nav">
+
+    </nav>
+
+    <script type="text/html" id="landing-page">
 
       <div class="search-form-container lp-element lp-form-container">
 
         <h1 class="lp-header">Search Trials</h1>
 
         <form class="lp-form search-form">
-          <input class="lp-input lp-form-element" type="text" placeholder="condition" />
-          <input class="lp-input lp-form-element" type="text" placeholder="zip code" />
-          <button class="submit-button lp-form-element">search</button>
+          <input class="lp-input lp-form-element condition-field" type="text" placeholder="condition" required/>
+          <input class="lp-input lp-form-element zip-field" type="text" placeholder="zip code" required/>
+          <button class="lp-search-button submit-button lp-form-element">search</button>
         </form>
 
       </div>
@@ -31,19 +37,41 @@
 
         <h1 class="lp-header">Researcher Login</h1>
 
-        <form class="lp-form search-form">
-          <input class="lp-input lp-form-element" type="text" placeholder="username" />
-          <input class="lp-input lp-form-element" type="text" placeholder="password" />
-          <button class="submit-button lp-form-element">login</button>
+        <form class="lp-form login-form">
+          <input class="lp-input lp-form-element un-field" type="text" placeholder="username" required/>
+          <input class="lp-input lp-form-element pw field" type="text" placeholder="password" required/>
+          <button class="lp-login-button submit-button lp-form-element">login</button>
         </form>
 
       </div>
 
-    </div>
+    </script>
 
-    <nav class="footer-nav">
+    <script type="text/html" id="search-results">
 
-    </nav>
+      <h1>SEARCH RESULTS!</h1>
+
+    </script>
+
+    <script type="text/html" id="create-study">
+
+      <h1>CREATE STUDY</h1>
+
+    </script>
+
+    <script type="text/html" id="manage-researchers">
+
+      <h1>MANAGE RESEARCHERS</h1>
+
+    </script>
+
+    <script src="dependencies/jquery.js"></script>
+    <script src="dependencies/lodash.js"></script>
+    <script src="dependencies/rlite.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/routes.js"></script>
+    <script src="js/page-not-found.js"></script>
+    <script src="js/init.js"></script>
 
   </body>
 </html>

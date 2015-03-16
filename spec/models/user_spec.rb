@@ -9,4 +9,6 @@ describe User do
 	it "is invalid without a password" do
 		 expect(User.new(email: "maria@email.com").valid?).to eq false
 	end
+
+
 end

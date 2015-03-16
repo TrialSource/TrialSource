@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20150316223825) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "administrators", force: :cascade do |t|
+  create_table "admins", force: :cascade do |t|
     t.string   "email"
     t.string   "password_digest"
     t.datetime "created_at",      null: false
@@ -27,11 +27,11 @@ ActiveRecord::Schema.define(version: 20150316223825) do
   create_table "doctors", force: :cascade do |t|
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "administrator_id"
+    t.integer  "admin_id"
   end
 
   create_table "users", force: :cascade do |t|

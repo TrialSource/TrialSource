@@ -4,13 +4,18 @@
 
 .lp-form-container {
   height: 100%;
-  width: 30%;
+  width: 49%;
   vertical-align: top;
   position: relative;
 }
 
 .lp-header {
-
+  font-weight: 300;
+  position: absolute;
+  left: 50%;
+  top: 25%;
+  -webkit-transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .lp-form {
@@ -20,16 +25,53 @@
   -webkit-transform: translate(-50%, -50%);
 }
 
+.lp-input {
+  font-weight: 300;
+  box-sizing: border-box;
+}
+
+.lp-input:focus {
+  border: 1px solid dodgerblue;
+}
+
 .lp-form-element {
   display: block;
-  width: 200;
-  height: 40px;
+  width: 350px;
+  font-size: 1.25em;
+  height: 1.75em;;
   text-align: center;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/*.lp-form-element + .lp-form-element {
+  margin-top: -1px;
+}*/
+
+.submit-button {
+  background: dodgerblue;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.submit-button:active {
+  /*background: #0083ff;*/
+  background: darkorange;
 }
 
 .landing-page-divider {
   box-sizing: border-box;
   width: 1px;
-  border-left: 1px solid black;
+  border-right: 1px solid slategrey;
   height: 50%;
+  -webkit-transform: translateY(25%);
+}
+
+.tagline {
+  font-size: 2.25em;
+  font-weight: 300;
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: -1.25em;
 }

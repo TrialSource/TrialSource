@@ -1,12 +1,21 @@
-/** {
-  border: 1px dashed black;
-  padding: 10px;
-  margin: 10px;
-}*/
+* {
+  padding: 0;
+  margin: 0;
+  font-family: lato, sans-serif;
+  color: #474747;
+}
+
+*:focus {
+  outline: none;
+}
+
+body {
+  min-width: 900px;
+}
 
 .main-content {
+  margin: auto;
   position: relative;
-  width: 100%;
   height: 100%;
-  text-align: center;
+  min-width: 900px;
 }

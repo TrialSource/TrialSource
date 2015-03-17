@@ -7,12 +7,17 @@
     <link rel="stylesheet" href="css/classic.date.css" />
     <link rel="stylesheet" href="css/landing-page.css" />
     <link rel="stylesheet" href="css/create-trial.css" />
+    <link rel="stylesheet" href="css/researcher-management.css" />
+    <link rel="stylesheet" href="css/main-nav.css" />
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700' rel='stylesheet' type='text/css'>
   </head>
   <body>
 
     <nav class="main-nav">
+      <a class="nav-link nav-title">trialSource</a>
       <a class="nav-link nav-link-about">about</a>
-      <a class="nav-link nav-link-about">something</a>
+      <a class="nav-link nav-link-faq">faq</a>
+      <a class="nav-link nav-link-contact">contact</a>
     </nav>
 
     <div id="main-content"></div>
@@ -22,6 +27,8 @@
     </nav>
 
     <script type="text/html" id="landing-page">
+
+      <h1 class="tagline"><em>The</em> source for interventive clinical trials.</h1>
 
       <div class="search-form-container lp-element lp-form-container">
 
@@ -39,10 +46,10 @@
 
       <div class="search-form-container lp-element lp-form-container">
 
-        <h1 class="lp-header">Researcher Login</h1>
+        <h1 class="lp-header">Research Login</h1>
 
         <form class="lp-form login-form">
-          <input class="lp-input lp-form-element un-field" type="text" placeholder="username" required/>
+          <input class="lp-input lp-form-element un-field" type="text" placeholder="email" required/>
           <input class="lp-input lp-form-element pw-field" type="text" placeholder="password" required/>
           <button class="lp-login-button submit-button lp-form-element">login</button>
         </form>
@@ -59,7 +66,7 @@
 
     <script type="text/html" id="create-study">
 
-      <h1>CREATE TRIAL</h1>
+      <h1 class="trial-form-header">New Trial</h1>
 
       <form class="create-trial-form">
         <input class="trial-input trial-condition-input" type="text" placeholder="condition" />
@@ -67,7 +74,7 @@
         <input class="trial-input trial-principal-input" type="text" placeholder="principal" />
         <input class="trial-input trial-start-input" type="text" placeholder="start date" />
         <input class="trial-input trial-complete-input" type="text" placeholder="est. complete date" />
-        <textarea class="trial-input trial-abstract-input" placeholder="abstract"></textarea>
+        <textarea class="trial-input trial-abstract-input" placeholder="description"></textarea>
         <button class="trial-input trial-submit">create trial</button>
       </form>
 

@@ -51,7 +51,8 @@
  * The holder is the base of the picker.
  */
 .picker__holder {
-  position: absolute;
+  position: relative;
+  margin: auto;
   background: #ffffff;
   border: 1px solid #aaaaaa;
   border-top-width: 0;

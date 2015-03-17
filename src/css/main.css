@@ -11,6 +11,8 @@
 
 body {
   min-width: 900px;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .main-content {

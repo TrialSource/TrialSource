@@ -8,7 +8,8 @@ app.router.add('', function() {
 
   $('.login-form').submit(function(e) {
     e.preventDefault();
-    document.location.hash = 'researcher/create/' + $('.un-field').val();
+    // document.location.hash = 'researcher/' + $('.un-field').val() + '/create';
+    document.location.hash = 'institution/' + $('.un-field').val() + '/researchers';
   });
 });
 
@@ -16,11 +17,11 @@ app.router.add('search/:term', function(r) {
   $('#main-content').html($('#search-results').html());
 });
 
-app.router.add('institution/researchers/:id', function(r) {
+app.router.add('institution/:id/researchers', function(r) {
   $('#main-content').html($('#manage-researchers').html());
 });
 
-app.router.add('researcher/create/:id', function(r) {
+app.router.add('researcher/:id/create', function(r) {
   $('#main-content').html($('#create-study').html());
   $('.trial-start-input').pickadate();
   $('.trial-complete-input').pickadate();

@@ -31,6 +31,6 @@ class Api::V1::AdminsController < ApplicationController
   end
 
   def admin_params
-    params.require(:admin).permit(:hospital_name, :email, :password_digest)
+    params.require(:admin).permit(:hospital_name, :login => [:id, :email, :password_digest])
   end
 end

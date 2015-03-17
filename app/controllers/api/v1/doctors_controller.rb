@@ -11,6 +11,7 @@ class Api::V1::DoctorsController < ApplicationController
     end
   end
 
+
   # def show
   #   doctors= doctor.all
   #   render json: doctors
@@ -31,6 +32,6 @@ class Api::V1::DoctorsController < ApplicationController
   end
 
   def doctor_params
-    params.require(:doctor).permit(:first_name, :last_name, :email, :password_digest, :admin_id)
+    params.require(:doctor).permit(:first_name, :last_name, :admin_id, :login => [:id, :email, :password_digest])
   end
 end

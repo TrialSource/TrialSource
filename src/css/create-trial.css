@@ -33,19 +33,6 @@
   resize: none;
 }
 
-.trial-submit {
-  background: dodgerblue;
-  color: white;
-  font-weight: 400;
-  border: none;
-  text-align: center;
-  cursor: pointer;
-}
-
-.trial-submit:active {
-  background: #0083ff;
-}
-
 .create-trial-form {
   margin-top: 2em;
 }
@@ -53,4 +40,8 @@
 .trial-form-header {
   margin-top: 1em;
   font-weight: 300;
+}
+
+.trial-start-input, .trial-complete-input {
+  position: relative;
 }

@@ -28,3 +28,19 @@
   font-weight: 700;
   color: #0083ff;
 }
+/*
+button {
+  background: dodgerblue;
+  color: white;
+  -webkit-transition: all .1s;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0083ff;
+  -webkit-transition: none;
+}
+
+button:active {
+  background: darkorange;
+}*/

@@ -9,7 +9,12 @@
   outline: none;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
+  position: relative;
   min-width: 900px;
   max-width: 1200px;
   margin: auto;
@@ -20,4 +25,13 @@ body {
   position: relative;
   height: 100%;
   min-width: 900px;
+}
+
+.not-found {
+  text-align: center;
+  width: 33%;
+  margin: 4em auto;
+  font-weight: 300;
+  border: 1px solid grey;
+  padding: 2em;
 }

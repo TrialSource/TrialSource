@@ -44,22 +44,6 @@
   margin: 0;
 }
 
-/*.lp-form-element + .lp-form-element {
-  margin-top: -1px;
-}*/
-
-.submit-button {
-  background: dodgerblue;
-  border: none;
-  color: white;
-  cursor: pointer;
-}
-
-.submit-button:active {
-  /*background: #0083ff;*/
-  background: darkorange;
-}
-
 .landing-page-divider {
   box-sizing: border-box;
   width: 1px;

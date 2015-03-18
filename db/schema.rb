@@ -11,34 +11,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150316223825) do
+ActiveRecord::Schema.define(version: 20150317154735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "admins", force: :cascade do |t|
-    t.string   "email"
-    t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "hospital_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "org_name"
   end
 
   create_table "doctors", force: :cascade do |t|
-    t.string   "email"
-    t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "admin_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "logins", force: :cascade do |t|
     t.string   "email"
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "user_id"
+    t.string   "user_type"
+  end
+
+  create_table "trials", force: :cascade do |t|
+    t.string   "name"
+    t.string   "condition"
+    t.text     "description"
+    t.string   "location"
+    t.date     "start_on"
+    t.date     "estimated_completed_on"
+    t.integer  "number_of_views"
+    t.integer  "number_of_appearances"
+    t.integer  "doctor_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
 end

@@ -7,6 +7,8 @@ gem 'rails', '4.2.0'
 gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+gem 'faker'
+gem 'textacular'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -28,6 +30,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem 'active_model_serializers'
 
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -35,6 +38,7 @@ gem 'active_model_serializers'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'pry-rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'rspec-rails', '~> 3.0'

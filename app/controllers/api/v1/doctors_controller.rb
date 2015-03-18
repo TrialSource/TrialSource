@@ -12,10 +12,10 @@ class Api::V1::DoctorsController < ApplicationController
   end
 
 
-  # def show
-  #   doctors= doctor.all
-  #   render json: doctors
-  # end
+  def index
+    doctors= Doctor.all
+    render json: doctors
+  end
 
   def update
     if @doctor.update(doctor_params)

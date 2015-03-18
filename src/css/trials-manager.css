@@ -3,3 +3,14 @@
   color: inherit;
   width: 19%
 }
+
+.new-t-btn {
+  display: block;
+  width: 75%;
+  margin:auto;
+  font-size: 1.25em;
+  font-weight: 300;
+  height: 2em;
+  padding: .25em;
+  box-sizing: border-box;
+}

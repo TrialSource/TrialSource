@@ -11,7 +11,7 @@
 }
 
 .researcher-creation-label {
-  margin-top: .5em;
+  margin: .5em 0;
   text-align: center;
   font-weight: 400;
 }
@@ -21,7 +21,7 @@
   box-sizing: border-box;
   width: 33%;
   height: 75%;
-  border: 1px solid grey;
+  border: 1px solid lightgrey;
   vertical-align: top;
   margin-right: .5%;
 }
@@ -30,7 +30,7 @@
   vertical-align: top;
   display: inline-block;
   box-sizing: border-box;
-  border: 1px solid grey;
+  border: 1px solid lightgrey;
   width: 66%;
   height: 75%;
 }
@@ -43,13 +43,13 @@
 
 .researcher-list-actual {
   list-style: none;
-  margin: 15px;
+  margin: 0 15px;
 }
 
 .researcher-listing {
-  background: darkgrey;
+  background: rgba(0,0,0,.1);
   padding: .5em;
-  color: white;
+  color: #474747;
 }
 
 .researcher-listing + .researcher-listing {

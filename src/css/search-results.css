@@ -11,7 +11,8 @@
 
 .ctrl-elem {
   width: 100%;
-  border: 1px solid grey;
+  border: 1px solid lightgrey;
+  position: relative;
 }
 
 .ctrl-cntnr {
@@ -26,7 +27,7 @@
 .rslts-cntnr {
   width: 74%;
   height: 84.75%;
-  border: 1px solid grey;
+  border: 1px solid lightgrey;
 }
 
 .rslt-input:focus {
@@ -35,7 +36,7 @@
 
 .rslt-form-element {
   display: block;
-  margin: 1em auto;
+  margin: auto;
   font-size: 1.25em;
   font-weight: 300;
   padding: .25em;
@@ -43,8 +44,22 @@
   text-align: center;
 }
 
+.rslt-form-element + .rslt-form-element {
+  margin-top: 1em;
+}
+
 .disq-explain {
-  font-size: .75em;
+  font-size: .8em;
   color: grey;
-  padding: .25em;
+  padding: .5em;
+  font-weight: 300;
+  text-align: center;
+}
+
+.rslt-search-form {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
 }

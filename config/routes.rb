@@ -6,4 +6,6 @@ Rails.application.routes.draw do
       resources :trials
     end
   end
+  resources :pages
+  root 'pages#index'
 end

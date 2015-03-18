@@ -4,8 +4,16 @@ class Api::V1::TrialsController < ApplicationController
   end
 
   def create
-    trial = Trial.new(trial_params)
-    if trial.save
+    @trial = Trial.new(trial_params)
+    if @trial.save
+      render json: trial
+    else
+      render json: "Invalid parameters"
+    end
+  end
+
+  def update
+    if @trial.update(trial_params)
       render json: trial
     else
       render json: "Invalid parameters"

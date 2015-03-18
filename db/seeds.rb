@@ -30,7 +30,7 @@ orgs = Organization.all
   Doctor.create(
     :first_name => "#{first_name}",
     :last_name => "#{Faker::Name.last_name}",
-    :organization_id => orgs.sample,
+    :organization_id => orgs.sample.id,
     :login_attributes => {
       :email => "#{first_name}@gmail.com",
       :password => "password"
@@ -47,6 +47,6 @@ CSV.foreach(file, :headers => true) do |row|
     :start_on => row[4],
     :estimated_completed_on => row[5],
     :location => "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.state}",
-    :doctor_id => doctors.sample
+    :doctor_id => doctors.sample.id
   )
 end

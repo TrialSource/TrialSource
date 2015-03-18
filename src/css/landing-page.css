@@ -30,6 +30,14 @@
   box-sizing: border-box;
 }
 
+/*.lp-input + .lp-input {
+  margin-top: -1px;
+}*/
+
+.zip-field, .pw-field {
+  border-top: none;
+}
+
 .lp-input:focus {
   border: 1px solid dodgerblue;
 }

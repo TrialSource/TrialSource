@@ -3,6 +3,7 @@
     <meta charset="utf-8" />
     <title>trialSource</title>
     <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/search-results.css" />
     <link rel="stylesheet" href="css/landing-page.css" />
     <link rel="stylesheet" href="css/create-trial.css" />
     <link rel="stylesheet" href="css/researcher-management.css" />
@@ -17,7 +18,7 @@
   <body>
 
     <nav class="main-nav">
-      <a class="nav-link nav-title">trialSource</a>
+      <a class="nav-link nav-title" href="#">trialSource</a>
       <a class="nav-link nav-link-about">about</a>
       <a class="nav-link nav-link-faq">faq</a>
       <a class="nav-link nav-link-contact">contact</a>
@@ -39,7 +40,7 @@
 
         <form class="lp-form search-form">
           <input class="lp-input lp-form-element condition-field" type="text" placeholder="condition" required/>
-          <input class="lp-input lp-form-element zip-field" type="text" placeholder="zip code" required/>
+          <input class="lp-input lp-form-element zip-field" type="text" placeholder="zip code" maxlength="5"/>
           <button class="reg-btn lp-search-button lp-form-element">search</button>
         </form>
 
@@ -63,7 +64,26 @@
 
     <script type="text/html" id="search-results">
 
-      <h1>SEARCH RESULTS!</h1>
+      <div class="rslts-elem rslts-ctrl-cntnr">
+
+        <div class="ctrl-elem ctrl-cntnr">
+
+          <form class="rslt-search-form">
+            <input class="rslt-input rslt-form-element condition-field" type="text" placeholder="condition" required/>
+            <input class="rslt-input rslt-form-element zip-field" type="text" placeholder="zip code" maxlength="5"/>
+            <button class="reg-btn rslt-search-button rslt-form-element">search again</button>
+          </form>
+
+        </div>
+        <div class="ctrl-elem disq-cntnr">
+
+        <p class="disq-explain">Please fill out and submit the form below in order to identify and get more info about trials for which you are a viable candidate.</p>
+
+        </div>
+
+      </div>
+
+      <div class="rslts-elem rslts-cntnr"></div>
 
     </script>
 

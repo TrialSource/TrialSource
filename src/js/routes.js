@@ -15,6 +15,9 @@ app.router.add('', function() {
 
 app.router.add('search/:term', function(r) {
   $('#main-content').html($('#search-results').html());
+  $.getJSON('http://localhost:3000/api/v1/trials').done(function(data) {
+    console.log(data);
+  })
 });
 
 app.router.add('admin/researchers', function(r) {

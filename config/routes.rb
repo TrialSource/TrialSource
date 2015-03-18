@@ -7,4 +7,6 @@ Rails.application.routes.draw do
       resource :search, only: [:show]
     end
   end
+  resources :pages
+  root 'pages#index'
 end

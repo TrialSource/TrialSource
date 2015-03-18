@@ -1,0 +1,265 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>trialSource</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/search-results.css" />
+    <link rel="stylesheet" href="css/landing-page.css" />
+    <link rel="stylesheet" href="css/create-trial.css" />
+    <link rel="stylesheet" href="css/researcher-management.css" />
+    <link rel="stylesheet" href="css/trials-manager.css" />
+    <link rel="stylesheet" href="css/main-nav.css" />
+    <link rel="stylesheet" href="css/admin-nav.css" />
+    <link rel="stylesheet" href="css/buttons.css" />
+    <link rel="stylesheet" href="css/classic.css" />
+    <link rel="stylesheet" href="css/classic.date.css" />
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+
+    <nav class="main-nav">
+      <a class="nav-link nav-title" href="#">trialSource</a>
+      <a class="nav-link nav-link-about">about</a>
+      <a class="nav-link nav-link-faq">faq</a>
+      <a class="nav-link nav-link-contact">contact</a>
+    </nav>
+
+    <div id="main-content"></div>
+
+    <nav class="footer-nav">
+
+    </nav>
+
+    <script type="text/html" id="landing-page">
+
+      <h1 class="tagline"><em>The</em> source for interventive clinical trials.</h1>
+
+      <div class="search-form-container lp-element lp-form-container">
+
+        <h1 class="lp-header">Search Trials</h1>
+
+        <form class="lp-form search-form">
+          <input class="lp-input lp-form-element condition-field" type="text" placeholder="condition" required/>
+          <input class="lp-input lp-form-element zip-field" type="text" placeholder="zip code" maxlength="5"/>
+          <button class="reg-btn lp-search-button lp-form-element">search</button>
+        </form>
+
+      </div>
+
+      <div class="landing-page-divider lp-element"></div>
+
+      <div class="search-form-container lp-element lp-form-container">
+
+        <h1 class="lp-header">Research Login</h1>
+
+        <form class="lp-form login-form">
+          <input class="lp-input lp-form-element un-field" type="text" placeholder="email" required/>
+          <input class="lp-input lp-form-element pw-field" type="text" placeholder="password" required/>
+          <button class="reg-btn lp-login-button lp-form-element">login</button>
+        </form>
+
+      </div>
+
+    </script>
+
+    <script type="text/html" id="search-results">
+
+      <div class="rslts-elem rslts-ctrl-cntnr">
+
+        <div class="ctrl-elem ctrl-cntnr">
+
+          <form class="rslt-search-form">
+            <input class="rslt-input rslt-form-element condition-field" type="text" placeholder="condition" required/>
+            <input class="rslt-input rslt-form-element zip-field" type="text" placeholder="zip code" maxlength="5"/>
+            <button class="reg-btn rslt-search-button rslt-form-element">search again</button>
+          </form>
+
+        </div>
+        <div class="ctrl-elem disq-cntnr">
+
+        <p class="disq-explain">Please fill out and submit the form below in order to identify and get more info about trials for which you are a viable candidate.</p>
+
+        </div>
+
+      </div>
+
+      <div class="rslts-elem rslts-cntnr"></div>
+
+    </script>
+
+    <script type="text/html" id="create-study">
+
+      <h1 class="trial-form-header">New Trial Listing</h1>
+
+      <form class="create-trial-form">
+        <input class="trial-input trial-condition-input" type="text" placeholder="condition" />
+        <input class="trial-input trial-title-input" type="text" placeholder="title" />
+        <input class="trial-input trial-principal-input" type="text" placeholder="principal" />
+        <input class="trial-input trial-start-input" type="text" placeholder="start date" />
+        <input class="trial-input trial-complete-input" type="text" placeholder="est. complete date" />
+        <textarea class="trial-input trial-abstract-input" placeholder="description/abstract"></textarea>
+        <button class="reg-btn trial-input">create trial listing</button>
+      </form>
+
+    </script>
+
+
+    <script type="text/html" id="admin-nav">
+
+      <h1 class="admin-nav-header">Welcome, Administrator.</h1>
+
+      <div class="admin-nav-element admin-nav-container">
+        <h2 class="admin-nav-link"><a class="admin-nav-link-actual" href="#admin/researchers">Researchers</a></h2>
+      </div>
+
+      <div class="admin-nav-element admin-nav-divider"></div>
+
+      <div class="admin-nav-element admin-nav-container">
+        <h2 class="admin-nav-link"><a class="admin-nav-link-actual">Trials</a></h2>
+      </div>
+
+      <div class="admin-nav-element admin-nav-divider"></div>
+
+      <div class="admin-nav-element admin-nav-container">
+        <h2 class="admin-nav-link"><a class="admin-nav-link-actual">Overview</a></h2>
+      </div>
+
+    </script>
+
+    <script type="text/html" id="manage-researchers">
+
+      <h1 class="manage-researchers-header">Manage Researchers</h1>
+
+      <form class="researcher-creation-form">
+        <h2 class="researcher-creation-label">add researcher</h2>
+        <input class="researcher-input researcher-first-name-input" type="text" placeholder="first name" />
+        <input class="researcher-input researcher-last-name-input" type="text" placeholder="last name" />
+        <input class="researcher-input researcher-email-input" type="text" placeholder="email" />
+        <input class="researcher-input researcher-password-one" type="password" placeholder="password" />
+        <input class="researcher-input researcher-password-two" type="password" placeholder="confirm password" />
+        <button class="reg-btn researcher-input">create</button>
+      </form>
+
+      <div class="researcher-list-container">
+        <h2 class="researcher-creation-label">active researchers</h2>
+        <ul class="researcher-list-actual">
+
+          <li class="researcher-listing">
+            <span class="r-listing-info">Dr. Butts Carlton</span>
+            <span class="r-listing-info">Active Studies: 2</span>
+            <span class="r-listing-info">Completed Studies: 4</span>
+          </li>
+
+          <li class="researcher-listing">
+            <span class="r-listing-info">Dr. William Adama</span>
+            <span class="r-listing-info">Active Studies: 1</span>
+            <span class="r-listing-info">Completed Studies: 200</span>
+          </li>
+
+        </ul>
+      </div>
+
+    </script>
+
+    <script type="text/html" id="admin-researcher-detail">
+      <h1>Dr. Bro Didley</h1>
+
+    </script>
+
+    <script type="text/html" id="admin-researcher-edit">
+
+
+    </script>
+
+    <script type="text/html" id="admin-trials">
+
+
+    </script>
+
+    <script type="text/html" id="admin-trials-detail">
+
+
+    </script>
+
+    <script type="text/html" id="admin-trials-edit">
+
+
+    </script>
+
+
+    <script type="text/html" id="researcher-trials">
+
+      <h1 class="manage-researchers-header">Welcome, Dr. Butts Carlton</h1>
+
+      <div class="researcher-creation-form">
+        <h2 class="researcher-creation-label">tools</h2>
+        <button class="reg-btn new-t-btn researcher-input">new trial listing</button>
+      </div>
+
+      <div class="researcher-list-container">
+        <h2 class="researcher-creation-label">your trial listings</h2>
+        <ul class="researcher-list-actual">
+
+          <li class="researcher-listing">
+            <span class="t-listing-info">Cooties</span>
+            <span class="t-listing-info">Recruiting</span>
+            <span class="t-listing-info">Start: Dec 2015</span>
+            <span class="t-listing-info">edit</span>
+            <span class="t-listing-info">delete</span>
+          </li>
+
+          <li class="researcher-listing">
+            <span class="t-listing-info">Collorectal Cancer</span>
+            <span class="t-listing-info">Recruiting</span>
+            <span class="t-listing-info">Start: Jan 2016</span>
+            <span class="t-listing-info">edit</span>
+            <span class="t-listing-info">delete</span>
+          </li>
+
+        </ul>
+      </div>
+
+    </script>
+
+    <script type="text/html" id="admin-nav">
+
+
+    </script>
+
+    <script type="text/html" id="admin-nav">
+
+
+    </script>
+
+    <script type="text/html" id="admin-nav">
+
+
+    </script>
+
+    <script type="text/html" id="admin-nav">
+
+
+    </script>
+
+    <script type="text/html" id="admin-nav">
+
+
+    </script>
+
+    <script type="text/html" id="admin-nav">
+
+
+    </script>
+
+    <script src="dependencies/jquery.js"></script>
+    <script src="dependencies/lodash.js"></script>
+    <script src="dependencies/rlite.min.js"></script>
+    <script src="dependencies/picker.js"></script>
+    <script src="dependencies/picker.date.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/routes.js"></script>
+    <script src="js/page-not-found.js"></script>
+    <script src="js/init.js"></script>
+
+  </body>
+</html>

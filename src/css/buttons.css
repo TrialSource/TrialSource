@@ -1,0 +1,18 @@
+.reg-btn {
+  background: dodgerblue;
+  color: white;
+  border: none;
+  font-weight: 400;
+  cursor: pointer;
+  text-align: center;
+  -webkit-transition: all .1s;
+}
+
+.reg-btn:hover {
+  background: #0083ff;
+}
+
+.reg-btn:active {
+  background: darkorange;
+  -webkit-transition: none;
+}

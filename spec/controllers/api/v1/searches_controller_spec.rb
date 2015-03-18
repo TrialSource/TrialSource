@@ -8,8 +8,7 @@ RSpec.describe Api::V1::SearchesController, type: :controller do
         Doctor.create(first_name: "Bill")
         Doctor.create(first_name: "Suzy")
 
-        #send request to the controller
-        get :show, query: "Bill"
+        get :show, type: "Doctor", query: "Bill"
         json = JSON.parse(response.body)
 
         results = json["searches"]

@@ -5,7 +5,6 @@ RSpec.describe Doctor, type: :model do
     it "finds results by first name" do
       matching_doctor = Doctor.create(first_name: "Bill")
       _non_matching_doctor = Doctor.create(first_name: "Suzy")
-
       results = Doctor.search("Bill")
 
       expect(results).to eq([matching_doctor])

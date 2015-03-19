@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :doctors
       resources :organizations
       resources :trials
+      resources :sessions, only: [:create]
       resource :search, only: [:show]
     end
   end

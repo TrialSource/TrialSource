@@ -1,5 +1,5 @@
 class Api::V1::DoctorsController < ApplicationController
-  before_action :set_doctor, only: [:update]
+  before_action :set_doctor, only: [:update, :show]
 
 
   def create
@@ -15,6 +15,10 @@ class Api::V1::DoctorsController < ApplicationController
   def index
     doctors= Doctor.all
     render json: doctors
+  end
+
+  def show
+    render json: @doctor
   end
 
   def update

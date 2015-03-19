@@ -1,5 +1,5 @@
 class Api::V1::OrganizationsController < ApplicationController
-  before_action :set_organization, only: [:update]
+  before_action :set_organization, only: [:update, :show]
 
 
   def create
@@ -12,7 +12,7 @@ class Api::V1::OrganizationsController < ApplicationController
   end
 
   def show
-    render json: Organization.all
+    render json: @organization
   end
 
   def update
@@ -26,7 +26,7 @@ class Api::V1::OrganizationsController < ApplicationController
   private
 
   def set_organization
-    @organization = organization.find(params[:id])
+    @organization = Organization.find(params[:id])
   end
 
   def organization_params

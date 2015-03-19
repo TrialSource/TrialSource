@@ -1,26 +1,15 @@
+---
 - hosts: all
-  sudo: yes
-  tasks:
-    - name: Update all packages
-      yum: name='*' state=latest
+  vars_files:
+    - vars/defaults.yml
+    - vars/secrets.yml
 
-    - name: Check Ruby version
-      shell: /usr/bin/ruby -e 'print RUBY_VERSION'
-      ignore_errors: true
-      register: ruby_version
+  roles:
+    # - webserver
+    - {role: ruby, sudo: yes}
+    - {role: database, sudo: yes}
 
-    - name: Install Ruby
-      yum: name={{ item }} state=present
-      with_items:
-        - libyaml
-        - "https://github.com/feedforce/ruby-rpm/releases/download/2.2.1/ruby-2.2.1-1.el7.centos.x86_64.rpm"
-      when: ruby_version.stdout != "2.2.1"
-
-    - name: Install Bundler
-      gem: name=bundler state=latest
-        
-    - name: Ensure NTP (for time synchronization) is installed.
-      yum: pkg=ntp state=installed
-
-    - name: Ensure NTP is running.
-      service: name=ntpd state=started enabled=yes
+  handlers:
+    - name: Restart PostgreSQL
+      sudo: true
+      service: name=postgresql state=restarted

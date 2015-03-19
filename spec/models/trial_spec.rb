@@ -25,7 +25,7 @@ RSpec.describe Trial, type: :model do
 
       results = Trial.search("Durham, NC")
 
-      expect(results).to match_array([condition_match, location_match])
+      expect(results).to match_array([condition_match, locationg_match])
     end
   end
 end

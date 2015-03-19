@@ -3,4 +3,7 @@ class Organization < ActiveRecord::Base
 	accepts_nested_attributes_for :login
 	has_many :doctors
 
+	def self.search(query)
+    Organization.basic_search(query)
+  end
 end

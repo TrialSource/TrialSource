@@ -4,10 +4,11 @@ RSpec.describe Api::V1::DoctorsController, type: :controller do
 	describe "#create" do
 	    context "when doctor is valid" do
 	      it "sends back doctor attributes" do
-	        post :create, doctor: {first_name: "Bill", last_name: "Smith", login_attributes: {email: "duke_doctor@example.org", password: "password"}}
-    			json = JSON.parse(response.body)
-    			expect(json.keys).to include("last_name")
-
+	        post :create, doctor: {first_name: "Bill", last_name: "Smith",
+						login_attributes: {email: "duke_doctor@example.org", password: "password"}}
+					json = JSON.parse(response.body)
+					doctor = json["doctor"]
+					expect(doctor["first_name"]).to eq("Bill")
 	      end
 	    end
 

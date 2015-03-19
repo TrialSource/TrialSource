@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 # Specs in this file have access to a helper object that includes
-# the PagesHelper. For example:
+# the Api::V1::SearchesHelper. For example:
 #
-# describe PagesHelper do
+# describe Api::V1::SearchesHelper do
 #   describe "string concat" do
 #     it "concats two strings with spaces" do
 #       expect(helper.concat_strings("this","that")).to eq("this that")
 #     end
 #   end
 # end
-RSpec.describe PagesHelper, type: :helper do
+RSpec.describe Api::V1::SearchesHelper, type: :helper do
 end

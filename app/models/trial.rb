@@ -7,8 +7,9 @@ class Trial < ActiveRecord::Base
 
   def self.current
     Trial.where(:archived == false)
+  end
 
   def self.search(query)
-    Trial.where(condition: query)
+    Trial.current.where(condition: query)
   end
 end

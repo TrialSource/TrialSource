@@ -63,3 +63,25 @@
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
 }
+
+.rslts-list {
+  list-style: none;
+  padding: .5em;
+}
+
+.rslt-listing {
+  background: rgba(0, 0, 0, .05);
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: .5em;
+}
+
+.rslt-listing + .rslt-listing {
+  margin-top: .5em;
+}
+
+.rslt-info {
+  font-weight: 300;
+}

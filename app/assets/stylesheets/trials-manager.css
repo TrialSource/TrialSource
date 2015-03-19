@@ -1,7 +1,5 @@
 .t-listing-info {
-  display: inline-block;
-  color: inherit;
-  width: 19%
+  font-weight: 300;
 }
 
 .new-t-btn {
@@ -13,4 +11,27 @@
   height: 2em;
   padding: .25em;
   box-sizing: border-box;
+}
+
+.trial-list {
+  list-style: none;
+  padding: .5em;
+  padding-top: 0;
+}
+
+.trial-listing {
+  background: rgba(0, 0, 0, .05);
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: .5em;
+}
+
+.trial-listing + .trial-listing {
+  margin-top: .5em;
+}
+
+.t-listing-info {
+  width: 19%;
 }

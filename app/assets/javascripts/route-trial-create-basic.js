@@ -9,9 +9,7 @@ app.routeCreateTrialBasic = function() {
 
   $('.create-trial-form').submit(function(e) {
     e.preventDefault();
-    console.log($('.trial-start-input').val());
     if (!validateForm()) {
-      console.log('all fields required');
       return;
     }
     var newTrial = grabTrialInfo();
@@ -26,7 +24,6 @@ app.routeCreateTrialBasic = function() {
         $('.error-message').text('all fields are required');
       }
       if (isValid && !verifyDates()) {
-        $('.error-message').text('est. complete date must be later than start date');
         isValid = false;
       }
     });
@@ -60,9 +57,15 @@ app.routeCreateTrialBasic = function() {
   }
 
   function verifyDates() {
+    var now = new Date().getTime()
     var start = new Date($('.trial-start-input').val()).getTime();
     var complete = new Date($('.trial-complete-input').val()).getTime();
+    if (start <= now) {
+      $('.error-message').text('trials cannot begin in the past');
+      return false;
+    }
     if (start >= complete) {
+      $('.error-message').text('est. complete date must be later than start date');
       return false;
     }
     return true;

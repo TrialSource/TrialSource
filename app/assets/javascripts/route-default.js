@@ -8,7 +8,39 @@ app.routeDefault = function() {
 
   $('.login-form').submit(function(e) {
     e.preventDefault();
-    document.location.hash = 'researcher/trials';
+    // document.location.hash = 'researcher/trials';
     // document.location.hash = 'admin';
+
+    verifyInput();
+    var login = getLogin();
+
+    $.ajax({
+      type: "POST",
+      url: '/api/v1/sessions',
+      data: JSON.stringify(login),
+      contentType : 'application/json',
+      dataType: 'json'
+    }).done(function(data) {
+      if (data.sessions[1].toLowerCase() === "organization") {
+        loginOrganization(data.sessions[0]);
+      } else {
+        loginResearcher(data.sessions[0]);
+      }
+    });
   });
+
+  function verifyInput() {
+
+  }
+
+  function getLogin() {
+    return {
+      email: $('.un-field').val(),
+      password: $('.pw-field').val()
+    };
+  }
+
+  function loginOrganization(orgId) {
+    document.location.hash = 'admin/' + orgId;
+  }
 }

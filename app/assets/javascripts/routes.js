@@ -12,15 +12,16 @@ app.routes = function() {
     })
   });
 
-  app.router.add('admin/researchers', function(r) {
+  app.router.add('admin/:id/researchers', function(r) {
     $('#main-content').html($('#manage-researchers').html());
   });
 
-  app.router.add('admin', function(r) {
+  app.router.add('admin/:id', function(r) {
     $('#main-content').html($('#admin-nav').html());
+    $('.admin-nav-link-actual').attr('href', '#admin/' + r.params.id + '/researchers')
   })
 
-  app.router.add('researcher/trials', function(r) {
+  app.router.add('researcher/:id/trials', function(r) {
     $('#main-content').html($('#researcher-trials').html());
     $('.new-t-btn').click(function() {
       document.location.hash = 'researcher/trials/new';

@@ -6,7 +6,7 @@ class Api::V1::TrialsController < ApplicationController
   def create
     @trial = Trial.new(trial_params)
     if @trial.save
-      render json: trial
+      render json: @trial
     else
       render json: "Invalid parameters"
     end

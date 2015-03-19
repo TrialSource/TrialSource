@@ -1,3 +1,1 @@
-var app = {
-  router: Rlite(),
-};
+var app = {};

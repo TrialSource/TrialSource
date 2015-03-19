@@ -2,7 +2,7 @@ class Api::V1::TrialsController < ApplicationController
   before_action :set_trial, only: [:show]
 
   def index
-    render json: Trial.all
+    render json: Trial.current
   end
 
   def create

@@ -5,7 +5,11 @@ class Trial < ActiveRecord::Base
   validates :description, presence: true
   validates :location, presence: true
 
+  def self.current
+    Trial.where(:archived == false)
+  end
+
   def self.search(query)
-    Trial.where(condition: query)
+    Trial.current.where(condition: query)
   end
 end

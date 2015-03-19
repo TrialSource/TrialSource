@@ -1,6 +1,6 @@
 class Api::V1::TrialsController < ApplicationController
   def index
-    render json: Trial.all
+    render json: Trial.current
   end
 
   def create

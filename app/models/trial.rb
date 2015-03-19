@@ -4,4 +4,8 @@ class Trial < ActiveRecord::Base
   validates :condition, presence: true
   validates :description, presence: true
   validates :location, presence: true
+
+  def self.current
+    Trial.where(:archived == false)
+  end
 end

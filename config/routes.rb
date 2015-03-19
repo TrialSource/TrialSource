@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :doctors
       resources :admins
       resources :trials
+      resources :archives
     end
   end
   resources :pages

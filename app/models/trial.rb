@@ -6,6 +6,6 @@ class Trial < ActiveRecord::Base
   validates :location, presence: true
 
   def self.search(query)
-    Trial.basic_search(query)
+    Trial.where(condition: query)
   end
 end

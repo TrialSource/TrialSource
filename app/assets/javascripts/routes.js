@@ -1,3 +1,4 @@
+
 app.router.add('', function() {
   $('#main-content').html($('#landing-page').html()); // insert landing-page into main-content
 
@@ -15,8 +16,8 @@ app.router.add('', function() {
 
 app.router.add('search/:term', function(r) {
   $('#main-content').html($('#search-results').html());
-  $.getJSON('http://localhost:3000/api/v1/trials').done(function(data) {
-    console.log(data);
+  $.getJSON('/api/v1/trials').done(function(data) {
+    console.log(data.trials);
   })
 });
 

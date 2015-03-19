@@ -43,7 +43,7 @@ app.routeCreateTrialBasic = function() {
   }
 
   function postTrial(trial) {
-    // console.log(trial);
+    console.log(trial);
     $.ajax({
       type: "POST",
       url: '/api/v1/trials',

@@ -1,6 +1,6 @@
 class Api::V1::OrganizationsController < ApplicationController
   before_action :set_organization, only: [:update, :show]
-  before_action :authenticate, only: [:update]
+  before_action :authenticate_user, only: [:update]
 
   def create
     organization= Organization.new(organization_params)

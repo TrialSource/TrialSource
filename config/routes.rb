@@ -3,14 +3,12 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :doctors do
         collection do
-          post :org
           get :org
         end
       end
       resources :organizations
       resources :trials do
         collection do
-          post :doctor
           get :doctor
         end
       end

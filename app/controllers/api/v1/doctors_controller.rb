@@ -1,6 +1,6 @@
 class Api::V1::DoctorsController < ApplicationController
   before_action :set_doctor, only: [:update, :show]
-  before_action :authenticate, only: [:create, :update]
+  before_action :authenticate_user, only: [:create, :update]
 
   def create
     doctor= Doctor.new(doctor_params)

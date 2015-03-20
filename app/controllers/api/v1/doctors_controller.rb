@@ -11,6 +11,10 @@ class Api::V1::DoctorsController < ApplicationController
     end
   end
 
+  def org
+    render json: Doctor.where(organization_id: params[:org])
+  end
+
 
   def index
     doctors= Doctor.all

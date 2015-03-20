@@ -15,6 +15,10 @@ class Api::V1::TrialsController < ApplicationController
     end
   end
 
+  def doctor
+    render json: Trial.where(doctor_id: params[:doctor])
+  end
+
   def update
     if @trial.update(trial_params)
       render json: @trial

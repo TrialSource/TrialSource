@@ -1,4 +1,5 @@
 class Api::V1::SessionsController < ApplicationController
+
 	def create
 	 	login = Login.find_by_email(params[:email])
 	 	if login.authenticate(params[:password])

@@ -1,6 +1,33 @@
 app.routeResearcherManager = function(r) {
 
   $('#main-content').html($('#manage-researchers').html());
+  // var listTemplate = _.template(app.researcherListing, { variable: 'm' });
+  // $('.rslts-list').html(listTemplate({ results: data.trials }));
+
+  var query = {
+    type: 'doctor',
+    query: r.params.id,
+  };
+
+  // $.getJSON('/api/v1/search/', query).done(function(data) {
+  //   console.log(data);
+  // });
+
+  $.getJSON('/api/v1/search/', { type: 'doctor', query: 'cool' }).done(function(data) {
+    console.log(data);
+  });
+
+  // $.ajax({
+  //   type: "GET",
+  //   url: '/api/v1/search/',
+  //   data: JSON.stringify(query),
+  //   contentType : 'application/json',
+  //   dataType: 'json'
+  // }).done(function(data) {
+  //   console.log('fire');
+  //   console.log(data);
+  // });
+
   $('.researcher-creation-form').submit(function(e) {
     e.preventDefault();
     if (!validateInput()) {
@@ -34,7 +61,6 @@ app.routeResearcherManager = function(r) {
       }
     });
 
-
     return isValid;
   }
 
@@ -42,8 +68,8 @@ app.routeResearcherManager = function(r) {
     return {
       first_name: $('.researcher-first-name-input').val(),
       last_name: $('.researcher-last-name-input').val(),
-      organization: r.params.id,
-      login: {  email: $('.researcher-email-input').val(),
+      organization_id: r.params.id,
+      login_attributes: {  email: $('.researcher-email-input').val(),
                 password: $('.researcher-password-one').val(),
               },
     };

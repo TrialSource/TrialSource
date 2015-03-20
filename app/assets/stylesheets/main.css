@@ -22,6 +22,8 @@ body {
   min-width: 900px;
   max-width: 1200px;
   margin: auto;
+  min-height: 900px;
+  overflow: hidden;
 }
 
 .main-content {

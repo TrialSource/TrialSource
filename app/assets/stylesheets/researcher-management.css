@@ -2,6 +2,25 @@
   display: block;
   width: 75%;
   margin:auto;
+  font-size: 1.25em;
+  font-weight: 300;
+  height: 2em;
+  padding: .25em;
+  box-sizing: border-box;
+}
+
+.researcher-input + .researcher-input {
+  margin-top: 1em;
+}
+
+.researcher-input:focus {
+  border: 1px solid dodgerblue;
+}
+
+.researcher-submit {
+  display: block;
+  width: 75%;
+  margin:auto;
   margin-top: 1em;
   font-size: 1.25em;
   font-weight: 300;
@@ -11,7 +30,7 @@
 }
 
 .researcher-creation-label {
-  margin-top: .5em;
+  margin: .5em 0;
   text-align: center;
   font-weight: 400;
 }
@@ -21,7 +40,7 @@
   box-sizing: border-box;
   width: 33%;
   height: 75%;
-  border: 1px solid grey;
+  border: 1px solid lightgrey;
   vertical-align: top;
   margin-right: .5%;
 }
@@ -30,7 +49,7 @@
   vertical-align: top;
   display: inline-block;
   box-sizing: border-box;
-  border: 1px solid grey;
+  border: 1px solid lightgrey;
   width: 66%;
   height: 75%;
 }
@@ -43,13 +62,16 @@
 
 .researcher-list-actual {
   list-style: none;
-  margin: 15px;
+  margin: 0 15px;
 }
 
 .researcher-listing {
-  background: darkgrey;
+  background: rgba(0, 0, 0, .05);
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  flex-direction: row;
   padding: .5em;
-  color: white;
 }
 
 .researcher-listing + .researcher-listing {
@@ -57,9 +79,8 @@
 }
 
 .r-listing-info {
-  display: inline-block;
-  color: inherit;
-  width: 30%
+  font-weight: 300;
+  width: 24%;
 }
 
 /*.r-listing-info + .r-listing-info {

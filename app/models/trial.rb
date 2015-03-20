@@ -1,7 +1,8 @@
 class Trial < ActiveRecord::Base
   belongs_to :doctor
+  has_many :conditions
+  accepts_nested_attributes_for :conditions
   validates :name, presence: true
-  validates :condition, presence: true
   validates :description, presence: true
   validates :location, presence: true
 
@@ -10,6 +11,6 @@ class Trial < ActiveRecord::Base
   end
 
   def self.search(query)
-    Trial.current.where(condition: query)
+    Trial.basic_search(query)
   end
 end

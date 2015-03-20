@@ -1,9 +1,9 @@
 class Api::V1::OrganizationsController < ApplicationController
-  before_action :set_organization, only: [:update, :show]
+  before_action :set_organization, only: [:update, :show, :destroy]
   before_action :authenticate_user, only: [:update]
 
   def create
-    organization= Organization.new(organization_params)
+    organization = Organization.new(organization_params)
     if organization.save
       render json: organization
     else
@@ -23,6 +23,10 @@ class Api::V1::OrganizationsController < ApplicationController
     end
   end
 
+  def destroy
+    @organization.destroy
+  end
+  
   private
 
   def set_organization

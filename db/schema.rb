@@ -11,11 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150320160017) do
+ActiveRecord::Schema.define(version: 20150320203047) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "pg_trgm"
+
+  create_table "conditions", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "trial_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "doctors", force: :cascade do |t|
     t.datetime "created_at",      null: false
@@ -42,7 +49,6 @@ ActiveRecord::Schema.define(version: 20150320160017) do
 
   create_table "trials", force: :cascade do |t|
     t.string   "name"
-    t.string   "condition"
     t.text     "description"
     t.string   "location"
     t.date     "start_on"

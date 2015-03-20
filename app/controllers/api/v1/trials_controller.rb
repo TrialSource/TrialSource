@@ -1,5 +1,6 @@
 class Api::V1::TrialsController < ApplicationController
   before_action :set_trial, only: [:show]
+  before_action :authenticate, only: [:create, :update]
 
   def index
     render json: Trial.current

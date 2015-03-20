@@ -1,6 +1,6 @@
 class Api::V1::DoctorsController < ApplicationController
   before_action :set_doctor, only: [:update, :show]
-
+  before_action :authenticate, only: [:create, :update]
 
   def create
     doctor= Doctor.new(doctor_params)
@@ -36,6 +36,6 @@ class Api::V1::DoctorsController < ApplicationController
   end
 
   def doctor_params
-    params.require(:doctor).permit(:first_name, :last_name, :organization, :login => [:id, :email, :password_digest])
+    params.require(:doctor).permit(:first_name, :last_name, :admin_id, :login_attributes => [:email, :password])
   end
 end

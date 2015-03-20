@@ -4,16 +4,12 @@ app.routeResearcherManager = function(r) {
   // var listTemplate = _.template(app.researcherListing, { variable: 'm' });
   // $('.rslts-list').html(listTemplate({ results: data.trials }));
 
-  var query = {
-    type: 'doctor',
-    query: r.params.id,
-  };
 
   // $.getJSON('/api/v1/search/', query).done(function(data) {
   //   console.log(data);
   // });
 
-  $.getJSON('/api/v1/search/', { type: 'doctor', query: 'cool' }).done(function(data) {
+  $.getJSON('/api/v1/doctor/org', { org: r.params.id }).done(function(data) {
     console.log(data);
   });
 

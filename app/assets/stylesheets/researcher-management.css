@@ -2,6 +2,25 @@
   display: block;
   width: 75%;
   margin:auto;
+  font-size: 1.25em;
+  font-weight: 300;
+  height: 2em;
+  padding: .25em;
+  box-sizing: border-box;
+}
+
+.researcher-input + .researcher-input {
+  margin-top: 1em;
+}
+
+.researcher-input:focus {
+  border: 1px solid dodgerblue;
+}
+
+.researcher-submit {
+  display: block;
+  width: 75%;
+  margin:auto;
   margin-top: 1em;
   font-size: 1.25em;
   font-weight: 300;
@@ -47,9 +66,12 @@
 }
 
 .researcher-listing {
-  background: rgba(0,0,0,.1);
+  background: rgba(0, 0, 0, .05);
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  flex-direction: row;
   padding: .5em;
-  color: #474747;
 }
 
 .researcher-listing + .researcher-listing {
@@ -57,9 +79,8 @@
 }
 
 .r-listing-info {
-  display: inline-block;
-  color: inherit;
-  width: 30%
+  font-weight: 300;
+  width: 24%;
 }
 
 /*.r-listing-info + .r-listing-info {

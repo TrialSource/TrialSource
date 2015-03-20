@@ -31,7 +31,7 @@ app.routeCreateTrialBasic = function() {
   }
 
   function grabTrialInfo() {
-    return app.Trial({
+    return {
       condition: $('.trial-condition-input').val(),
       name: $('.trial-title-input').val(),
       principal: $('.trial-principal-input').val(),
@@ -39,7 +39,7 @@ app.routeCreateTrialBasic = function() {
       startDate: $('.trial-start-input').val(),
       completeDate: $('.trial-complete-input').val(),
       description: $('.trial-abstract-input').val(),
-    })
+    };
   }
 
   function postTrial(trial) {

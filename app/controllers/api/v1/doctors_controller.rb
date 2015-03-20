@@ -36,6 +36,6 @@ class Api::V1::DoctorsController < ApplicationController
   end
 
   def doctor_params
-    params.require(:doctor).permit(:first_name, :last_name, :admin_id, :login_attributes => [:email, :password])
+    params.require(:doctor).permit(:first_name, :last_name, :organization_id, :login_attributes => [:email, :password])
   end
 end

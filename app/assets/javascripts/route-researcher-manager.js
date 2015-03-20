@@ -9,7 +9,7 @@ app.routeResearcherManager = function(r) {
   //   console.log(data);
   // });
 
-  $.getJSON('/api/v1/doctor/org', { org: r.params.id }).done(function(data) {
+  $.getJSON('/api/v1/doctors/org', { org: r.params.id }).done(function(data) {
     console.log(data);
   });
 

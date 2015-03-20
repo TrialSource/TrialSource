@@ -1,0 +1,87 @@
+.rslts-elem {
+  display: inline-block;
+  height: 85%;
+  vertical-align: top;
+}
+
+.rslts-ctrl-cntnr {
+  width: 22.5%;
+  margin-right: 1.5%;
+}
+
+.ctrl-elem {
+  width: 100%;
+  border: 1px solid lightgrey;
+  position: relative;
+}
+
+.ctrl-cntnr {
+  height: 25%;
+  margin-bottom: 7%;
+}
+
+.disq-cntnr {
+  height: 72%;
+}
+
+.rslts-cntnr {
+  width: 74%;
+  height: 84.75%;
+  border: 1px solid lightgrey;
+}
+
+.rslt-input:focus {
+  border: 1px solid dodgerblue;
+}
+
+.rslt-form-element {
+  display: block;
+  margin: auto;
+  font-size: 1.25em;
+  font-weight: 300;
+  padding: .25em;
+  width: 80%;
+  text-align: center;
+}
+
+.rslt-form-element + .rslt-form-element {
+  margin-top: 1em;
+}
+
+.disq-explain {
+  font-size: .8em;
+  color: grey;
+  padding: .5em;
+  font-weight: 300;
+  text-align: center;
+}
+
+.rslt-search-form {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+}
+
+.rslts-list {
+  list-style: none;
+  padding: .5em;
+}
+
+.rslt-listing {
+  background: rgba(0, 0, 0, .05);
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: .5em;
+}
+
+.rslt-listing + .rslt-listing {
+  margin-top: .5em;
+}
+
+.rslt-info {
+  font-weight: 300;
+}

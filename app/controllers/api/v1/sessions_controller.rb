@@ -4,7 +4,7 @@ class Api::V1::SessionsController < ApplicationController
 	 	login = Login.find_by_email(params[:email])
 	 	if login.authenticate(params[:password])
 	 		make_session(login.user_id, login.user_type)
-			render json: "success"
+			render json: [session[:user_id], session[:user_type]]
 	 	else
 	 		render json: "Invalid parameters"
 	 	end

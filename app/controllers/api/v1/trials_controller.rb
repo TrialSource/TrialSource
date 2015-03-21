@@ -6,9 +6,9 @@ class Api::V1::TrialsController < ApplicationController
   end
 
   def create
-    trial = Trial.new(trial_params)
-    if trial.save
-      render json: trial
+    @trial = Trial.new(trial_params)
+    if @trial.save
+      render json: @trial
     else
       render json: "Invalid parameters"
     end
@@ -22,7 +22,7 @@ class Api::V1::TrialsController < ApplicationController
     org = Organization.find(params[:org])
     render json: org.trials
   end
-  
+
   def update
     if @trial.update(trial_params)
       render json: @trial

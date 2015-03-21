@@ -56,7 +56,7 @@ app.routeCreateTrialBasic = function(r) {
       contentType : 'application/json',
       dataType: 'json'
     }).done(function(data) {
-      console.log(trial);
+      console.log(data);
       document.location.hash = 'researcher/' + r.params.id + '/trials';
     });
   }

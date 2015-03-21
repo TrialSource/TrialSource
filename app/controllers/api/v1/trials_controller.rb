@@ -20,14 +20,9 @@ class Api::V1::TrialsController < ApplicationController
 
   def org
     org = Organization.find(params[:org])
-    doctors = Doctor.where(organization_id = org.id)
-    trials = []
-    doctors.each do |doctor|
-      trials << Trial.where(doctor_id: doctor.id)
-    end
-
-    render json: trials
+    render json: org.trials
   end
+  
   def update
     if @trial.update(trial_params)
       render json: @trial

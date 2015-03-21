@@ -1,6 +1,12 @@
 app.routeDefault = function() {
   $('#main-content').html($('#landing-page').html());
 
+  $.getJSON('/api/v1/conditions').done(function(data) {
+    console.log(data);
+  });
+
+  $('.condition-field').select2();
+
   $('.search-form').submit(function(e) {
     e.preventDefault();
 

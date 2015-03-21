@@ -26,7 +26,7 @@ class Api::V1::OrganizationsController < ApplicationController
   def destroy
     @organization.destroy
   end
-  
+
   private
 
   def set_organization

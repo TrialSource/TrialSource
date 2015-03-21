@@ -43,4 +43,8 @@ app.routeDefault = function() {
   function loginOrganization(orgId) {
     document.location.hash = 'admin/' + orgId;
   }
+
+  function loginResearcher(id) {
+    document.location.hash = 'researcher/' + id + '/trials/';
+  }
 }

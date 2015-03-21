@@ -4,7 +4,6 @@ class Doctor < ActiveRecord::Base
 	accepts_nested_attributes_for :login
   belongs_to :organization
 
-
   def self.search(query)
     Doctor.basic_search(query)
   end

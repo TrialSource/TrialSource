@@ -7,13 +7,15 @@ Rails.application.routes.draw do
         end
       end
       resources :organizations
+      resources :conditions
       resources :trials do
         collection do
           get :doctor
+          get :org
         end
       end
       resources :archives
-      resources :sessions, only: [:create]
+      resources :sessions, only: [:create, :destroy]
       resource :search, only: [:show]
     end
   end

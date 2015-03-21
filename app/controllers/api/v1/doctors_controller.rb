@@ -1,5 +1,5 @@
 class Api::V1::DoctorsController < ApplicationController
-  before_action :set_doctor, only: [:update, :show]
+  before_action :set_doctor, only: [:update, :show, :destroy]
   before_action :authenticate_user, only: [:create, :update]
 
   def create
@@ -33,6 +33,9 @@ class Api::V1::DoctorsController < ApplicationController
     end
   end
 
+  def destroy
+    @doctor.destroy
+  end
   private
 
   def set_doctor

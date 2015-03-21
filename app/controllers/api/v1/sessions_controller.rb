@@ -11,7 +11,7 @@ class Api::V1::SessionsController < ApplicationController
 	end
 
 	def destroy
-	current_user = nil
+		current_user = nil
 	end
 
 

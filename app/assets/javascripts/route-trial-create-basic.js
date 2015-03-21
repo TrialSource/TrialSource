@@ -1,4 +1,4 @@
-app.routeCreateTrialBasic = function() {
+app.routeCreateTrialBasic = function(r) {
   $('#main-content').html($('#create-study').html());
   $('.trial-start-input').pickadate({
     format: 'mmmm d, yyyy'
@@ -32,13 +32,16 @@ app.routeCreateTrialBasic = function() {
 
   function grabTrialInfo() {
     return {
-      condition: $('.trial-condition-input').val(),
-      name: $('.trial-title-input').val(),
-      principal: $('.trial-principal-input').val(),
-      location: $('.trial-location-input').val(),
-      startDate: $('.trial-start-input').val(),
-      completeDate: $('.trial-complete-input').val(),
-      description: $('.trial-abstract-input').val(),
+      trial: {
+        condition: $('.trial-condition-input').val(),
+        name: $('.trial-title-input').val(),
+        principal: $('.trial-principal-input').val(),
+        location: $('.trial-location-input').val(),
+        start_on: $('.trial-start-input').val(),
+        estimated_completed_on: $('.trial-complete-input').val(),
+        description: $('.trial-abstract-input').val(),
+        doctor_id: r.params.id,
+      }
     };
   }
 
@@ -51,8 +54,7 @@ app.routeCreateTrialBasic = function() {
       contentType : 'application/json',
       dataType: 'json'
     }).done(function(data) {
-      console.log('fire');
-      console.log(data);
+      document.location.hash = 'researcher/' + r.params.id + '/trials';
     });
   }
 

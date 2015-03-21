@@ -19,6 +19,7 @@
 }
 
 .lp-form {
+  height: 131px;
   position: absolute;
   left: 50%;
   top: 40%;
@@ -33,6 +34,10 @@
   text-align: center;
   box-sizing: border-box;
   margin: 0;
+}
+
+.srch-error-message, .login-error-message {
+  width: 350px;
 }
 
 .lp-input {

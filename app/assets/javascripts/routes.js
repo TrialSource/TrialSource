@@ -16,13 +16,10 @@ app.routes = function() {
   });
 
   app.router.add('researcher/:id/trials', function(r) {
-    $('#main-content').html($('#researcher-trials').html());
-    $('.new-t-btn').click(function() {
-      document.location.hash = 'researcher/trials/new';
-    })
+    app.routeResearcherTrials(r);
   });
 
-  app.router.add('researcher/trials/new', function(r) {
-    app.routeCreateTrialBasic();
+  app.router.add('researcher/:id/trials/new', function(r) {
+    app.routeCreateTrialBasic(r);
   });
 }

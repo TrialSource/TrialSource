@@ -39,11 +39,12 @@ app.routeDefault = function() {
   });
 
   function verifySearch() {
-    if (!$('.condition-field').val()) {
+    if ($('.condition-field').val() === '') {
       $('.srch-error-message').text('search term required');
       $('.login-error-message').text('');
       return false;
     }
+    return true;
   }
 
   function verifyLogin() {

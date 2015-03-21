@@ -33,10 +33,10 @@ app.routeCreateTrialBasic = function(r) {
   function grabTrialInfo() {
     return {
       trial: {
-        conditions_attributes: {
-          name: $('.trial-condition-input').val(),
-        },
-        principal: $('.trial-principal-input').val(),
+        conditions_attributes: [
+          { name: $('.trial-condition-input').val()},
+        ],
+        // principal: $('.trial-principal-input').val(),
         location: $('.trial-location-input').val(),
         name: $('.trial-title-input').val(),
         start_on: $('.trial-start-input').val(),

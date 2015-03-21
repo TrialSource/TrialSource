@@ -36,6 +36,10 @@
   margin: 0;
 }
 
+.srch-error-message, .login-error-message {
+  width: 350px;
+}
+
 .lp-input {
   font-weight: 300;
   box-sizing: border-box;

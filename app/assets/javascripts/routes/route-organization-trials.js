@@ -1,15 +1,15 @@
-app.routeSearchResults = function(r) {
+app.routeOrganizationTrials = function(r) {
   var trials = [];
-  $.getJSON('/api/v1/search', { type: 'condition', query: r.params.term }).done(function(data) {
-    $('#main-content').html($('#search-results').html());
+  $.getJSON('/api/v1/trials/org', { org: r.params.id }).done(function(data) {
+    $('#main-content').html($('#admin-trials').html());
     console.log(data);
-    trials = data.searches;
+    trials = data.trials;
     showAllResults();
   });
 
   function showAllResults() {
     var listTemplate = _.template(app.trialListing, { variable: 'm' });
-    $('.rslts-cntnr').html(listTemplate({ results: trials }));
+    $('.trial-list').html(listTemplate({ results: trials }));
     addNameListeners();
   }
 
@@ -17,9 +17,8 @@ app.routeSearchResults = function(r) {
     $('.rslt-name').toArray().forEach(function(name, i) {
       $(name).click(function(e) {
         var detailTemplate = _.template(app.trialDetail.readable, { variable: 'm' });
-        $('.rslts-cntnr').html(detailTemplate({ trial: trials[i] }));
+        $('.trial-list').html(detailTemplate({ trial: trials[i] }));
         $('.bck-btn').click(showAllResults);
       });
     });
-  }
-};
+  }};

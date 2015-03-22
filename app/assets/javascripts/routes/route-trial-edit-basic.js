@@ -1,5 +1,10 @@
-app.routeCreateTrialBasic = function(r) {
-  $('#main-content').html($('#create-study').html());
+app.routeEditTrialBasic = function(r) {
+  $('#main-content').html($('#edit-study').html());
+
+  $.getJSON('/api/v1/trials/' + r.params.tid).done(function(data) {
+    loadContent(data.trial);
+  });
+
   $('.trial-start-input').pickadate({
     format: 'mmmm d, yyyy'
   });
@@ -15,6 +20,18 @@ app.routeCreateTrialBasic = function(r) {
     var newTrial = grabTrialInfo();
     postTrial(newTrial);
   });
+
+  function loadContent(trial) {
+    $('.trial-condition-input').val(trial.conditions[0].name);
+    $('.trial-principal-input').val(trial.principal);
+    $('.trial-email-input').val(trial.primary_contact_email);
+    $('.trial-location-input').val(trial.location);
+    $('.trial-title-input').val(trial.name);
+    $('.trial-start-input').val(new Date(trial.start_on).toDateString());
+    $('.trial-complete-input').val(new Date(trial.estimated_completed_on).toDateString());
+    $('.trial-abstract-input').val(trial.description);
+  }
+
 
   function validateForm() {
     var isValid = true
@@ -53,14 +70,14 @@ app.routeCreateTrialBasic = function(r) {
   function postTrial(arg) {
     console.log(arg);
     $.ajax({
-      type: "POST",
-      url: '/api/v1/trials',
+      type: "PUT",
+      url: '/api/v1/trials/' + r.params.tid,
       data: JSON.stringify(arg),
       contentType : 'application/json',
       dataType: 'json'
     }).done(function(data) {
       console.log(data);
-      document.location.hash = 'researcher/' + r.params.id + '/trials';
+      document.location.hash = 'researcher/' + r.params.rid + '/trials';
     });
   }
 

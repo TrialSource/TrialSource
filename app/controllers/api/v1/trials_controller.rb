@@ -1,5 +1,5 @@
 class Api::V1::TrialsController < ApplicationController
-  before_action :set_trial, only: [:update]
+  before_action :set_trial, only: [:update, :destroy, :show]
 
   def index
     render json: Trial.current
@@ -31,8 +31,15 @@ class Api::V1::TrialsController < ApplicationController
     end
   end
 
+  def show
+    render json: @trial
+  end
+
   def destroy
     @trial.destroy
+    respond_to do |format|
+      format.json { head :no_content }
+    end
   end
 
   private

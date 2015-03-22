@@ -35,8 +35,11 @@ class Api::V1::DoctorsController < ApplicationController
 
   def destroy
     @doctor.destroy
+    respond_to do |format|
+      format.json { head :no_content }
+    end
   end
-  
+
   private
 
   def set_doctor

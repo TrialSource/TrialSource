@@ -38,7 +38,35 @@ app.routeResearcherManager = function(r) {
           var trialsTemplate = _.template(app.trialListing, { variable: 'm' });
           $('.rsrchr-trials-cntnr').html(trialsTemplate({ results: trials }));
           addTrialListeners(trials);
+          activateDeleteButton(i);
         });
+      });
+    });
+  }
+
+  function activateDeleteButton(i) {
+    $('.del-btn').click(function() {
+      var modalTemplate = _.template(app.modals.deleteResearcher, { variable: 'm' });
+      $('.modal-wrapper').html(modalTemplate({ researcher: researchers[i] }));
+      $('.modal-wrapper').toggleClass('visible');
+      $('.cancel-delete').click(function() {
+        $('.modal-wrapper').removeClass('visible');
+      });
+      $('.confirm-delete').click(function() {
+        if ($('.modal-title').text().toLowerCase() === $('.delete-confirmation').val().toLowerCase()) {
+          $.ajax({
+            type: "DELETE",
+            url: '/api/v1/doctors/' + researchers[i].id,
+            contentType : 'application/json',
+            dataType: 'json',
+          }).done(function(data) {
+            researchers.splice(i, 1);
+            $('.modal-wrapper').removeClass('visible');
+            showList();
+          });
+        } else {
+          alert('your shit no match');
+        }
       });
     });
   }

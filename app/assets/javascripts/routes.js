@@ -7,12 +7,16 @@ app.routes = function() {
     app.routeSearchResults(r);
   });
 
+  app.router.add('admin/:id', function(r) {
+    app.routeAdminMain(r);
+  });
+
   app.router.add('admin/:id/researchers', function(r) {
     app.routeResearcherManager(r);
   });
 
-  app.router.add('admin/:id', function(r) {
-    app.routeAdminMain(r);
+  app.router.add('admin/:id/trials', function(r) {
+    app.routeOrganizationTrials(r);
   });
 
   app.router.add('researcher/:id/trials', function(r) {

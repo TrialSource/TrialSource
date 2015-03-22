@@ -5,8 +5,6 @@ app.routeDefault = function() {
     console.log(data);
   });
 
-  $('.condition-field').select2();
-
   $('.search-form').submit(function(e) {
     e.preventDefault();
 

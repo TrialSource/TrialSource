@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(version: 20150321223104) do
   create_table "trials", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.string   "conditiony"
     t.string   "location"
     t.date     "start_on"
     t.date     "estimated_completed_on"
@@ -60,6 +59,7 @@ ActiveRecord::Schema.define(version: 20150321223104) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.boolean  "archived"
+    t.string   "conditiony"
   end
 
 end

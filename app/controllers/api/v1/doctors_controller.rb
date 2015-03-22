@@ -36,6 +36,7 @@ class Api::V1::DoctorsController < ApplicationController
   def destroy
     @doctor.destroy
   end
+  
   private
 
   def set_doctor

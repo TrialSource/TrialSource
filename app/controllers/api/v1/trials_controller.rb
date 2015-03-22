@@ -31,6 +31,9 @@ class Api::V1::TrialsController < ApplicationController
     end
   end
 
+  def destroy
+    @trial.destroy
+  end
 
   private
 

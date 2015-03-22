@@ -39,7 +39,7 @@ class Api::V1::TrialsController < ApplicationController
   end
 
   def trial_params
-    params.require(:trial).permit(:name, :description, :location, :start_on,
+    params.require(:trial).permit(:name, :description, :location, :primary_contact_email, :principal, :start_on,
       :estimated_completed_on, :number_of_views, :number_of_appearances, :doctor_id,
       :conditions_attributes => [:id, :name, :trial_id] )
   end

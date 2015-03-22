@@ -22,7 +22,7 @@ class Api::V1::TrialsController < ApplicationController
     org = Organization.find(params[:org])
     render json: org.trials
   end
-  
+
   def update
     if @trial.update(trial_params)
       render json: @trial

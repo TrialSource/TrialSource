@@ -3,6 +3,6 @@ class Condition < ActiveRecord::Base
 
   def self.search(query)
     condition = Condition.find_by(name: query)
-    Trial.where(id: condition.id)
+    return Trial.where(id: condition.trial_id)
   end
 end

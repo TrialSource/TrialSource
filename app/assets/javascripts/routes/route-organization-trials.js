@@ -1,9 +1,9 @@
 app.routeOrganizationTrials = function(r) {
   var trials = [];
-  $.getJSON('/api/v1/search', { type: 'trial', query: r.params.term }).done(function(data) {
+  $.getJSON('/api/v1/trials/org', { org: r.params.id }).done(function(data) {
     $('#main-content').html($('#admin-trials').html());
     console.log(data);
-    trials = data.searches;
+    trials = data.trials;
     showAllResults();
   });
 

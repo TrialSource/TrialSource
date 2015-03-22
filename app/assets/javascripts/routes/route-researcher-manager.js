@@ -1,9 +1,14 @@
 app.routeResearcherManager = function(r) {
-
+  var researchers = [];
   $('#main-content').html($('#manage-researchers').html());
-  reloadList();
+  $.getJSON('/api/v1/doctors/org', { org: r.params.id }).done(function(data) {
+    researchers = data.doctors;
+    showList();
+  });
 
-  $('.researcher-creation-form').submit(function(e) {
+  $('.researcher-creation-form').submit(submitNewResearcher);
+
+  function submitNewResearcher(e) {
     e.preventDefault();
     if (!validateInput()) {
       return;
@@ -17,9 +22,36 @@ app.routeResearcherManager = function(r) {
       contentType : 'application/json',
       dataType: 'json'
     }).done(function(data) {
-      reloadList();
+      showList();
     });
-  })
+  }
+
+  function addNameListeners() {
+    $('.r-name').toArray().forEach(function(name, i) {
+      $(name).click(function(e) {
+        var detailTemplate = _.template(app.researcherDetail, { variable: 'm' });
+        $('.researcher-list-actual').html(detailTemplate({ researcher: researchers[i] }));
+        $('.bck-btn').click(showList);
+        var trials = [];
+        $.getJSON('/api/v1/trials/doctor', { doctor: researchers[i].id }).done(function(data) {
+          trials = data.trials;
+          var trialsTemplate = _.template(app.trialListing, { variable: 'm' });
+          $('.rsrchr-trials-cntnr').html(trialsTemplate({ results: trials }));
+          addTrialListeners(trials);
+        });
+      });
+    });
+  }
+
+  function addTrialListeners(trials) {
+    $('.rslt-name').toArray().forEach(function(trial, i) {
+      $(trial).click(function(e) {
+        var trialDetailTemplate = _.template(app.trialDetail.readable, { variable: 'm' });
+        $('.rsrchr-trials-cntnr').html(trialDetailTemplate({ trial: trials[i] }));
+        $('.t-detail-container').find('.bck-btn').remove();
+      })
+    })
+  }
 
   function validateInput() {
     var isValid = true;
@@ -39,11 +71,10 @@ app.routeResearcherManager = function(r) {
     return isValid;
   }
 
-  function reloadList() {
-    $.getJSON('/api/v1/doctors/org', { org: r.params.id }).done(function(data) {
-      var listTemplate = _.template(app.researcherListing, { variable: 'm' });
-      $('.researcher-list-actual').html(listTemplate({ drs: data.doctors }));
-    });
+  function showList() {
+    var listTemplate = _.template(app.researcherListing, { variable: 'm' });
+    $('.researcher-list-actual').html(listTemplate({ drs: researchers }));
+    addNameListeners();
   }
 
   function grabResearcher() {

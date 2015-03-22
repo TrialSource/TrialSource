@@ -21,7 +21,17 @@ app.routeResearcherTrials = function(r) {
         var detailTemplate = _.template(app.trialDetail.editable, { variable: 'm' });
         $('.trial-list').html(detailTemplate({ trial: trials[i] }));
         $('.bck-btn').click(showAllResults);
+        activateDeleteButton();
+        activateEditButton();
       });
     });
+  }
+
+  function activateDeleteButton() {
+
+  }
+
+  function activateEditButton() {
+    
   }
 }

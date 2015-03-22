@@ -4,6 +4,9 @@ class Trial < ActiveRecord::Base
   validates :name, presence: true
   validates :description, presence: true
   validates :location, presence: true
+  validates :primary_contact_email, presence: true
+  validates :principal, presence: true
+  validates :active, presence: true
 
   accepts_nested_attributes_for :conditions
 

@@ -5,10 +5,6 @@ RSpec.describe Trial, type: :model do
     expect(Trial.new().valid?).to eq false
   end
 
-  # it "is invalid without a condition" do
-  #   expect(Trial.new(name: "asthma study").valid?).to eq false
-  # end
-
   it "is invalid without a description" do
     expect(Trial.new(name: "asthma study").valid?).to eq false
   end

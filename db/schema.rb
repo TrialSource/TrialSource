@@ -59,13 +59,10 @@ ActiveRecord::Schema.define(version: 20150322154728) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.boolean  "archived"
-<<<<<<< HEAD
     t.string   "conditiony"
-=======
     t.string   "primary_contact_email"
     t.string   "principal"
     t.string   "active"
->>>>>>> 5495e22e42b47d388ef2b1f8461ed726fe04e367
   end
 
 end

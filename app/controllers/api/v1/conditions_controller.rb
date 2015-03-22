@@ -2,7 +2,9 @@ class Api::V1::ConditionsController < ApplicationController
   before_action :set_condition, only: [:update]
 
   def index
-    render json: Condition.all
+    condition_names = Condition.all.map {|c| c.name}
+    condition_names= condition_names.uniq
+    render json: condition_names
   end
 
   def create

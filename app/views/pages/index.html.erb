@@ -29,7 +29,7 @@
         <h1 class="lp-header">Search Trials</h1>
 
         <form class="lp-form search-form">
-          <select class="lp-input lp-form-element condition-field" type="text" placeholder="condition"><option value="condition">condition<option></select>
+          <input class="lp-input lp-form-element" id="condition-search" type="text" placeholder="condition" />
           <input class="lp-input lp-form-element zip-field" type="text" placeholder="zip code" maxlength="5"/>
           <button class="reg-btn lp-search-button lp-form-element">search</button>
           <p class="error-message srch-error-message"> </p>
@@ -106,13 +106,13 @@
       <h1 class="admin-nav-header">Welcome, <span class="org-name"></span> Administrator.</h1>
 
       <div class="admin-nav-element admin-nav-container">
-        <h2 class="admin-nav-link"><a class="admin-nav-link-actual admin-dr-link" href="#admin/researchers">Researchers</a></h2>
+        <h2 class="admin-nav-link"><a class="admin-nav-link-actual admin-dr-link">Researchers</a></h2>
       </div>
 
       <div class="admin-nav-element admin-nav-divider"></div>
 
       <div class="admin-nav-element admin-nav-container">
-        <h2 class="admin-nav-link"><a class="admin-nav-link-actual">Trials</a></h2>
+        <h2 class="admin-nav-link"><a class="admin-nav-link-actual admin-trial-link">Trials</a></h2>
       </div>
 
       <div class="admin-nav-element admin-nav-divider"></div>
@@ -140,9 +140,9 @@
 
       <div class="researcher-list-container">
         <h2 class="researcher-creation-label">active researchers</h2>
-        <ul class="researcher-list-actual">
+        <div class="researcher-list-actual">
 
-        </ul>
+        </div>
       </div>
 
     </script>
@@ -159,6 +159,19 @@
 
     <script type="text/html" id="admin-trials">
 
+      <h1 class="manage-researchers-header">Your Organization's Trials</h1>
+
+      <div class="trials-toolbox">
+        <h2 class="researcher-creation-label">tools</h2>
+        <input class="search-trials-input" placeholder="search trials"/>
+      </div>
+
+      <div class="trials-list-container">
+        <h2 class="researcher-creation-label">your trial listings</h2>
+        <div class="trial-list">
+
+        </div>
+      </div>
 
     </script>
 
@@ -184,9 +197,9 @@
 
       <div class="trials-list-container">
         <h2 class="researcher-creation-label">your trial listings</h2>
-        <ul class="trial-list">
+        <div class="trial-list">
 
-        </ul>
+        </div>
       </div>
 
     </script>
@@ -199,6 +212,7 @@
         <input class="trial-input trial-condition-input" type="text" placeholder="condition" />
         <input class="trial-input trial-title-input" type="text" placeholder="title" />
         <input class="trial-input trial-principal-input" type="text" placeholder="principal" />
+        <input class="trial-input trial-email-input" type="text" placeholder="application email" />
         <input class="trial-input trial-location-input" type="text" placeholder="location" />
         <input class="trial-input trial-start-input" type="text" placeholder="start date" />
         <input class="trial-input trial-complete-input" type="text" placeholder="est. complete date" />

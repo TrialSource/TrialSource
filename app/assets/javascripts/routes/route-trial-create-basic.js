@@ -33,27 +33,30 @@ app.routeCreateTrialBasic = function(r) {
   function grabTrialInfo() {
     return {
       trial: {
-        condition: $('.trial-condition-input').val(),
-        name: $('.trial-title-input').val(),
-        principal: $('.trial-principal-input').val(),
+        conditions_attributes: [
+          { name: $('.trial-condition-input').val()},
+        ],
+        // principal: $('.trial-principal-input').val(),
         location: $('.trial-location-input').val(),
+        name: $('.trial-title-input').val(),
         start_on: $('.trial-start-input').val(),
         estimated_completed_on: $('.trial-complete-input').val(),
         description: $('.trial-abstract-input').val(),
         doctor_id: r.params.id,
-      }
+      },
     };
   }
 
-  function postTrial(trial) {
-    console.log(trial);
+  function postTrial(arg) {
+    console.log(arg);
     $.ajax({
       type: "POST",
       url: '/api/v1/trials',
-      data: JSON.stringify(trial),
+      data: JSON.stringify(arg),
       contentType : 'application/json',
       dataType: 'json'
     }).done(function(data) {
+      console.log(data);
       document.location.hash = 'researcher/' + r.params.id + '/trials';
     });
   }

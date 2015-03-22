@@ -41,8 +41,6 @@ app.routeResearcherTrials = function(r) {
           $.ajax({
             type: "DELETE",
             url: '/api/v1/trials/' + trials[i].id,
-            contentType : 'application/json',
-            dataType: 'json'
           }).done(function(data) {
             trials.splice(i, 1);
             showAllResults();

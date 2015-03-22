@@ -1,8 +1,40 @@
 app.routeDefault = function() {
+  var conditions = [];
   $('#main-content').html($('#landing-page').html());
 
   $.getJSON('/api/v1/conditions').done(function(data) {
     console.log(data);
+    data.conditions.forEach(function(condition) {
+      if (conditions.indexOf(condition.name) === -1) {
+        conditions.push(condition.name);
+      }
+    });
+    console.log(conditions);
+    $('#condition-search').keyup(function(e) {
+      if (!((e.keyCode >= 65 && e.keyCode <= 90) || e.keyCode === 32 || e.keyCode === 189)) {
+        return;
+      }
+
+      var searchField = document.getElementById('condition-search');
+      var term = $('#condition-search').val();
+      var searchTerm = term.toLowerCase();
+      var index = -1;
+
+      for (var i = 0; i < conditions.length; ++i) {
+        if (conditions[i].toLowerCase().indexOf(searchTerm) === 0) {
+          index = i;
+          break;
+        }
+      }
+
+      if (index === -1) {
+        return;
+      }
+
+      searchField.value = term + conditions[index].slice(term.length);
+      searchField.setSelectionRange(term.length, conditions[index].length);
+
+    })
   });
 
   $('.search-form').submit(function(e) {
@@ -12,7 +44,7 @@ app.routeDefault = function() {
       return;
     }
 
-    document.location.hash = 'search/' + $('.condition-field').val();
+    document.location.hash = 'search/' + $('#condition-search').val();
   });
 
   $('.login-form').submit(function(e) {

@@ -44,6 +44,8 @@
 .lp-input {
   font-weight: 300;
   box-sizing: border-box;
+  text-align: left;
+  padding-left: 1em;
 }
 
 .lp-form-element + .lp-form-element {
@@ -68,4 +70,9 @@
   text-align: center;
   margin-top: 1em;
   margin-bottom: -1.25em;
+}
+
+#condition-search {
+  text-align: left;
+  padding-left: 1em;
 }

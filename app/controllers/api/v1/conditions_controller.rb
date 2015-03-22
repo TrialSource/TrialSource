@@ -33,7 +33,6 @@ class Api::V1::ConditionsController < ApplicationController
   end
 
   def condition_params
-    params.require(:condition).permit(:name, :condition, :description, :location, :start_on,
-      :estimated_completed_on, :number_of_views, :number_of_appearances, :doctor_id)
+    params.require(:condition).permit(:name, :trial_id)
   end
 end

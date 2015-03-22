@@ -39,6 +39,7 @@ app.routeResearcherManager = function(r) {
           $('.rsrchr-trials-cntnr').html(trialsTemplate({ results: trials }));
           addTrialListeners(trials);
           activateDeleteButton(i);
+          activateEditButton(i);
         });
       });
     });
@@ -69,6 +70,12 @@ app.routeResearcherManager = function(r) {
         }
       });
     });
+  }
+
+  function activateEditButton(i) {
+    $('.r-edit').click(function() {
+      
+    })
   }
 
   function addTrialListeners(trials) {

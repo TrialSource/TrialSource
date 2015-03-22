@@ -1,5 +1,5 @@
 class Api::V1::DoctorsController < ApplicationController
-  before_action :set_doctor, only: [:update, :show, :destroy]
+  before_action :set_doctor, only: [:update, :show, :destroy, :edit]
   before_action :authenticate_user, only: [:create, :update]
 
   def create
@@ -25,9 +25,12 @@ class Api::V1::DoctorsController < ApplicationController
     render json: @doctor
   end
 
+  def edit
+  end
+
   def update
     if @doctor.update(doctor_params)
-      render json: @doctor
+      redirect_to @doctor
     else
       render json: "Invalid parameters"
     end

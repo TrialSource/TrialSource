@@ -21,17 +21,40 @@ app.routeResearcherTrials = function(r) {
         var detailTemplate = _.template(app.trialDetail.editable, { variable: 'm' });
         $('.trial-list').html(detailTemplate({ trial: trials[i] }));
         $('.bck-btn').click(showAllResults);
-        activateDeleteButton();
-        activateEditButton();
+        activateDeleteButton(i);
+        activateEditButton(i);
       });
     });
   }
 
-  function activateDeleteButton() {
-
+  function activateDeleteButton(i) {
+    $('.del-btn').click(function() {
+      var modalTemplate = _.template(app.modals.deleteTrial, { variable: 'm' });
+      $('.modal-wrapper').html(modalTemplate({ trial: trials[i] }));
+      $('.modal-wrapper').toggleClass('visible');
+      $('.cancel-delete').click(function() {
+        $('.modal-wrapper').removeClass('visible');
+      });
+      $('.confirm-delete').click(function() {
+        if ($('.modal-title').text().toLowerCase() === $('.delete-confirmation').val().toLowerCase()) {
+          url = '/api/v1/trials/' + trials[i].id;
+          $.ajax({
+            type: "DELETE",
+            url: '/api/v1/trials/' + trials[i].id,
+            contentType : 'application/json',
+            dataType: 'json'
+          }).done(function(data) {
+            trials.splice(i, 1);
+            showAllResults();
+          });
+        } else {
+          alert('your shit no match');
+        }
+      });
+    });
   }
 
-  function activateEditButton() {
-    
+  function activateEditButton(i) {
+
   }
 }

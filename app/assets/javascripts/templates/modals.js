@@ -1,0 +1,4 @@
+app.modals = {};
+
+app.modals.deleteTrial = '<div class="modal-actual"><h2 class="modal-title"><%- m.trial.name %></h2><h3 class="modal-subtitle">Are you sure you want to delete this trial?</h3><p class="modal-instruction">Enter trial name and press delete:</p><input type="text" class="delete-confirmation" /><button class="mdl-btn confirm-delete">DELETE</button><button class="mdl-btn cancel-delete">CANCEL</button></div>';
+app.modals.deleteResearcher = '<div class="modal-actual"><h2 class="modal-title"><%- researcher.name %></h2><h3 class="modal-subtitle">Sure you want to delete this trial?</h3><p class="modal-instruction">Enter trial name and press delete:</p><input type="text" class="delete-confirmation" /><button class="mdl-btn confirm-delete">DELETE</button><button class="mdl-btn cancel-delete">CANCEL</button></div>';

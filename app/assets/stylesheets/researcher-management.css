@@ -58,6 +58,7 @@
   border: 1px solid lightgrey;
   width: 66%;
   height: 75%;
+  overflow: auto;
 }
 
 .manage-researchers-header {
@@ -110,4 +111,8 @@
 
 .r-name:active {
   color: darkorange;
+}
+
+.r-detail-name {
+  text-align: center;
 }

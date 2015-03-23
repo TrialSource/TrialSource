@@ -15,7 +15,6 @@ class Api::V1::TrialsController < ApplicationController
   end
 
   def show
-    @trial = Trial.find(params[:id])
     render json: @trial
   end
 

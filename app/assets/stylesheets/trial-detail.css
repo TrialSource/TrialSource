@@ -1,5 +1,8 @@
 .t-detail-header {
   text-align: center;
+  width: 75%;
+  margin: auto;
+  margin-top: 1em;
 }
 
 .t-detail-subhead {

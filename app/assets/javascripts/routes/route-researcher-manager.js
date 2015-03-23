@@ -82,7 +82,7 @@ app.routeResearcherManager = function(r) {
     $('.rslt-name').toArray().forEach(function(trial, i) {
       $(trial).click(function(e) {
         var trialDetailTemplate = _.template(app.trialDetail.readable, { variable: 'm' });
-        $('.rsrchr-trials-cntnr').html(trialDetailTemplate({ trial: trials[i] }));
+        $('.rslts-list').html(trialDetailTemplate({ trial: trials[i] }));
         $('.t-detail-container').find('.bck-btn').remove();
       })
     })

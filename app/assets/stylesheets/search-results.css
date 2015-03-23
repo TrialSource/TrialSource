@@ -28,6 +28,7 @@
   width: 74%;
   height: 84.75%;
   border: 1px solid lightgrey;
+  overflow: auto;
 }
 
 .rslt-input:focus {
@@ -67,6 +68,7 @@
 .rslts-list {
   list-style: none;
   padding: .5em;
+  overflow: auto;
 }
 
 .rslt-listing {

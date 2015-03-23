@@ -1,5 +1,5 @@
 class Api::V1::TrialsController < ApplicationController
-  before_action :set_trial, only: [:update, :destroy]
+  before_action :set_trial, only: [:update, :destroy, :show]
 
   def index
     render json: Trial.current
@@ -12,6 +12,11 @@ class Api::V1::TrialsController < ApplicationController
     else
       render json: "Invalid parameters"
     end
+  end
+
+  def show
+    @trial = Trial.find(params[:id])
+    render json: @trial
   end
 
   def doctor

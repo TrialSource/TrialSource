@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user
     if session[:user_id] == nil
-      render json: "Not on my watch!"
+      redirect_to root_path, notice: "You must be logged in to see that page"
     end
   end
 end

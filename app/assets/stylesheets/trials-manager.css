@@ -53,6 +53,7 @@
   border: 1px solid lightgrey;
   width: 75%;
   height: 75%;
+  overflow: auto;
 }
 
 .search-trials-input {

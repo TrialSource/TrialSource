@@ -9,6 +9,7 @@ class Condition < ActiveRecord::Base
     exclusions = trials.flatten.map do |t|
       t.exclusions
     end
+    [trials.flatten.count, exclusions]
   end
 
 

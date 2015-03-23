@@ -1,8 +1,7 @@
 class Trial < ActiveRecord::Base
   belongs_to :doctor
   has_and_belongs_to_many :conditions
-  has_many :conditions, dependent: :destroy
-  has_many :exclusions, dependent: :destroy
+  has_and_belongs_to_many :exclusions
   validates :name, presence: true
   validates :description, presence: true
   validates :location, presence: true

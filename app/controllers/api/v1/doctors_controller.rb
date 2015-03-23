@@ -1,9 +1,9 @@
 class Api::V1::DoctorsController < ApplicationController
-  before_action :set_doctor, only: [:update, :show, :destroy, :edit]
+  before_action :set_doctor, only: [:update, :destroy]
   before_action :authenticate_user, only: [:create, :update]
 
   def create
-    doctor= Doctor.new(doctor_params)
+    doctor = Doctor.new(doctor_params)
     if doctor.save
       render json: doctor
     else
@@ -15,17 +15,9 @@ class Api::V1::DoctorsController < ApplicationController
     render json: Doctor.where(organization_id: params[:org])
   end
 
-
   def index
-    doctors= Doctor.all
+    doctors = Doctor.all
     render json: doctors
-  end
-
-  def show
-    render json: @doctor
-  end
-
-  def edit
   end
 
   def update

@@ -1,5 +1,5 @@
 class Api::V1::TrialsController < ApplicationController
-  before_action :set_trial, only: [:update, :destroy, :show, :edit]
+  before_action :set_trial, only: [:update, :destroy]
 
   def index
     render json: Trial.current
@@ -23,19 +23,12 @@ class Api::V1::TrialsController < ApplicationController
     render json: org.trials
   end
 
-  def edit
-  end
-
   def update
     if @trial.update(trial_params)
       render json: @trial
     else
       render json: "Invalid parameters"
     end
-  end
-
-  def show
-    render json: @trial
   end
 
   def destroy

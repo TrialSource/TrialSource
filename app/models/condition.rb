@@ -7,4 +7,6 @@ class Condition < ActiveRecord::Base
       Trial.find_by(id: c.trial_id)
     end
   end
+
+
 end

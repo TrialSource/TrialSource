@@ -63,3 +63,26 @@
 .trial-start-input, .trial-complete-input {
   position: relative;
 }
+
+.cancel-edit {
+  width: 50%;
+  background: tomato;
+  height: 35px;
+  text-align: center;
+  margin: auto;
+  display: block;
+  border: none;
+  color: white;
+  font-size: 1.25em;
+  font-weight: 300;
+  cursor: pointer;
+  -webkit-transition: all .1s;
+}
+
+.cancel-edit:hover {
+  background: #ff533d;
+}
+
+.cancel-edit:active {
+  background: deepskyblue;
+}

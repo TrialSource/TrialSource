@@ -28,7 +28,7 @@ class Api::V1::TrialsController < ApplicationController
 
   def update
     if @trial.update(trial_params)
-      redirect_to @trial
+      render json: @trial
     else
       render json: "Invalid parameters"
     end

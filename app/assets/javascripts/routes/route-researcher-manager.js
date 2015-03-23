@@ -35,8 +35,8 @@ app.routeResearcherManager = function(r) {
         var trials = [];
         $.getJSON('/api/v1/trials/doctor', { doctor: researchers[i].id }).done(function(data) {
           trials = data.trials;
-          var trialsTemplate = _.template(app.trialListing, { variable: 'm' });
-          $('.rsrchr-trials-cntnr').html(trialsTemplate({ results: trials }));
+          var trialsTemplate = _.template(app.trialListing.search, { variable: 'm' });
+          $('.rslts-list').html(trialsTemplate({ results: trials }));
           addTrialListeners(trials);
           activateDeleteButton(i);
           activateEditButton(i);
@@ -74,7 +74,7 @@ app.routeResearcherManager = function(r) {
 
   function activateEditButton(i) {
     $('.r-edit').click(function() {
-      
+
     })
   }
 

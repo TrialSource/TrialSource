@@ -1,8 +1,12 @@
 app.routeEditTrialBasic = function(r) {
   $('#main-content').html($('#edit-study').html());
+  console.log(r.params);
+
+  var currentTrial;
 
   $.getJSON('/api/v1/trials/' + r.params.tid).done(function(data) {
-    loadContent(data.trial);
+    currentTrial = data.trial;
+    loadContent(currentTrial);
   });
 
   $('.trial-start-input').pickadate({
@@ -12,13 +16,20 @@ app.routeEditTrialBasic = function(r) {
     format: 'mmmm d, yyyy'
   });
 
-  $('.create-trial-form').submit(function(e) {
+  $('.trial-submit').click(function(e) {
+    e.stopPropagation();
     e.preventDefault();
     if (!validateForm()) {
       return;
     }
     var newTrial = grabTrialInfo();
     postTrial(newTrial);
+  });
+
+  $('.cancel-edit').click(function(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    document.location.hash = 'researcher/' + r.params.id + '/trials';
   });
 
   function loadContent(trial) {
@@ -51,7 +62,7 @@ app.routeEditTrialBasic = function(r) {
     return {
       trial: {
         conditions_attributes: [
-          { name: $('.trial-condition-input').val() },
+          { name: $('.trial-condition-input').val(), id: currentTrial.conditions[0].id },
         ],
         conditiony: $('.trial-condition-input').val(),
         principal: $('.trial-principal-input').val(),
@@ -76,8 +87,8 @@ app.routeEditTrialBasic = function(r) {
       contentType : 'application/json',
       dataType: 'json'
     }).done(function(data) {
-      console.log(data);
-      document.location.hash = 'researcher/' + r.params.rid + '/trials';
+      console.log('success');
+      document.location.hash = 'researcher/' + r.params.id + '/trials';
     });
   }
 

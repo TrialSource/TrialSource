@@ -8,8 +8,8 @@ app.routeSearchResults = function(r) {
   });
 
   function showAllResults() {
-    var listTemplate = _.template(app.trialListing, { variable: 'm' });
-    $('.rslts-cntnr').html(listTemplate({ results: trials }));
+    var listTemplate = _.template(app.trialListing.search, { variable: 'm' });
+    $('.rslts-list').html(listTemplate({ results: trials }));
     addNameListeners();
   }
 
@@ -17,7 +17,7 @@ app.routeSearchResults = function(r) {
     $('.rslt-name').toArray().forEach(function(name, i) {
       $(name).click(function(e) {
         var detailTemplate = _.template(app.trialDetail.readable, { variable: 'm' });
-        $('.rslts-cntnr').html(detailTemplate({ trial: trials[i] }));
+        $('.rslts-list').html(detailTemplate({ trial: trials[i] }));
         $('.bck-btn').click(showAllResults);
       });
     });

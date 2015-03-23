@@ -4,6 +4,7 @@
     <title>trialSource</title>
     <%= stylesheet_link_tag "application", media: "all" %>
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700' rel='stylesheet' type='text/css' />
+    <link href="https://fontastic.s3.amazonaws.com/EqTuGZ3p6FUhTL64iwZHkU/icons.css" rel="stylesheet">
   </head>
   <body>
 
@@ -80,22 +81,6 @@
       <div class="rslts-elem rslts-cntnr">
 
         <ul class="rslts-list">
-
-          <li class="rslt-listing">
-            <span class="rslt-info">Trial Name</span>
-            <span class="rslt-info">Institution</span>
-            <span class="rslt-info">City, ST</span>
-            <span class="rslt-info">Principal</span>
-            <span class="rslt-info">Start Date</span>
-          </li>
-
-          <li class="rslt-listing">
-            <span class="rslt-info">Trial Name</span>
-            <span class="rslt-info">Institution</span>
-            <span class="rslt-info">City, ST</span>
-            <span class="rslt-info">Principal</span>
-            <span class="rslt-info">Start Date</span>
-          </li>
 
         </ul>
 
@@ -198,10 +183,10 @@
       </div>
 
       <div class="trials-list-container">
-        <h2 class="researcher-creation-label">your trial listings</h2>
-        <div class="trial-list">
+        <h2 class="researcher-trials-label">your trial listings</h2>
+        <ul class="rslts-list">
 
-        </div>
+        </ul>
       </div>
 
     </script>
@@ -239,6 +224,7 @@
         <input class="trial-input trial-complete-input" type="text" placeholder="est. complete date" />
         <textarea class="trial-input trial-abstract-input" placeholder="description"></textarea>
         <button class="reg-btn trial-submit">edit trial listing</button>
+        <button class="cancel-edit">cancel edit</button>
         <p class="error-message"></p>
       </form>
 

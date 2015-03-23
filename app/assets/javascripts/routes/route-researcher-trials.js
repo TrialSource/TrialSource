@@ -2,6 +2,7 @@ app.routeResearcherTrials = function(r) {
   var trials = [];
   $('#main-content').html($('#researcher-trials').html());
   $.getJSON('/api/v1/trials/doctor', { doctor: r.params.id }).done(function(data) {
+    console.log(data);
     trials = data.trials;
     showAllResults();
   });
@@ -10,8 +11,8 @@ app.routeResearcherTrials = function(r) {
   });
 
   function showAllResults() {
-    var listTemplate = _.template(app.trialListing, { variable: 'm' });
-    $('.trial-list').html(listTemplate({ results: trials }));
+    var listTemplate = _.template(app.trialListing.search, { variable: 'm' });
+    $('.rslts-list').html(listTemplate({ results: trials }));
     addNameListeners();
   }
 
@@ -19,7 +20,7 @@ app.routeResearcherTrials = function(r) {
     $('.rslt-name').toArray().forEach(function(name, i) {
       $(name).click(function(e) {
         var detailTemplate = _.template(app.trialDetail.editable, { variable: 'm' });
-        $('.trial-list').html(detailTemplate({ trial: trials[i] }));
+        $('.rslts-list').html(detailTemplate({ trial: trials[i] }));
         $('.bck-btn').click(showAllResults);
         activateDeleteButton(i);
         activateEditButton(i);

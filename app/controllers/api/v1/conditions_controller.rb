@@ -17,7 +17,7 @@ class Api::V1::ConditionsController < ApplicationController
   end
 
   def trials
-    render json: Condition.where(name: params[:condition])
+    render json: Condition.included_trials(name: params[:condition])
   end
 
   def update

@@ -4,14 +4,6 @@ class TrialSerializer < ActiveModel::Serializer
   has_many :conditions
   has_many :exclusions
 
-  # def conditions
-  #   object.conditions
-  # end
-  #
-  # def exclusions
-  #   object.exclusions
-  # end
-
   def organization
     id = object.doctor && object.doctor.organization.id
     name = object.doctor && object.doctor.organization.org_name if

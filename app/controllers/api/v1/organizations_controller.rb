@@ -11,6 +11,10 @@ class Api::V1::OrganizationsController < ApplicationController
     end
   end
 
+  def index
+    render json: Organization.all
+  end
+
   def show
     render json: @organization
   end

@@ -6,9 +6,6 @@ class Condition < ActiveRecord::Base
     trials = condition.map do |c|
       c.trials
     end
-    exclusions = trials.flatten.map do |t|
-      t.exclusions
-    end
   end
 
 

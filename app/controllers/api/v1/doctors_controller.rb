@@ -22,7 +22,7 @@ class Api::V1::DoctorsController < ApplicationController
 
   def update
     if @doctor.update(doctor_params)
-      render json: @doctor
+      render json: "Update successful"
     else
       render json: "Invalid parameters"
     end
@@ -30,6 +30,9 @@ class Api::V1::DoctorsController < ApplicationController
 
   def destroy
     @doctor.destroy
+    respond_to do |format|
+      format.json { head :no_content }
+    end
   end
 
   private

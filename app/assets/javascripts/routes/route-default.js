@@ -3,13 +3,7 @@ app.routeDefault = function() {
   $('#main-content').html($('#landing-page').html());
 
   $.getJSON('/api/v1/conditions').done(function(data) {
-    console.log(data);
-    data.conditions.forEach(function(condition) {
-      if (conditions.indexOf(condition.name) === -1) {
-        conditions.push(condition.name);
-      }
-    });
-    console.log(conditions);
+    conditions = data.conditions;
     $('#condition-search').keyup(function(e) {
       if (!((e.keyCode >= 65 && e.keyCode <= 90) || e.keyCode === 32 || e.keyCode === 189)) {
         return;

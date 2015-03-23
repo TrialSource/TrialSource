@@ -84,5 +84,39 @@
 
 .rslt-info {
   font-weight: 300;
-  width: 24%;
+  width: 19%;
+}
+
+.rslts-hdr {
+  background: dodgerblue;
+}
+
+.rslt-hdr-info {
+  color: white;
+  font-weight: 400;
+}
+
+.rslt-name {
+  cursor: pointer;
+  -webkit-transition: all .1s;
+}
+
+.rslt-name:hover {
+  color: dodgerblue;
+}
+
+.rslt-name:active {
+  color: darkorange;
+}
+
+.bck-btn {
+  font-size: 1.25em;
+  width: 100px;
+  height: 35px;
+}
+
+.icon {
+  font-family: untitled-font-1;
+  color: white;
+  margin-left: -.65em;
 }

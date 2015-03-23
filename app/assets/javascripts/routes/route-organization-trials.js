@@ -8,7 +8,7 @@ app.routeOrganizationTrials = function(r) {
   });
 
   function showAllResults() {
-    var listTemplate = _.template(app.trialListing, { variable: 'm' });
+    var listTemplate = _.template(app.trialListing.search, { variable: 'm' });
     $('.trial-list').html(listTemplate({ results: trials }));
     addNameListeners();
   }

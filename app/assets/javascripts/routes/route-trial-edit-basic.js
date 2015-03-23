@@ -1,5 +1,14 @@
-app.routeCreateTrialBasic = function(r) {
-  $('#main-content').html($('#create-study').html());
+app.routeEditTrialBasic = function(r) {
+  $('#main-content').html($('#edit-study').html());
+  console.log(r.params);
+
+  var currentTrial;
+
+  $.getJSON('/api/v1/trials/' + r.params.tid).done(function(data) {
+    currentTrial = data.trial;
+    loadContent(currentTrial);
+  });
+
   $('.trial-start-input').pickadate({
     format: 'mmmm d, yyyy'
   });
@@ -7,7 +16,8 @@ app.routeCreateTrialBasic = function(r) {
     format: 'mmmm d, yyyy'
   });
 
-  $('.create-trial-form').submit(function(e) {
+  $('.trial-submit').click(function(e) {
+    e.stopPropagation();
     e.preventDefault();
     if (!validateForm()) {
       return;
@@ -15,6 +25,24 @@ app.routeCreateTrialBasic = function(r) {
     var newTrial = grabTrialInfo();
     postTrial(newTrial);
   });
+
+  $('.cancel-edit').click(function(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    document.location.hash = 'researcher/' + r.params.id + '/trials';
+  });
+
+  function loadContent(trial) {
+    $('.trial-condition-input').val(trial.conditions[0].name);
+    $('.trial-principal-input').val(trial.principal);
+    $('.trial-email-input').val(trial.primary_contact_email);
+    $('.trial-location-input').val(trial.location);
+    $('.trial-title-input').val(trial.name);
+    $('.trial-start-input').val(new Date(trial.start_on).toDateString());
+    $('.trial-complete-input').val(new Date(trial.estimated_completed_on).toDateString());
+    $('.trial-abstract-input').val(trial.description);
+  }
+
 
   function validateForm() {
     var isValid = true
@@ -34,7 +62,7 @@ app.routeCreateTrialBasic = function(r) {
     return {
       trial: {
         conditions_attributes: [
-          { name: $('.trial-condition-input').val() },
+          { name: $('.trial-condition-input').val(), id: currentTrial.conditions[0].id },
         ],
         conditiony: $('.trial-condition-input').val(),
         principal: $('.trial-principal-input').val(),
@@ -53,13 +81,13 @@ app.routeCreateTrialBasic = function(r) {
   function postTrial(arg) {
     console.log(arg);
     $.ajax({
-      type: "POST",
-      url: '/api/v1/trials',
+      type: "PUT",
+      url: '/api/v1/trials/' + r.params.tid,
       data: JSON.stringify(arg),
       contentType : 'application/json',
       dataType: 'json'
     }).done(function(data) {
-      console.log(data);
+      console.log('success');
       document.location.hash = 'researcher/' + r.params.id + '/trials';
     });
   }

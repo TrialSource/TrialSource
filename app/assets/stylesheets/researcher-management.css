@@ -35,6 +35,12 @@
   font-weight: 400;
 }
 
+.researcher-trials-label {
+  text-align: center;
+  font-weight: 400;
+  margin-top: .65em;
+}
+
 .researcher-creation-form {
   display: inline-block;
   box-sizing: border-box;
@@ -83,6 +89,25 @@
   width: 24%;
 }
 
-/*.r-listing-info + .r-listing-info {
-  margin-left: 5em;
-}*/
+.r-btn {
+  width: 100px;
+  height: 35px;
+  font-size: 1.25em;
+  font-weight: 300;
+}
+
+.r-btn + .r-btn {
+  margin-left: 1em;
+}
+
+.r-name {
+  cursor: pointer;
+}
+
+.r-name:hover {
+  color: dodgerblue;
+}
+
+.r-name:active {
+  color: darkorange;
+}

@@ -26,4 +26,8 @@ app.routes = function() {
   app.router.add('researcher/:id/trials/new', function(r) {
     app.routeCreateTrialBasic(r);
   });
+
+  app.router.add('researcher/:rid/trials/edit/:tid', function(r) {
+    app.routeEditTrialBasic(r);
+  });
 }

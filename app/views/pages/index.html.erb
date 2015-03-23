@@ -4,8 +4,11 @@
     <title>trialSource</title>
     <%= stylesheet_link_tag "application", media: "all" %>
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700' rel='stylesheet' type='text/css' />
+    <link href="https://fontastic.s3.amazonaws.com/EqTuGZ3p6FUhTL64iwZHkU/icons.css" rel="stylesheet">
   </head>
   <body>
+
+    <div class="modal-wrapper"></div>
 
     <nav class="main-nav">
       <a class="nav-link nav-title" href="#">trialSource</a>
@@ -78,22 +81,6 @@
       <div class="rslts-elem rslts-cntnr">
 
         <ul class="rslts-list">
-
-          <li class="rslt-listing">
-            <span class="rslt-info">Trial Name</span>
-            <span class="rslt-info">Institution</span>
-            <span class="rslt-info">City, ST</span>
-            <span class="rslt-info">Principal</span>
-            <span class="rslt-info">Start Date</span>
-          </li>
-
-          <li class="rslt-listing">
-            <span class="rslt-info">Trial Name</span>
-            <span class="rslt-info">Institution</span>
-            <span class="rslt-info">City, ST</span>
-            <span class="rslt-info">Principal</span>
-            <span class="rslt-info">Start Date</span>
-          </li>
 
         </ul>
 
@@ -196,10 +183,10 @@
       </div>
 
       <div class="trials-list-container">
-        <h2 class="researcher-creation-label">your trial listings</h2>
-        <div class="trial-list">
+        <h2 class="researcher-trials-label">your trial listings</h2>
+        <ul class="rslts-list">
 
-        </div>
+        </ul>
       </div>
 
     </script>
@@ -223,8 +210,23 @@
 
     </script>
 
-    <script type="text/html" id="admin-nav">
+    <script type="text/html" id="edit-study">
 
+      <h1 class="trial-form-header">Edit Trial Listing: Basic Info</h1>
+
+      <form class="create-trial-form">
+        <input class="trial-input trial-condition-input" type="text" placeholder="condition" />
+        <input class="trial-input trial-title-input" type="text" placeholder="title" />
+        <input class="trial-input trial-principal-input" type="text" placeholder="principal" />
+        <input class="trial-input trial-email-input" type="text" placeholder="application email" />
+        <input class="trial-input trial-location-input" type="text" placeholder="location" />
+        <input class="trial-input trial-start-input" type="text" placeholder="start date" />
+        <input class="trial-input trial-complete-input" type="text" placeholder="est. complete date" />
+        <textarea class="trial-input trial-abstract-input" placeholder="description"></textarea>
+        <button class="reg-btn trial-submit">edit trial listing</button>
+        <button class="cancel-edit">cancel edit</button>
+        <p class="error-message"></p>
+      </form>
 
     </script>
 

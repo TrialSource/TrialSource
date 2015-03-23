@@ -1,0 +1,30 @@
+.t-detail-header {
+  text-align: center;
+}
+
+.t-detail-subhead {
+  text-align: center;
+}
+
+.t-detail-org {
+  text-align: center;
+}
+
+.sub-dtl-wrap {
+  width: 50%;
+  margin: 25px auto;
+}
+
+.btn-wrp {
+  text-align: center;
+}
+
+.td-btn {
+  width: 150px;
+  height: 35px;
+  font-size: 1.15em;
+}
+
+.td-btn + .td-btn {
+  margin-left: 1em;
+}

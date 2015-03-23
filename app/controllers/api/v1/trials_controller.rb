@@ -25,7 +25,7 @@ class Api::V1::TrialsController < ApplicationController
 
   def update
     if @trial.update(trial_params)
-      render json: {head :ok}
+      render json: @trial
     else
       render json: "Invalid parameters"
     end

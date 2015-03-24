@@ -1,6 +1,9 @@
 app.routeEditTrialBasic = function(r) {
+  if (app.bounce(true)) {
+    return;
+  }
+
   $('#main-content').html($('#edit-study').html());
-  console.log(r.params);
 
   var currentTrial;
 
@@ -79,7 +82,6 @@ app.routeEditTrialBasic = function(r) {
   }
 
   function postTrial(arg) {
-    console.log(arg);
     $.ajax({
       type: "PUT",
       url: '/api/v1/trials/' + r.params.tid,
@@ -87,7 +89,6 @@ app.routeEditTrialBasic = function(r) {
       contentType : 'application/json',
       dataType: 'json'
     }).done(function(data) {
-      console.log('success');
       document.location.hash = 'researcher/' + r.params.id + '/trials';
     });
   }

@@ -1,3 +1,5 @@
+require 'set'
+
 class Condition < ActiveRecord::Base
   has_and_belongs_to_many :trials
 
@@ -13,20 +15,14 @@ class Condition < ActiveRecord::Base
   end
 
   def self.included_trials(condition, current_exclusions)
-    included_trials = []
-    condition = Condition.where(Condition.arel_table[:name].matches(condition.downcase))
-    trials = condition.map do |c|
-      c.trials
+    current_exclusions = current_exclusions.split(",").map{|e| e.to_i}
+    conditions = Condition.where(Condition.arel_table[:name].matches(condition.downcase))
+    trials = Set.new
+    conditions.each do |c|
+      trials += c.trials
     end
-    trials.each do |t|
-      if t.first.exclusions.presence
-        t.first.exclusions.each do |e|
-          included_trials << t unless current_exclusions.include?(e.id)
-        end
-      else
-        included_trials << t.first
-      end
-      included_trials
+    trials.select do |t|
+      t.exclusions.none? {|e| current_exclusions.include?(e.id)}
     end
   end
 

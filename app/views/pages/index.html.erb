@@ -6,9 +6,9 @@
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700' rel='stylesheet' type='text/css' />
     <link href="https://fontastic.s3.amazonaws.com/EqTuGZ3p6FUhTL64iwZHkU/icons.css" rel="stylesheet">
   </head>
-  <body>
-    <p id="notice"><%= notice %></p>
-    
+
+  <body data-id="<%= session[:user_id] %>" data-type="<%= session[:user_type] %>">
+
     <div class="modal-wrapper"></div>
 
     <nav class="main-nav">
@@ -16,6 +16,9 @@
       <a class="nav-link nav-link-about">about</a>
       <a class="nav-link nav-link-faq">faq</a>
       <a class="nav-link nav-link-contact">contact</a>
+      <div class="login-logout-wrapper">
+        <button class="login-logout">login</button>
+      </div>
     </nav>
 
     <div id="main-content"></div>
@@ -28,7 +31,7 @@
 
       <h1 class="tagline"><em>The</em> source for interventive clinical trials.</h1>
 
-      <div class="search-form-container lp-element lp-form-container">
+      <div class="search-form-container lp-element lp-form-container xcld-frm-cntnr">
 
         <h1 class="lp-header">Search Trials</h1>
 
@@ -115,16 +118,23 @@
 
       <h1 class="manage-researchers-header">Manage Researchers</h1>
 
-      <form class="researcher-creation-form">
-        <h2 class="researcher-creation-label">add researcher</h2>
-        <input class="researcher-input researcher-first-name-input" type="text" placeholder="first name" />
-        <input class="researcher-input researcher-last-name-input" type="text" placeholder="last name" />
-        <input class="researcher-input researcher-email-input" type="text" placeholder="email" />
-        <input class="researcher-input researcher-password-one" type="password" placeholder="password" />
-        <input class="researcher-input researcher-password-two" type="password" placeholder="confirm password" />
-        <button class="reg-btn researcher-submit">create</button>
-        <p class="error-message"></p>
-      </form>
+      <div class="researcher-tools">
+
+        <h2 class="researcher-search-label">find researcher</h2>
+        <input class="researcher-search" type="text" placeholder="name" />
+
+        <form class="researcher-creation-form">
+          <h2 class="researcher-creation-label">add researcher</h2>
+          <input class="researcher-input researcher-first-name-input" type="text" placeholder="first name" />
+          <input class="researcher-input researcher-last-name-input" type="text" placeholder="last name" />
+          <input class="researcher-input researcher-email-input" type="text" placeholder="email" />
+          <input class="researcher-input researcher-password-one" type="password" placeholder="password" />
+          <input class="researcher-input researcher-password-two" type="password" placeholder="confirm password" />
+          <button class="reg-btn researcher-submit">create</button>
+          <p class="error-message"></p>
+        </form>
+
+      </div>
 
       <div class="researcher-list-container">
         <h2 class="researcher-creation-label">active researchers</h2>
@@ -132,16 +142,6 @@
 
         </div>
       </div>
-
-    </script>
-
-    <script type="text/html" id="admin-researcher-detail">
-      <h1>Dr. Bro Didley</h1>
-
-    </script>
-
-    <script type="text/html" id="admin-researcher-edit">
-
 
     </script>
 
@@ -162,17 +162,6 @@
       </div>
 
     </script>
-
-    <script type="text/html" id="admin-trials-detail">
-
-
-    </script>
-
-    <script type="text/html" id="admin-trials-edit">
-
-
-    </script>
-
 
     <script type="text/html" id="researcher-trials">
 
@@ -204,6 +193,7 @@
         <input class="trial-input trial-location-input" type="text" placeholder="location" />
         <input class="trial-input trial-start-input" type="text" placeholder="start date" />
         <input class="trial-input trial-complete-input" type="text" placeholder="est. complete date" />
+        <select class="trial-input contra-selector" multiple="multiple"></select>
         <textarea class="trial-input trial-abstract-input" placeholder="description"></textarea>
         <button class="reg-btn trial-submit">create trial listing</button>
         <p class="error-message"></p>
@@ -228,31 +218,6 @@
         <button class="cancel-edit">cancel edit</button>
         <p class="error-message"></p>
       </form>
-
-    </script>
-
-    <script type="text/html" id="admin-nav">
-
-
-    </script>
-
-    <script type="text/html" id="admin-nav">
-
-
-    </script>
-
-    <script type="text/html" id="admin-nav">
-
-
-    </script>
-
-    <script type="text/html" id="admin-nav">
-
-
-    </script>
-
-    <script type="text/html" id="admin-nav">
-
 
     </script>
 

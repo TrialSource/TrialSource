@@ -74,7 +74,13 @@ app.routeDefault = function() {
         exclusionChecks.push(Number($(item).val()));
         // exclusionChecks.push({ name: $(item).attr('name') });
       });
-      console.log(exclusionChecks);
+
+      var url = '/api/v1/conditions/trials?condition=' + searchTerm + '&&exclusions=';
+      exclusionChecks.forEach(function(item) {
+        url += item + ',';
+      });
+
+      console.log(url);
       $.getJSON('/api/v1/conditions/trials', { condition: searchTerm, exclusions: exclusionChecks }).done(function(data) {
         console.log(data);
       })

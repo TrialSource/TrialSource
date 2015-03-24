@@ -8,6 +8,8 @@ class Trial < ActiveRecord::Base
   validates :primary_contact_email, presence: true
   validates :principal, presence: true
 
+
+
   accepts_nested_attributes_for :conditions
   accepts_nested_attributes_for :exclusions
 

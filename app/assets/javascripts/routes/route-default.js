@@ -1,5 +1,7 @@
 app.routeDefault = function() {
-  var conditions = [];
+  if(app.bounce()) {
+    return;
+  }
   $('#main-content').html($('#landing-page').html());
 
   $.getJSON('/api/v1/conditions').done(function(data) {
@@ -43,8 +45,6 @@ app.routeDefault = function() {
 
   $('.login-form').submit(function(e) {
     e.preventDefault();
-    // document.location.hash = 'researcher/trials';
-    // document.location.hash = 'admin';
 
     if (!verifyLogin()) {
       return;
@@ -58,11 +58,12 @@ app.routeDefault = function() {
       contentType : 'application/json',
       dataType: 'json'
     }).done(function(data) {
-      if (data.sessions[1].toLowerCase() === "organization") {
+      if (data.sessions[1] === "Organization") {
         loginOrganization(data.sessions[0]);
       } else {
         loginResearcher(data.sessions[0]);
       }
+      document.location.reload(true);
     }).fail(function(data) {
       $('.login-error-message').text('invalid login credentials')
     })

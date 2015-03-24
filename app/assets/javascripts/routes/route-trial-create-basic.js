@@ -1,4 +1,7 @@
 app.routeCreateTrialBasic = function(r) {
+  if (app.bounce(true)) {
+    return;
+  }
   $('#main-content').html($('#create-study').html());
   $('.trial-start-input').pickadate({
     format: 'mmmm d, yyyy'
@@ -51,7 +54,6 @@ app.routeCreateTrialBasic = function(r) {
   }
 
   function postTrial(arg) {
-    console.log(arg);
     $.ajax({
       type: "POST",
       url: '/api/v1/trials',
@@ -59,7 +61,6 @@ app.routeCreateTrialBasic = function(r) {
       contentType : 'application/json',
       dataType: 'json'
     }).done(function(data) {
-      console.log(data);
       document.location.hash = 'researcher/' + r.params.id + '/trials';
     });
   }

@@ -15,7 +15,8 @@ Rails.application.routes.draw do
         end
       end
       resources :archives
-      resources :sessions, only: [:create, :destroy]
+      resources :sessions, only: [:create]
+      delete 'logout' => 'sessions#destroy'
       resource :search, only: [:show]
     end
   end

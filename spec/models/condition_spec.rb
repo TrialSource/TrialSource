@@ -12,14 +12,14 @@ RSpec.describe Condition, type: :model do
     expect(results).to eq([matching_trial])
   end
 
-  describe "#trials" do
+  describe "#included_trials" do
     it "only returns trials that aren't excluded" do
-      included_trial = Trial.create(name: "asthma study", description: "asthma study", location: "Durham, NC", primary_contact_email: "bill@example.com",principal: "Bill Smith", active: true, conditions_attributes: [{name: "asthma"}], exclusions_attributes:)
-      _non_included = Trial.create(name: "bronchitis study", description: "bronchitis study", location: "New York, NY", primary_contact_email: "bill@example.com",principal: "Bill Smith", active: true, conditions_attributes: [{name: "bronchitis"}])
+      included_trial = Trial.create(name: "asthma study", description: "asthma study", location: "Durham, NC", primary_contact_email: "bill@example.com",principal: "Bill Smith", active: true, conditions_attributes: [{name: "asthma"}], exclusions_attributes: [{name: "diabetes"}])
+      _non_included = Trial.create(name: "other asthma study", description: "asthma study", location: "New York, NY", primary_contact_email: "bill@example.com",principal: "Bill Smith", active: true, conditions_attributes: [{name: "asthma"}], exclusions_attributes: [{name: "heart conditions"}])
 
-      results = Trial.search("asthma")
+      results = Condition.included_trials("asthma", [2])
 
-      expect(results).to match_array([condition_match])
+      expect(results).to match_array([included_trial])
     end
   end
 

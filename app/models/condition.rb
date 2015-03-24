@@ -18,11 +18,11 @@ class Condition < ActiveRecord::Base
     trials = condition.map do |c|
       c.trials
     end
-    trials.flatten.map do |t|
+    trials[0].map do |t|
       t.exclusions.each do |e|
-        included_trials << t unless current_exclusions.include(e.id)
+        included_trials << t unless current_exclusions.include?(e.id)
       end
-      included_trials
+      included_trials[0]
     end
   end
 

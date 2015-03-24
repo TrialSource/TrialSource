@@ -21,7 +21,7 @@ class Condition < ActiveRecord::Base
     trials.each do |t|
       if t.first.exclusions.presence
         t.first.exclusions.each do |e|
-          included_trials << t unless current_exclusions.include?(e.id)
+          included_trials << t unless current_exclusions.split(",").include?(e.id)
         end
       else
         included_trials << t.first

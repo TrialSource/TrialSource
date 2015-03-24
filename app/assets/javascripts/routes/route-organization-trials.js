@@ -1,14 +1,16 @@
 app.routeOrganizationTrials = function(r) {
+  if (app.bounce(true)) {
+    return;
+  }
   var trials = [];
   $.getJSON('/api/v1/trials/org', { org: r.params.id }).done(function(data) {
     $('#main-content').html($('#admin-trials').html());
-    console.log(data);
     trials = data.trials;
     showAllResults();
   });
 
   function showAllResults() {
-    var listTemplate = _.template(app.trialListing.search, { variable: 'm' });
+    var listTemplate = _.template(app.trialListing.admin, { variable: 'm' });
     $('.trial-list').html(listTemplate({ results: trials }));
     addNameListeners();
   }

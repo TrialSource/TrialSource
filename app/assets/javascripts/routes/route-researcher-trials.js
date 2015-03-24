@@ -1,17 +1,20 @@
 app.routeResearcherTrials = function(r) {
+  if (app.bounce(true)) {
+    return;
+  }
   var trials = [];
   $('#main-content').html($('#researcher-trials').html());
   $.getJSON('/api/v1/trials/doctor', { doctor: r.params.id }).done(function(data) {
-    console.log(data);
     trials = data.trials;
     showAllResults();
   });
+
   $('.new-t-btn').click(function() {
     document.location.hash = 'researcher/' + r.params.id + '/trials/new';
   });
 
   function showAllResults() {
-    var listTemplate = _.template(app.trialListing.search, { variable: 'm' });
+    var listTemplate = _.template(app.trialListing.admin, { variable: 'm' });
     $('.rslts-list').html(listTemplate({ results: trials }));
     addNameListeners();
   }

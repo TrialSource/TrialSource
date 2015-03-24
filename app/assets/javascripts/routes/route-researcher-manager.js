@@ -3,7 +3,7 @@ app.routeResearcherManager = function(r) {
     return;
   }
   var researchers = [];
-  var listState;
+  var listState = [];
   $('#main-content').html($('#manage-researchers').html());
   $.getJSON('/api/v1/doctors/org', { org: r.params.id }).done(function(data) {
     researchers = data.doctors;
@@ -26,7 +26,9 @@ app.routeResearcherManager = function(r) {
       data: JSON.stringify(researcher),
       contentType : 'application/json',
       dataType: 'json'
-    }).done(function(data) {
+    }).done(function() {
+      researchers.push(researcher.doctor);
+      listState = researchers;
       showList();
     });
   }
@@ -67,6 +69,7 @@ app.routeResearcherManager = function(r) {
             dataType: 'json',
           }).done(function(data) {
             researchers.splice(i, 1);
+            listState = researchers;
             $('.modal-wrapper').removeClass('visible');
             showList();
           });
@@ -134,7 +137,36 @@ app.routeResearcherManager = function(r) {
     $('.researcher-input').val('');
   }
 
-  $('.researcher-search').keyUp(function(e) {
+  $('.researcher-search').keyup(function(e) {
+    var term = $('.researcher-search').val().toLowerCase();
+
+    if (!term) {
+      listState = researchers;
+      showList();
+      return;
+    }
+
+    var show = setTimeout(performSearch, 250);
+
+    $('.researcher-search').on('keydown', cancelSearch);
+
+    function cancelSearch() {
+      clearTimeout(show);
+      $('.researcher-search').off('keydown', cancelSearch);
+    }
+
+    function performSearch() {
+      $('.researcher-search').off('keydown', cancelSearch);
+      var tempState = listState;
+      listState = [];
+      researchers.forEach(function(researcher) {
+        var ref = researcher.first_name.toLowerCase() + ' ' + researcher.last_name.toLowerCase();
+        if (ref.indexOf(term) > -1) {
+          listState.push(researcher)
+        }
+      });
+      showList();
+    }
 
   })
 };

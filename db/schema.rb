@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150322194725) do
+ActiveRecord::Schema.define(version: 20150323182934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,9 +19,15 @@ ActiveRecord::Schema.define(version: 20150322194725) do
 
   create_table "conditions", force: :cascade do |t|
     t.string   "name"
-    t.integer  "trial_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "conditions_trials", force: :cascade do |t|
+    t.integer  "condition_id"
+    t.integer  "trial_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "doctors", force: :cascade do |t|
@@ -34,9 +40,15 @@ ActiveRecord::Schema.define(version: 20150322194725) do
 
   create_table "exclusions", force: :cascade do |t|
     t.string   "name"
-    t.integer  "trial_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "exclusions_trials", force: :cascade do |t|
+    t.integer  "exclusion_id"
+    t.integer  "trial_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "logins", force: :cascade do |t|
@@ -68,7 +80,7 @@ ActiveRecord::Schema.define(version: 20150322194725) do
     t.boolean  "archived"
     t.string   "primary_contact_email"
     t.string   "principal"
-    t.string   "active"
+    t.boolean  "active"
   end
 
 end

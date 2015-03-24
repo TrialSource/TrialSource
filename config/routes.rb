@@ -7,7 +7,11 @@ Rails.application.routes.draw do
         end
       end
       resources :organizations
-      resources :conditions
+      resources :conditions do
+        collection do
+          get :trials
+        end
+      end
       resources :trials do
         collection do
           get :doctor

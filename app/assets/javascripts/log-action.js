@@ -1,5 +1,6 @@
 app.setLogAction = function() {
   var id = $('body').data('id');
+  console.log(id);
 
   if (id) {
     setLogout(id);
@@ -15,6 +16,7 @@ app.setLogAction = function() {
         type: "DELETE",
         url: '/api/v1/logout',
         contentType : 'application/json',
+        dataType: 'json'
       }).done(function() {
         document.location.reload(true);
       });

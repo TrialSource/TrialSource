@@ -53,6 +53,7 @@
 
 .create-trial-form {
   margin-top: 2em;
+  position: relative
 }
 
 .trial-form-header {

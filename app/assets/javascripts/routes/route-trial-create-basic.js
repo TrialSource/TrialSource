@@ -79,4 +79,13 @@ app.routeCreateTrialBasic = function(r) {
     }
     return true;
   }
+
+  $('.contra-selector').select2({
+    tags: true
+  });
+
+  $('.test-it').click(function() {
+    console.log($('.contra-selector').val());
+  })
+
 }

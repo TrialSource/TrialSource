@@ -6,7 +6,7 @@
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700' rel='stylesheet' type='text/css' />
     <link href="https://fontastic.s3.amazonaws.com/EqTuGZ3p6FUhTL64iwZHkU/icons.css" rel="stylesheet">
   </head>
-  
+
   <body data-id="<%= session[:user_id] %>" data-type="<%= session[:user_type] %>">
 
     <div class="modal-wrapper"></div>
@@ -185,7 +185,15 @@
 
       <h1 class="trial-form-header">New Trial Listing: Basic Info</h1>
 
+
+
       <form class="create-trial-form">
+        <select class="trial-input contra-selector" multiple="multiple">
+          <option value="1">cool</option>
+          <option value="2">beans</option>
+          <option value="3">dude</option>
+          <option value="4">man</option>
+        </select>
         <input class="trial-input trial-condition-input" type="text" placeholder="condition" />
         <input class="trial-input trial-title-input" type="text" placeholder="title" />
         <input class="trial-input trial-principal-input" type="text" placeholder="principal" />

@@ -5,11 +5,15 @@
     - vars/secrets.yml
 
   roles:
-    # - webserver
     - {role: ruby, sudo: yes}
     - {role: database, sudo: yes}
-
+    - {role: apache, sudo: yes}
+    - {role: passenger, sudo: yes}
+    # - {role: ec2, sudo: yes}
   handlers:
     - name: Restart PostgreSQL
       sudo: true
       service: name=postgresql state=restarted
+    - name: Restart Apache
+      sudo: true
+      service: name=httpd state=restarted

@@ -1,0 +1,18 @@
+---
+- name: install gem
+  gem: name=passenger state=present version=5.0.5 user_install=no
+
+- name: check if already compiled
+  shell: passenger-install-apache2-module --snippet | cut -d " " -f 3 | head -n 1 | xargs test -f
+  register: passenger_compiled
+  ignore_errors: true
+
+- name: Install needed packages
+  yum: name={{item}} state=present
+  with_items:
+    - libcurl-devel
+
+- name: compile module
+  shell: passenger-install-apache2-module --auto
+  when: passenger_compiled|failed
+

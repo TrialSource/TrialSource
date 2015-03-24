@@ -12,7 +12,7 @@ class Condition < ActiveRecord::Base
     [trials.flatten.count, exclusions]
   end
 
-  def self.included_trails(condition, current_exclusions)
+  def self.included_trials(condition, current_exclusions)
     included_trials = []
     condition = Condition.where(Condition.arel_table[:name].matches(condition.downcase))
     trials = condition.map do |c|
@@ -24,6 +24,6 @@ class Condition < ActiveRecord::Base
       end
       included_trials
     end
-
+  end
 
 end

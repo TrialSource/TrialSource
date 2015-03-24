@@ -9,6 +9,8 @@ class Trial < ActiveRecord::Base
   validates :principal, presence: true
 
   accepts_nested_attributes_for :conditions
+  accepts_nested_attributes_for :exclusions
+
 
   def self.current
     Trial.where(:archived == false)

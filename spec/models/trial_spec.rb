@@ -15,8 +15,8 @@ RSpec.describe Trial, type: :model do
 
   describe "#search" do
     it "finds results by attributes" do
-      condition_match = Trial.create(name: "asthma study", description: "asthma study", condition: "asthma", location: "Durham, NC")
-      _non_matching = Trial.create(name: "not an asthma study", description: "bronchitis study", location: "New York, NY")
+      condition_match = Trial.create(name: "asthma study", description: "asthma study", location: "Durham, NC", primary_contact_email: "bill@example.com",principal: "Bill Smith", active: true, conditions_attributes: [{name: "asthma"}])
+      _non_matching = Trial.create(name: "bronchitis study", description: "bronchitis study", location: "New York, NY", primary_contact_email: "bill@example.com",principal: "Bill Smith", active: true, conditions_attributes: [{name: "bronchitis"}])
 
       results = Trial.search("asthma")
 

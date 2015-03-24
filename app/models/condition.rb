@@ -27,8 +27,8 @@ class Condition < ActiveRecord::Base
       else
         included_trials << t.first
       end
-      included_trials
     end
+    included_trials
   end
 
 end

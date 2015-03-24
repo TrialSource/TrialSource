@@ -18,6 +18,7 @@ Rails.application.routes.draw do
           get :org
         end
       end
+      resources :exclusions
       resources :archives
       resources :sessions, only: [:create]
       delete 'logout' => 'sessions#destroy'

@@ -81,7 +81,7 @@ app.routeDefault = function() {
       });
 
       console.log(url);
-      $.getJSON('/api/v1/conditions/trials', { condition: searchTerm, exclusions: exclusionChecks }).done(function(data) {
+      $.getJSON(url).done(function(data) {
         console.log(data);
       })
     });

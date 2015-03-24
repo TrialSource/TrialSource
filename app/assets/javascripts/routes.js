@@ -4,7 +4,7 @@ app.routes = function() {
   });
 
   app.router.add('search/:term', function(r) {
-    app.routeSearchResults(r);
+    // app.routeSearchResults(r);
   });
 
   app.router.add('admin/:id', function(r) {

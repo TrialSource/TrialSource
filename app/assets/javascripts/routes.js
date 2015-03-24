@@ -3,8 +3,8 @@ app.routes = function() {
     app.routeDefault();
   });
 
-  app.router.add('search/:term', function(r) {
-    // app.routeSearchResults(r);
+  app.router.add('search/:criteria', function(r) {
+    app.routeSearchResults(r);
   });
 
   app.router.add('admin/:id', function(r) {

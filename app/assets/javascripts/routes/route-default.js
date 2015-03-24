@@ -48,8 +48,6 @@ app.routeDefault = function() {
       return;
     }
 
-    // document.location.hash = 'search/' + $('#condition-search').val();
-
     $.getJSON('/api/v1/search', { type: 'condition', query: $('#condition-search').val() }).done(function(data) {
       var excludeList = [];
       data.searches[1].forEach(function(item) {
@@ -70,9 +68,7 @@ app.routeDefault = function() {
       e.preventDefault();
       var exclusionChecks = [];
       $(':checked').toArray().forEach(function(item) {
-        // exclusionChecks.push({ id: $(item).val() });
         exclusionChecks.push(Number($(item).val()));
-        // exclusionChecks.push({ name: $(item).attr('name') });
       });
 
       var url = '/api/v1/conditions/trials?condition=' + searchTerm + '&&exclusions=';
@@ -80,10 +76,14 @@ app.routeDefault = function() {
         url += item + ',';
       });
 
-      console.log(url);
-      $.getJSON(url).done(function(data) {
-        console.log(data);
-      })
+      url = encodeURIComponent(url);
+
+      document.location.hash = 'search/' + url;
+
+      // $.getJSON(url).done(function(data) {
+      // document.location.hash = 'search/' + url;
+      // console.log(data.conditions);
+      // })
     });
   }
 

@@ -17,5 +17,6 @@ RSpec.describe Api::V1::SearchesController, type: :controller do
         expect(results.length).to eq(1)
       end
     end
+
   end
 end

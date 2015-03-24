@@ -1,9 +1,9 @@
 class Api::V1::DoctorsController < ApplicationController
-  before_action :set_doctor, only: [:update]
-
+  before_action :set_doctor, only: [:update, :destroy]
+  before_action :authenticate_user, only: [:create, :update]
 
   def create
-    doctor= Doctor.new(doctor_params)
+    doctor = Doctor.new(doctor_params)
     if doctor.save
       render json: doctor
     else
@@ -11,17 +11,27 @@ class Api::V1::DoctorsController < ApplicationController
     end
   end
 
+  def org
+    render json: Doctor.where(organization_id: params[:org])
+  end
 
   def index
-    doctors= Doctor.all
+    doctors = Doctor.all
     render json: doctors
   end
 
   def update
     if @doctor.update(doctor_params)
-      render json: @doctor
+      render json: "Update successful"
     else
       render json: "Invalid parameters"
+    end
+  end
+
+  def destroy
+    @doctor.destroy
+    respond_to do |format|
+      format.json { head :no_content }
     end
   end
 
@@ -32,6 +42,6 @@ class Api::V1::DoctorsController < ApplicationController
   end
 
   def doctor_params
-    params.require(:doctor).permit(:first_name, :last_name, :admin_id, :login => [:id, :email, :password_digest])
+    params.require(:doctor).permit(:first_name, :last_name, :organization_id, :login_attributes => [:email, :password])
   end
 end

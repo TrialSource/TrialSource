@@ -1,0 +1,227 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>trialSource</title>
+    <%= stylesheet_link_tag "application", media: "all" %>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700' rel='stylesheet' type='text/css' />
+    <link href="https://fontastic.s3.amazonaws.com/EqTuGZ3p6FUhTL64iwZHkU/icons.css" rel="stylesheet">
+  </head>
+
+  <body data-id="<%= session[:user_id] %>" data-type="<%= session[:user_type] %>">
+
+    <div class="modal-wrapper"></div>
+
+    <nav class="main-nav">
+      <a class="nav-link nav-title" href="#">trialSource</a>
+      <a class="nav-link nav-link-about">about</a>
+      <a class="nav-link nav-link-faq">faq</a>
+      <a class="nav-link nav-link-contact">contact</a>
+      <div class="login-logout-wrapper">
+        <button class="login-logout">login</button>
+      </div>
+    </nav>
+
+    <div id="main-content"></div>
+
+    <nav class="footer-nav">
+
+    </nav>
+
+    <script type="text/html" id="landing-page">
+
+      <h1 class="tagline"><em>The</em> source for interventive clinical trials.</h1>
+
+      <div class="search-form-container lp-element lp-form-container xcld-frm-cntnr">
+
+        <h1 class="lp-header">Search Trials</h1>
+
+        <form class="lp-form search-form">
+          <input class="lp-input lp-form-element" id="condition-search" type="text" placeholder="condition" />
+          <input class="lp-input lp-form-element zip-field" type="text" placeholder="zip code" maxlength="5"/>
+          <button class="reg-btn lp-search-button lp-form-element">search</button>
+          <p class="error-message srch-error-message"> </p>
+        </form>
+
+      </div>
+
+      <div class="landing-page-divider lp-element"></div>
+
+      <div class="search-form-container lp-element lp-form-container">
+
+        <h1 class="lp-header">Research Login</h1>
+
+        <form class="lp-form login-form">
+          <input class="lp-input lp-form-element un-field" type="text" placeholder="email" />
+          <input class="lp-input lp-form-element pw-field" type="password" placeholder="password" />
+          <button class="reg-btn lp-login-button lp-form-element">login</button>
+          <p class="error-message login-error-message"> </p>
+        </form>
+
+      </div>
+
+    </script>
+
+    <script type="text/html" id="search-results">
+
+      <div class="rslts-elem rslts-ctrl-cntnr">
+
+        <div class="ctrl-elem ctrl-cntnr">
+
+          <form class="rslt-search-form">
+            <input class="rslt-input rslt-form-element condition-field" type="text" placeholder="condition" required/>
+            <input class="rslt-input rslt-form-element zip-field" type="text" placeholder="zip code" maxlength="5"/>
+            <button class="reg-btn rslt-search-button rslt-form-element">search again</button>
+          </form>
+
+        </div>
+        <div class="ctrl-elem disq-cntnr">
+
+        <p class="disq-explain">Please fill out and submit the form below in order to identify and obtain more info about trials for which you are a viable candidate.</p>
+
+        </div>
+
+      </div>
+
+      <div class="rslts-elem rslts-cntnr">
+
+        <ul class="rslts-list">
+
+        </ul>
+
+      </div>
+
+    </script>
+
+    <script type="text/html" id="admin-nav">
+
+      <h1 class="admin-nav-header">Welcome, <span class="org-name"></span> Administrator.</h1>
+
+      <div class="admin-nav-element admin-nav-container">
+        <h2 class="admin-nav-link"><a class="admin-nav-link-actual admin-dr-link">Researchers</a></h2>
+      </div>
+
+      <div class="admin-nav-element admin-nav-divider"></div>
+
+      <div class="admin-nav-element admin-nav-container">
+        <h2 class="admin-nav-link"><a class="admin-nav-link-actual admin-trial-link">Trials</a></h2>
+      </div>
+
+      <div class="admin-nav-element admin-nav-divider"></div>
+
+      <div class="admin-nav-element admin-nav-container">
+        <h2 class="admin-nav-link"><a class="admin-nav-link-actual">Overview</a></h2>
+      </div>
+
+    </script>
+
+    <script type="text/html" id="manage-researchers">
+
+      <h1 class="manage-researchers-header">Manage Researchers</h1>
+
+      <div class="researcher-tools">
+
+        <h2 class="researcher-search-label">find researcher</h2>
+        <input class="researcher-search" type="text" placeholder="name" />
+
+        <form class="researcher-creation-form">
+          <h2 class="researcher-creation-label">add researcher</h2>
+          <input class="researcher-input researcher-first-name-input" type="text" placeholder="first name" />
+          <input class="researcher-input researcher-last-name-input" type="text" placeholder="last name" />
+          <input class="researcher-input researcher-email-input" type="text" placeholder="email" />
+          <input class="researcher-input researcher-password-one" type="password" placeholder="password" />
+          <input class="researcher-input researcher-password-two" type="password" placeholder="confirm password" />
+          <button class="reg-btn researcher-submit">create</button>
+          <p class="error-message"></p>
+        </form>
+
+      </div>
+
+      <div class="researcher-list-container">
+        <h2 class="researcher-creation-label">active researchers</h2>
+        <div class="researcher-list-actual">
+
+        </div>
+      </div>
+
+    </script>
+
+    <script type="text/html" id="admin-trials">
+
+      <h1 class="manage-researchers-header">Your Organization's Trials</h1>
+
+      <div class="trials-toolbox">
+        <h2 class="researcher-creation-label">tools</h2>
+        <input class="search-trials-input" placeholder="search trials"/>
+      </div>
+
+      <div class="trials-list-container">
+        <h2 class="researcher-creation-label">your trial listings</h2>
+        <div class="trial-list">
+
+        </div>
+      </div>
+
+    </script>
+
+    <script type="text/html" id="researcher-trials">
+
+      <h1 class="manage-researchers-header">Welcome, Researcher</h1>
+
+      <div class="trials-toolbox">
+        <h2 class="researcher-creation-label">tools</h2>
+        <button class="reg-btn new-t-btn">new trial listing</button>
+      </div>
+
+      <div class="trials-list-container">
+        <h2 class="researcher-trials-label">your trial listings</h2>
+        <ul class="rslts-list">
+
+        </ul>
+      </div>
+
+    </script>
+
+    <script type="text/html" id="create-study">
+
+      <h1 class="trial-form-header">New Trial Listing: Basic Info</h1>
+
+      <form class="create-trial-form">
+        <input class="trial-input trial-condition-input" type="text" placeholder="condition" />
+        <input class="trial-input trial-title-input" type="text" placeholder="title" />
+        <input class="trial-input trial-principal-input" type="text" placeholder="principal" />
+        <input class="trial-input trial-email-input" type="text" placeholder="application email" />
+        <input class="trial-input trial-location-input" type="text" placeholder="location" />
+        <input class="trial-input trial-start-input" type="text" placeholder="start date" />
+        <input class="trial-input trial-complete-input" type="text" placeholder="est. complete date" />
+        <select class="trial-input contra-selector" multiple="multiple"></select>
+        <textarea class="trial-input trial-abstract-input" placeholder="description"></textarea>
+        <button class="reg-btn trial-submit">create trial listing</button>
+        <p class="error-message"></p>
+      </form>
+
+    </script>
+
+    <script type="text/html" id="edit-study">
+
+      <h1 class="trial-form-header">Edit Trial Listing: Basic Info</h1>
+
+      <form class="create-trial-form">
+        <input class="trial-input trial-condition-input" type="text" placeholder="condition" />
+        <input class="trial-input trial-title-input" type="text" placeholder="title" />
+        <input class="trial-input trial-principal-input" type="text" placeholder="principal" />
+        <input class="trial-input trial-email-input" type="text" placeholder="application email" />
+        <input class="trial-input trial-location-input" type="text" placeholder="location" />
+        <input class="trial-input trial-start-input" type="text" placeholder="start date" />
+        <input class="trial-input trial-complete-input" type="text" placeholder="est. complete date" />
+        <textarea class="trial-input trial-abstract-input" placeholder="description"></textarea>
+        <button class="reg-btn trial-submit">edit trial listing</button>
+        <button class="cancel-edit">cancel edit</button>
+        <p class="error-message"></p>
+      </form>
+
+    </script>
+
+    <%= javascript_include_tag "application" %>
+
+  </body>
+</html>

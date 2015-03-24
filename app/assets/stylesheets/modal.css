@@ -1,0 +1,65 @@
+.modal-wrapper {
+  height: 100%;
+  width: 120%;
+  background: rgba(0, 0, 0, .35);
+  position: fixed;
+  margin-left: -10%;
+  visibility: hidden;
+  opacity: 0;
+  transition: all .25s;
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal-actual {
+  width: 35%;
+  background: white;
+  border: 5px solid tomato;
+  border-radius: 10px;
+  height: 35%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  text-align: center;
+  padding-top: 2em;
+}
+
+.modal-title, .modal-subtitle, .modal-instruction{
+  text-align: center;
+}
+
+.delete-confirmation {
+  display: block;
+  margin: 1em auto;
+  height: 35px;
+  width: 350px;
+  font-size: 1.25em;
+  text-align: center;
+}
+
+.delete-confirmation:focus {
+  border: 1px solid tomato;
+}
+
+.mdl-btn {
+  height: 35px;
+  width: 150px;
+  font-size: 1.25em;
+  border: none;
+}
+
+.mdl-btn + .mdl-btn {
+  margin-left: 50px;
+}
+
+.confirm-delete {
+  background: tomato;
+}
+
+.cancel-delete {
+  background: dodgerblue;
+}

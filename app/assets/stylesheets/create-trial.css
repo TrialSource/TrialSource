@@ -1,0 +1,89 @@
+.trial-input {
+  display: block;
+  width: 50%;
+  font-size: 1.25em;
+  height: 1.75em;
+  margin: auto;
+  text-align: left;
+  padding: .25em;
+  font-weight: 300;
+}
+
+.trial-submit {
+  display: block;
+  width: 50%;
+  font-size: 1.25em;
+  height: 1.75em;
+  margin: auto;
+  padding: .25em;
+  font-weight: 300;
+}
+
+.error-message {
+  color: tomato;
+  margin: 1em auto;
+  width: 50%;
+  text-align: center;
+  font-weight: 300;
+}
+
+.create-trial-form {
+  width: 100%;
+  margin: auto;
+}
+
+.trial-form-header {
+  text-align: center;
+}
+
+.trial-input {
+  margin-top: .5em;
+  border: 1px solid lightgrey;
+}
+
+.trial-input:focus {
+  border-color: dodgerblue;
+}
+
+.trial-abstract-input {
+  font-size: 1em;
+  height: 30%;
+  resize: none;
+}
+
+.create-trial-form {
+  margin-top: 2em;
+  position: relative
+}
+
+.trial-form-header {
+  margin-top: 1em;
+  font-weight: 300;
+}
+
+.trial-start-input, .trial-complete-input {
+  position: relative;
+}
+
+.cancel-edit {
+  width: 50%;
+  background: tomato;
+  height: 35px;
+  text-align: center;
+  margin: auto;
+  display: block;
+  border: none;
+  color: white;
+  font-size: 1.25em;
+  font-weight: 300;
+  cursor: pointer;
+  -webkit-transition: all .1s;
+}
+
+.cancel-edit:hover {
+  background: #ff533d;
+}
+
+.cancel-edit:active {
+  background: deepskyblue;
+}

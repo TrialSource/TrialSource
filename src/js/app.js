@@ -1,3 +1,0 @@
-var app = {
-  router: Rlite(),
-};

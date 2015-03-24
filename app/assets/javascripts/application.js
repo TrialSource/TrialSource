@@ -12,5 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require dependencies/picker
+//= require_tree ./dependencies
+//= require app
 //= require_tree .
+//= require init

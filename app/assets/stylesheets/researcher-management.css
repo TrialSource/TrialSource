@@ -1,0 +1,123 @@
+.researcher-input, .researcher-search {
+  display: block;
+  width: 75%;
+  margin:auto;
+  font-size: 1.25em;
+  font-weight: 300;
+  height: 2em;
+  padding: .25em;
+  box-sizing: border-box;
+}
+
+.researcher-search {
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.researcher-input + .researcher-input {
+  margin-top: 1em;
+}
+
+.researcher-input:focus, .researcher-search:focus {
+  border: 1px solid dodgerblue;
+}
+
+.researcher-submit {
+  display: block;
+  width: 75%;
+  margin:auto;
+  margin-top: 1em;
+  font-size: 1.25em;
+  font-weight: 300;
+  height: 2em;
+  padding: .25em;
+  box-sizing: border-box;
+}
+
+.researcher-creation-label, .researcher-search-label {
+  margin: .75em 0;
+  text-align: center;
+  font-weight: 400;
+}
+
+.researcher-trials-label {
+  text-align: center;
+  font-weight: 400;
+  margin-top: .65em;
+}
+
+.researcher-tools {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 33%;
+  height: 75%;
+  border: 1px solid lightgrey;
+  vertical-align: top;
+  margin-right: .5%;
+}
+
+.researcher-list-container {
+  vertical-align: top;
+  display: inline-block;
+  box-sizing: border-box;
+  border: 1px solid lightgrey;
+  width: 66%;
+  height: 75%;
+  overflow: auto;
+}
+
+.manage-researchers-header {
+  text-align: center;
+  margin: .5em 0;
+  font-weight: 300;
+}
+
+.researcher-list-actual {
+  list-style: none;
+  margin: 0 15px;
+}
+
+.researcher-listing {
+  background: rgba(0, 0, 0, .05);
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: .5em;
+}
+
+.researcher-listing + .researcher-listing {
+  margin-top: .5em;
+}
+
+.r-listing-info {
+  font-weight: 300;
+  width: 24%;
+}
+
+.r-btn {
+  width: 100px;
+  height: 35px;
+  font-size: 1.25em;
+  font-weight: 300;
+}
+
+.r-btn + .r-btn {
+  margin-left: 1em;
+}
+
+.r-name {
+  cursor: pointer;
+}
+
+.r-name:hover {
+  color: dodgerblue;
+}
+
+.r-name:active {
+  color: darkorange;
+}
+
+.r-detail-name {
+  text-align: center;
+}

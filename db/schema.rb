@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150318200824) do
+ActiveRecord::Schema.define(version: 20150323182934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_trgm"
+
+  create_table "conditions", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "conditions_trials", force: :cascade do |t|
+    t.integer  "condition_id"
+    t.integer  "trial_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "doctors", force: :cascade do |t|
     t.datetime "created_at",      null: false
@@ -22,6 +36,19 @@ ActiveRecord::Schema.define(version: 20150318200824) do
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "organization_id"
+  end
+
+  create_table "exclusions", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "exclusions_trials", force: :cascade do |t|
+    t.integer  "exclusion_id"
+    t.integer  "trial_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "logins", force: :cascade do |t|
@@ -41,7 +68,6 @@ ActiveRecord::Schema.define(version: 20150318200824) do
 
   create_table "trials", force: :cascade do |t|
     t.string   "name"
-    t.string   "condition"
     t.text     "description"
     t.string   "location"
     t.date     "start_on"
@@ -51,6 +77,10 @@ ActiveRecord::Schema.define(version: 20150318200824) do
     t.integer  "doctor_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.boolean  "archived"
+    t.string   "primary_contact_email"
+    t.string   "principal"
+    t.boolean  "active"
   end
 
 end

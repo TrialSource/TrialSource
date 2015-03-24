@@ -1,0 +1,67 @@
+.t-listing-info {
+  font-weight: 300;
+}
+
+.new-t-btn {
+  display: block;
+  width: 75%;
+  margin:auto;
+  font-size: 1.25em;
+  font-weight: 300;
+  height: 2em;
+  padding: .25em;
+  box-sizing: border-box;
+}
+
+.trial-list {
+  list-style: none;
+  padding: .5em;
+  padding-top: 0;
+}
+
+.trial-listing {
+  background: rgba(0, 0, 0, .05);
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: .5em;
+}
+
+.trial-listing + .trial-listing {
+  margin-top: .5em;
+}
+
+.t-listing-info {
+  width: 19%;
+}
+
+.trials-toolbox {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 24%;
+  height: 75%;
+  border: 1px solid lightgrey;
+  vertical-align: top;
+  margin-right: .5%;
+}
+
+.trials-list-container {
+  vertical-align: top;
+  display: inline-block;
+  box-sizing: border-box;
+  border: 1px solid lightgrey;
+  width: 75%;
+  height: 75%;
+  overflow: auto;
+}
+
+.search-trials-input {
+  display: block;
+  width: 80%;
+  height: 35px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.25em;
+  font-weight: 300;
+}

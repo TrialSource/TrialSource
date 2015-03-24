@@ -1,3 +1,3 @@
 class ExclusionSerializer < ActiveModel::Serializer
-  attributes :id, :name, :trial_id
+  attributes :id, :name
 end

@@ -13,7 +13,7 @@ class Api::V1::SessionsController < ApplicationController
 	def destroy
 		session[:user_id] = nil
 		session[:user_type] = nil
-		render json: "Log out successful"
+		render json: true
 	end
 
 

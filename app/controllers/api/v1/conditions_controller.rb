@@ -4,7 +4,7 @@ class Api::V1::ConditionsController < ApplicationController
   def index
     condition_names = Condition.all.map {|c| c.name}
     condition_names= condition_names.uniq
-    render json: condition_names
+    render json: [number_of_trials, condition_names]
   end
 
   def create
@@ -16,8 +16,8 @@ class Api::V1::ConditionsController < ApplicationController
     end
   end
 
-  def trial
-    render json: Condition.where(trial_id: params[:trial])
+  def trials
+    render json: Condition.included_trials(params[:condition], params[:exclusions])
   end
 
   def update

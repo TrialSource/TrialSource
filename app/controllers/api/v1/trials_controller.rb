@@ -1,5 +1,6 @@
 class Api::V1::TrialsController < ApplicationController
   before_action :set_trial, only: [:update, :destroy, :show]
+  before_action :authenticate_user, only: [:create, :update]
 
   def index
     render json: Trial.current
@@ -52,6 +53,6 @@ class Api::V1::TrialsController < ApplicationController
     params.require(:trial).permit(:name, :description, :location, :start_on,
       :estimated_completed_on, :number_of_views, :number_of_appearances, :doctor_id,
       :archived, :primary_contact_email, :principal, :active,
-      :conditions_attributes => [:id, :name, :trial_id] )
+      :conditions_attributes => [:id, :name, :trial_id], :exclusions_attributes => [:id, :name])
   end
 end

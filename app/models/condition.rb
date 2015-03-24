@@ -12,7 +12,7 @@ class Condition < ActiveRecord::Base
     [trials.flatten.count, exclusions]
   end
 
-  def self.included_trials(condition, current_exclusions)
+  def self.included_trials(condition, current_exclusions, location)
     included_trials = []
     condition = Condition.where(Condition.arel_table[:name].matches(condition.downcase))
     trials = condition.map do |c|
@@ -28,6 +28,11 @@ class Condition < ActiveRecord::Base
       end
       included_trials
     end
+  end
+
+  def location(location)
+    nearby_trials = Trial.near(location, 50, :order => :distance)
+    nearby_trials
   end
 
 end

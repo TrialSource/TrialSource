@@ -39,9 +39,9 @@ app.routeCreateTrialBasic = function(r) {
         conditions_attributes: [
           { name: $('.trial-condition-input').val() },
         ],
-        conditiony: $('.trial-condition-input').val(),
+        exclusions_attributes: grabExclusions(),
         principal: $('.trial-principal-input').val(),
-        active: 'active',
+        active: true,
         primary_contact_email: $('.trial-email-input').val(),
         location: $('.trial-location-input').val(),
         name: $('.trial-title-input').val(),
@@ -80,12 +80,34 @@ app.routeCreateTrialBasic = function(r) {
     return true;
   }
 
+  $.getJSON('/api/v1/exclusions').done(function(data) {
+    var contraTemplate = _.template(app.contraOption, { variable: 'm' });
+    $('.contra-selector').html(contraTemplate({ contras: data.exclusions }));
+  });
+
   $('.contra-selector').select2({
     tags: true
   });
 
   $('.test-it').click(function() {
     console.log($('.contra-selector').val());
+    grabExclusions();
   })
+
+  function grabExclusions() {
+    var exclusions = [];
+
+    if ($('.contra-selector').val()) {
+      $('.contra-selector').val().forEach(function(item) {
+        if (Number(item)) {
+          // exclusions.push({ id: Number(item) });
+        } else {
+          exclusions.push({ name: item });
+        }
+      });
+    }
+
+    return exclusions;
+  }
 
 }

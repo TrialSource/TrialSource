@@ -67,7 +67,6 @@ app.routeEditTrialBasic = function(r) {
         conditions_attributes: [
           { name: $('.trial-condition-input').val(), id: currentTrial.conditions[0].id },
         ],
-        conditiony: $('.trial-condition-input').val(),
         principal: $('.trial-principal-input').val(),
         active: 'active',
         primary_contact_email: $('.trial-email-input').val(),

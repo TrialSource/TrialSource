@@ -49,6 +49,7 @@ app.routeDefault = function() {
     }
 
     $.getJSON('/api/v1/search', { type: 'condition', query: $('#condition-search').val() }).done(function(data) {
+      console.log(data);
       var excludeList = [];
       data.searches[1].forEach(function(item) {
         item.forEach(function(contra) {
@@ -78,7 +79,7 @@ app.routeDefault = function() {
 
       url = encodeURIComponent(url);
 
-      document.location.hash = 'search/' + url;
+      document.location.hash = 'search/' + url + '/10024';
 
       // $.getJSON(url).done(function(data) {
       // document.location.hash = 'search/' + url;

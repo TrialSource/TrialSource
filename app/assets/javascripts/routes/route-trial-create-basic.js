@@ -2,6 +2,7 @@ app.routeCreateTrialBasic = function(r) {
   if (app.bounce(true)) {
     return;
   }
+
   $('#main-content').html($('#create-study').html());
   $('.trial-start-input').pickadate({
     format: 'mmmm d, yyyy'
@@ -39,7 +40,8 @@ app.routeCreateTrialBasic = function(r) {
         conditions_attributes: [
           { name: $('.trial-condition-input').val() },
         ],
-        exclusions_attributes: grabExclusions(),
+        exclusion_ids: grabExclusionIds(),
+        exclusions_attributes: grabExclusionNames(),
         principal: $('.trial-principal-input').val(),
         active: true,
         primary_contact_email: $('.trial-email-input').val(),
@@ -61,6 +63,7 @@ app.routeCreateTrialBasic = function(r) {
       contentType : 'application/json',
       dataType: 'json'
     }).done(function(data) {
+      console.log(arg);
       document.location.hash = 'researcher/' + r.params.id + '/trials';
     });
   }
@@ -86,7 +89,9 @@ app.routeCreateTrialBasic = function(r) {
   });
 
   $('.contra-selector').select2({
-    tags: true
+    tags: true,
+    theme: 'classic',
+    dropdownParent: document.querySelector('body'),
   });
 
   $('.test-it').click(function() {
@@ -94,20 +99,32 @@ app.routeCreateTrialBasic = function(r) {
     grabExclusions();
   })
 
-  function grabExclusions() {
-    var exclusions = [];
+  function grabExclusionNames() {
+    var exclusionNames = [];
 
     if ($('.contra-selector').val()) {
       $('.contra-selector').val().forEach(function(item) {
-        if (Number(item)) {
-          // exclusions.push({ id: Number(item) });
-        } else {
-          exclusions.push({ name: item });
+        if (!Number(item)) {
+          exclusionNames.push({ name: item });
         }
       });
     }
 
-    return exclusions;
+    return exclusionNames;
+  }
+
+  function grabExclusionIds() {
+    var exclusionIds = [];
+
+    if ($('.contra-selector').val()) {
+      $('.contra-selector').val().forEach(function(item) {
+        if (Number(item)) {
+          exclusionIds.push(Number(item));
+        }
+      });
+    }
+
+    return exclusionIds;
   }
 
 }

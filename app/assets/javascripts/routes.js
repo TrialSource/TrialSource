@@ -3,7 +3,7 @@ app.routes = function() {
     app.routeDefault();
   });
 
-  app.router.add('search/:criteria', function(r) {
+  app.router.add('search/:criteria/:zip', function(r) {
     app.routeSearchResults(r);
   });
 

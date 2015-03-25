@@ -14,6 +14,10 @@ class Condition < ActiveRecord::Base
     [trials.flatten.count, exclusions]
   end
 
+  def self.nearby_trials(location)
+    Trial.near(location, 50)
+  end
+
   def self.included_trials(condition, current_exclusions, location)
     current_exclusions = current_exclusions.split(",").map{|e| e.to_i}
     conditions = Condition.where(Condition.arel_table[:name].matches(condition.downcase))
@@ -21,14 +25,18 @@ class Condition < ActiveRecord::Base
     conditions.each do |c|
       trials += c.trials
     end
-    trials.select do |t|
+    non_excluded = trials.select do |t|
       t.exclusions.none? {|e| current_exclusions.include?(e.id)}
+    end
+    if location.empty?
+      non_excluded
+    else
+      non_excluded.select do |t|
+          nearby_trials(location).include?(t)
+      end
     end
   end
 
-  def location(location)
-    nearby_trials = Trial.near(location, 50, :order => :distance)
-    nearby_trials
-  end
+
 
 end

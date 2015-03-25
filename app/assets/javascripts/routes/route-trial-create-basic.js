@@ -4,6 +4,9 @@ app.routeCreateTrialBasic = function(r) {
   }
 
   $('#main-content').html($('#create-study').html());
+
+  app.addressAutofill();
+
   $('.trial-start-input').pickadate({
     format: 'mmmm d, yyyy'
   });

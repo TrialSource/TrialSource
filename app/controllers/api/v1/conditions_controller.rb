@@ -2,7 +2,7 @@ class Api::V1::ConditionsController < ApplicationController
   before_action :set_condition, only: [:update]
 
   def index
-    render json: [number_of_trials, Condition.all]
+    render json: [number_of_trials, number_of_organizations, Condition.all]
   end
 
   def create

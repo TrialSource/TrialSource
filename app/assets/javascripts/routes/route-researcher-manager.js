@@ -74,7 +74,7 @@ app.routeResearcherManager = function(r) {
             showList();
           });
         } else {
-          alert('your shit no match');
+          $('.modal-error-message').text('input does not match');
         }
       });
     });

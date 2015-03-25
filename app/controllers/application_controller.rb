@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
     Trial.all.count
   end
 
+  def number_of_organizations
+    Organization.all.count
+  end
+
   def authenticate_user
     if session[:user_id] == nil
       redirect_to root_path, notice: "You must be logged in to see that page"

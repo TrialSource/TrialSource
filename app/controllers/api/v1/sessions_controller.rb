@@ -21,6 +21,6 @@ class Api::V1::SessionsController < ApplicationController
 
 	 def make_session(user_id,user_type)
 		session[:user_id] = user_id
-	  session[:user_type]= user_type
+	  session[:user_type] = user_type
 	 end
 end

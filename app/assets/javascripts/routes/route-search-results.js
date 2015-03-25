@@ -2,6 +2,7 @@ app.routeSearchResults = function(r) {
   if (app.bounce()) {
     return;
   }
+
   var trials = [];
   $.getJSON(decodeURIComponent(r.params.criteria)).done(function(data) {
     $('#main-content').html($('#search-results').html());

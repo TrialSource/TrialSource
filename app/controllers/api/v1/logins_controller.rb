@@ -1,15 +1,14 @@
 class Api::V1::LoginsController < ApplicationController
 
 	def create
-	  login= Login.new(login_params)
-	  if login.save
-	    render json: login
+	  @login = Login.new(login_params)
+	  if @login.save
+			LoginMailer.welcome_email(@login).deliver_now
+	    render json: @login
 	  else
 	    render json: "Invalid parameters"
 	  end
-  end
-
-
+	end
 
 	private
 

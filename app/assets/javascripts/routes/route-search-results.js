@@ -1,9 +1,12 @@
 app.routeSearchResults = function(r) {
+  if (app.bounce()) {
+    return;
+  }
+
   var trials = [];
-  $.getJSON('/api/v1/search', { type: 'condition', query: r.params.term }).done(function(data) {
+  $.getJSON(decodeURIComponent(r.params.criteria)).done(function(data) {
     $('#main-content').html($('#search-results').html());
-    console.log(data);
-    trials = data.searches;
+    trials = data.conditions;
     showAllResults();
   });
 

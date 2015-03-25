@@ -1,4 +1,8 @@
 app.routeCreateTrialBasic = function(r) {
+  if (app.bounce(true)) {
+    return;
+  }
+
   $('#main-content').html($('#create-study').html());
   $('.trial-start-input').pickadate({
     format: 'mmmm d, yyyy'
@@ -36,9 +40,10 @@ app.routeCreateTrialBasic = function(r) {
         conditions_attributes: [
           { name: $('.trial-condition-input').val() },
         ],
-        conditiony: $('.trial-condition-input').val(),
+        exclusion_ids: grabExclusionIds(),
+        exclusions_attributes: grabExclusionNames(),
         principal: $('.trial-principal-input').val(),
-        active: 'active',
+        active: true,
         primary_contact_email: $('.trial-email-input').val(),
         location: $('.trial-location-input').val(),
         name: $('.trial-title-input').val(),
@@ -51,7 +56,6 @@ app.routeCreateTrialBasic = function(r) {
   }
 
   function postTrial(arg) {
-    console.log(arg);
     $.ajax({
       type: "POST",
       url: '/api/v1/trials',
@@ -59,7 +63,7 @@ app.routeCreateTrialBasic = function(r) {
       contentType : 'application/json',
       dataType: 'json'
     }).done(function(data) {
-      console.log(data);
+      console.log(arg);
       document.location.hash = 'researcher/' + r.params.id + '/trials';
     });
   }
@@ -78,4 +82,49 @@ app.routeCreateTrialBasic = function(r) {
     }
     return true;
   }
+
+  $.getJSON('/api/v1/exclusions').done(function(data) {
+    var contraTemplate = _.template(app.contraOption, { variable: 'm' });
+    $('.contra-selector').html(contraTemplate({ contras: data.exclusions }));
+  });
+
+  $('.contra-selector').select2({
+    tags: true,
+    theme: 'classic',
+    dropdownParent: document.querySelector('body'),
+  });
+
+  $('.test-it').click(function() {
+    console.log($('.contra-selector').val());
+    grabExclusions();
+  })
+
+  function grabExclusionNames() {
+    var exclusionNames = [];
+
+    if ($('.contra-selector').val()) {
+      $('.contra-selector').val().forEach(function(item) {
+        if (!Number(item)) {
+          exclusionNames.push({ name: item });
+        }
+      });
+    }
+
+    return exclusionNames;
+  }
+
+  function grabExclusionIds() {
+    var exclusionIds = [];
+
+    if ($('.contra-selector').val()) {
+      $('.contra-selector').val().forEach(function(item) {
+        if (Number(item)) {
+          exclusionIds.push(Number(item));
+        }
+      });
+    }
+
+    return exclusionIds;
+  }
+
 }

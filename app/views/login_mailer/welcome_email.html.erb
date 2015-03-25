@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to TrialSource, <%= @login.email %></h1>
+    <p>
+      You have signed up for TrialSource, the source for interventive clinical trials.
+      Your username is: <%= @login.email %>.<br>
+      Your password is: <%= @login.password %>.<br>
+    </p>
+    <p>
+      To log in to your account, follow this link <%= @url %>.
+    </p>
+    <p>Thanks for signing up for TrialSource!</p>
+  </body>
+</html>

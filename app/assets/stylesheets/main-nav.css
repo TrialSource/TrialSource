@@ -7,7 +7,10 @@
 }
 
 .main-nav {
-  padding: 1em;
+  padding: 1em 5%;
+  max-width: 1250px;
+  min-width: 900px;
+  margin: auto;
 }
 
 .nav-link {
@@ -28,19 +31,27 @@
   font-weight: 700;
   color: #0083ff;
 }
-/*
-button {
-  background: dodgerblue;
-  color: white;
-  -webkit-transition: all .1s;
+
+.login-logout {
+  font-size: 1.15em;
+  background: none;
+  height: 25px;
+  width: 100px;
+  color: dodgerblue;
+  font-weight: 300;
+  border: none;
   cursor: pointer;
 }
 
-button:hover {
-  background: #0083ff;
-  -webkit-transition: none;
+.login-logout-wrapper {
+  position: relative;
+  display: inline-block;
+  float: right;
 }
 
-button:active {
-  background: darkorange;
-}*/
+.top-form {
+  -webkit-transform: none;
+  top: 100%;
+  left: -200%;
+  background: rgba(0, 0, 0, .05);
+}

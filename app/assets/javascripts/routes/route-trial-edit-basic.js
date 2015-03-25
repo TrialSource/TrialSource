@@ -1,6 +1,9 @@
 app.routeEditTrialBasic = function(r) {
+  if (app.bounce(true)) {
+    return;
+  }
+
   $('#main-content').html($('#edit-study').html());
-  console.log(r.params);
 
   var currentTrial;
 
@@ -64,7 +67,6 @@ app.routeEditTrialBasic = function(r) {
         conditions_attributes: [
           { name: $('.trial-condition-input').val(), id: currentTrial.conditions[0].id },
         ],
-        conditiony: $('.trial-condition-input').val(),
         principal: $('.trial-principal-input').val(),
         active: 'active',
         primary_contact_email: $('.trial-email-input').val(),
@@ -79,7 +81,6 @@ app.routeEditTrialBasic = function(r) {
   }
 
   function postTrial(arg) {
-    console.log(arg);
     $.ajax({
       type: "PUT",
       url: '/api/v1/trials/' + r.params.tid,
@@ -87,7 +88,6 @@ app.routeEditTrialBasic = function(r) {
       contentType : 'application/json',
       dataType: 'json'
     }).done(function(data) {
-      console.log('success');
       document.location.hash = 'researcher/' + r.params.id + '/trials';
     });
   }

@@ -1,17 +1,17 @@
 .trial-input {
+  position: relative;
   display: block;
-  width: 50%;
   font-size: 1.25em;
   height: 1.75em;
-  margin: auto;
   text-align: left;
   padding: .25em;
   font-weight: 300;
+  width: 100%;
 }
 
 .trial-submit {
   display: block;
-  width: 50%;
+  width: 100%;
   font-size: 1.25em;
   height: 1.75em;
   margin: auto;
@@ -30,6 +30,7 @@
 .create-trial-form {
   width: 100%;
   margin: auto;
+  position: relative;
 }
 
 .trial-form-header {
@@ -47,12 +48,15 @@
 
 .trial-abstract-input {
   font-size: 1em;
-  height: 30%;
+  height: 25%;
   resize: none;
 }
 
 .create-trial-form {
   margin-top: 2em;
+  position: relative;
+  margin: auto;
+  width: 600px;;
 }
 
 .trial-form-header {
@@ -60,12 +64,16 @@
   font-weight: 300;
 }
 
+.trial-complete-input {
+  margin-bottom: .5em;
+}
+
 .trial-start-input, .trial-complete-input {
   position: relative;
 }
 
 .cancel-edit {
-  width: 50%;
+  width: 100%;
   background: tomato;
   height: 35px;
   text-align: center;
@@ -85,4 +93,24 @@
 
 .cancel-edit:active {
   background: deepskyblue;
+}
+
+.trial-start-input, .trial-principal-input {
+  display: inline-block;
+  width: 49.1%;
+}
+
+.trial-complete-input, .trial-email-input {
+  display: inline-block;
+  width: 49.1%;
+  float: right;
+}
+
+.trial-contra-label {
+  width: 100%;
+  margin: 1em 0;
+  font-size: 1em;
+  font-weight: 300;
+  text-align: center;
+  color: darkgrey;
 }

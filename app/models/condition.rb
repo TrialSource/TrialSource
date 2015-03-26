@@ -30,21 +30,21 @@ class Condition < ActiveRecord::Base
     matching_trials
   end
 
-private
+  private
 
 
-def self.trials_for_condition(condition)
-  conditions = Condition.where(Condition.arel_table[:name].matches(condition.downcase))
-  @trials = Set.new
-  conditions.each do |c|
-    @trials += c.trials
+  def self.trials_for_condition(condition)
+    conditions = Condition.where(Condition.arel_table[:name].matches(condition.downcase))
+    @trials = Set.new
+    conditions.each do |c|
+      @trials += c.trials
+    end
   end
-end
 
-def self.non_excluded_trials(current_exclusions)
-  @non_excluded = @trials.select do |t|
-    t.exclusions.none? {|e| current_exclusions.include?(e.id)}
+  def self.non_excluded_trials(current_exclusions)
+    @non_excluded = @trials.select do |t|
+      t.exclusions.none? {|e| current_exclusions.include?(e.id)}
+    end
   end
-end
 
 end

@@ -9,9 +9,10 @@ app.routeDefault = function() {
 
   $.getJSON('/api/v1/conditions').done(function(data) {
     console.log(data);
-    var numTrials = data.conditions[0][1];
-    console.log('we have ' + numTrials + ' trials in our database');
-    var conditions = data.conditions[1];
+    var numTrials = data.conditions[0];
+    var numOrgs = data.conditions[1];
+    console.log('we have ' + numTrials + ' trials at ' + numOrgs + ' organizations in our database');
+    var conditions = data.conditions[2];
     $('#condition-search').keyup(function(e) {
       if (!((e.keyCode >= 65 && e.keyCode <= 90) || e.keyCode === 32 || e.keyCode === 189)) {
         return;
@@ -23,7 +24,7 @@ app.routeDefault = function() {
       var index = -1;
 
       for (var i = 0; i < conditions.length; ++i) {
-        if (conditions[i].toLowerCase().indexOf(searchTerm) === 0) {
+        if (conditions[i].name.toLowerCase().indexOf(searchTerm) === 0) {
           index = i;
           break;
         }
@@ -33,8 +34,8 @@ app.routeDefault = function() {
         return;
       }
 
-      searchField.value = term + conditions[index].slice(term.length);
-      searchField.setSelectionRange(term.length, conditions[index].length);
+      searchField.value = term + conditions[index].name.slice(term.length);
+      searchField.setSelectionRange(term.length, conditions[index].name.length);
 
     })
   });

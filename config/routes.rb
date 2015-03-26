@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       resources :sessions, only: [:create]
       delete 'logout' => 'sessions#destroy'
       resource :search, only: [:show]
+      resources :notifications
     end
   end
   resources :pages

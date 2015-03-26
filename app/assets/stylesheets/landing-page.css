@@ -38,6 +38,8 @@
 
 .srch-error-message, .login-error-message {
   width: 350px;
+  position: absolute;
+  top: 105%;
 }
 
 .lp-input {

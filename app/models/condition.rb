@@ -20,12 +20,14 @@ class Condition < ActiveRecord::Base
     trials_for_condition(condition)
     non_excluded_trials(current_exclusions)
     if location.empty?
-      @non_excluded
+      matching_trials = @non_excluded
     else
-      @non_excluded.select do |t|
+      matching_trials = @non_excluded.select do |t|
           Trial.near(location, range).include?(t)
       end
     end
+    matching_trials.each {|t| t.increase_appearance_count}
+    matching_trials
   end
 
 private

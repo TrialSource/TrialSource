@@ -18,6 +18,22 @@ class Trial < ActiveRecord::Base
     Trial.where(:archived == false)
   end
 
+  def increase_appearance_count
+    if number_of_appearances
+      update(number_of_appearances: number_of_appearances + 1)
+    else
+      update(number_of_appearances: 1)
+    end
+  end
+
+  def increase_view_count
+    if number_of_views
+      update(number_of_views: number_of_views + 1)
+    else
+      update(number_of_views: 1)
+    end
+  end
+
   def self.search(query)
     Trial.basic_search(query)
   end

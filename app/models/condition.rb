@@ -15,7 +15,7 @@ class Condition < ActiveRecord::Base
   end
 
 
-  def self.matching_trials(condition, current_exclusions, location)
+  def self.matching_trials(condition, current_exclusions, location, range)
     current_exclusions = current_exclusions.split(",").map{|e| e.to_i}
     trials_for_condition(condition)
     non_excluded_trials(current_exclusions)
@@ -23,16 +23,13 @@ class Condition < ActiveRecord::Base
       @non_excluded
     else
       @non_excluded.select do |t|
-          nearby_trials(location).include?(t)
+          Trial.near(location, range).include?(t)
       end
     end
   end
 
 private
 
-def self.nearby_trials(location)
-  Trial.near(location, 50)
-end
 
 def self.trials_for_condition(condition)
   conditions = Condition.where(Condition.arel_table[:name].matches(condition.downcase))

@@ -83,11 +83,9 @@ app.routeDefault = function() {
         url += item + ',';
       });
 
-      url += '&&location=&&range=';
-
       url = encodeURIComponent(url);
 
-      document.location.hash = 'search/' + url + '/10024';
+      document.location.hash = 'search/' + url;
 
       // $.getJSON(url).done(function(data) {
       // document.location.hash = 'search/' + url;

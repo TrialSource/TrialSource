@@ -3,12 +3,30 @@ app.routeSearchResults = function(r) {
     return;
   }
 
+  var searchTerm, exclusions;
+  grabSearchCriteria();
+
   var trials = [];
-  $.getJSON(decodeURIComponent(r.params.criteria)).done(function(data) {
-    $('#main-content').html($('#search-results').html());
+  $('#main-content').html($('#search-results').html());
+  $.getJSON(decodeURIComponent(r.params.criteria) + '&&location=&&range=').done(function(data) {
     trials = data.conditions;
     showAllResults();
+    console.log(trials);
   });
+
+  $('.geo-form').submit(function(e) {
+    e.preventDefault();
+    alert('fire');
+    var url = decodeURIComponent(r.params.criteria) + '&&location=' + $('.zip-input').val() + '&&range=' + $('.range-input').val();
+    $.getJSON(url).done(function(data) {
+      $('#main-content').html($('#search-results').html());
+      trials = data.conditions;
+      showAllResults();
+      console.log(trials);
+    });
+  });
+
+  console.log(decodeURIComponent(r.params.criteria));
 
   function showAllResults() {
     var listTemplate = _.template(app.trialListing.search, { variable: 'm' });
@@ -24,5 +42,11 @@ app.routeSearchResults = function(r) {
         $('.bck-btn').click(showAllResults);
       });
     });
+  }
+
+  function grabSearchCriteria() {
+    var url = decodeURIComponent(r.params.criteria);
+    searchTerm = url.match(/condition=(.*)(?=&&)/)[1];
+    exclusions = url.match(/exclusions=(.*)/)[1].split(',');
   }
 };

@@ -53,7 +53,7 @@ app.routeResearcherTrials = function(r) {
             showAllResults();
           });
         } else {
-          alert('your shit no match');
+          $('.modal-error-message').text('input does not match')
         }
       });
     });

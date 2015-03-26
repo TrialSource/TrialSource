@@ -25,6 +25,6 @@ app.setLogAction = function() {
 
   function setLogin() {
     logButton = $('.login-logout');
-    logButton.text('login');
+    logButton.text('');
   }
 }

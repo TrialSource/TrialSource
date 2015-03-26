@@ -1,12 +1,6 @@
 .rslts-elem {
   display: inline-block;
   height: 85%;
-  vertical-align: top;
-}
-
-.rslts-ctrl-cntnr {
-  width: 22.5%;
-  margin-right: 1.5%;
 }
 
 .ctrl-elem {
@@ -22,13 +16,6 @@
 
 .disq-cntnr {
   height: 72%;
-}
-
-.rslts-cntnr {
-  width: 74%;
-  height: 84.75%;
-  border: 1px solid lightgrey;
-  overflow: auto;
 }
 
 .rslt-input:focus {
@@ -121,4 +108,13 @@
   font-family: untitled-font-1;
   color: white;
   margin-left: -.65em;
+}
+
+.rslts-cntnr {
+  display: block;
+  width: 90%;
+  height: 95%;
+  border: 1px solid lightgrey;
+  overflow: auto;
+  margin: auto;
 }

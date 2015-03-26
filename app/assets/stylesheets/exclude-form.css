@@ -3,6 +3,10 @@
   padding: 15px;
   box-sizing: content-box;
   width: 350px;
+  max-height: 40%;
+  overflow: auto;
+  font-size: 1em;
+  top: 37.5%;
 }
 
 .excl-lbl {
@@ -12,8 +16,8 @@
 
 .excl-frm-instructions {
   text-align: center;
-  font-weight: 300;
-  font-size: .85em;
+  font-weight: 400;
+  font-size: .9em;
   margin-bottom: 15px;
 }
 
@@ -31,9 +35,9 @@
 }
 
 .excl-lbl-txt {
-  font-size: 1.25em;
+  font-size: .9em;
   font-weight: 300;
-  margin-left: 2em;
+  margin-left: 1.25em;
 }
 
 .excl-lbl + .excl-lbl {
@@ -42,5 +46,5 @@
 
 .excl-chck {
   position: absolute;
-  top: 7px;
+  top: 3px;
 }

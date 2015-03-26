@@ -2,9 +2,7 @@ class Api::V1::ConditionsController < ApplicationController
   before_action :set_condition, only: [:update]
 
   def index
-    condition_names = Condition.all.map {|c| c.name}
-    condition_names= condition_names.uniq
-    render json: [number_of_trials, condition_names]
+    render json: [number_of_trials, number_of_organizations, Condition.all]
   end
 
   def create
@@ -17,7 +15,12 @@ class Api::V1::ConditionsController < ApplicationController
   end
 
   def trials
-    render json: Condition.included_trials(params[:condition], params[:exclusions])
+    if params[:range].empty?
+      range = 50
+    else
+      range = params[:range]
+    end
+    render json: Condition.matching_trials(params[:condition], params[:exclusions], params[:location], range)
   end
 
   def update

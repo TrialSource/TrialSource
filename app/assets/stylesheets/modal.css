@@ -1,12 +1,12 @@
 .modal-wrapper {
   height: 100%;
-  width: 120%;
+  width: 100%;
   background: rgba(0, 0, 0, .35);
   position: fixed;
-  margin-left: -10%;
   visibility: hidden;
   opacity: 0;
   transition: all .25s;
+  z-index: 1000;
 }
 
 .visible {
@@ -62,4 +62,12 @@
 
 .cancel-delete {
   background: dodgerblue;
+}
+
+.modal-error-message {
+  color: tomato;
+  font-size: .9em;
+  font-weight: 300;
+  text-align: center;
+  margin-top: 1.5em;
 }

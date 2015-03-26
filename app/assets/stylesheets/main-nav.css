@@ -7,7 +7,10 @@
 }
 
 .main-nav {
-  padding: 1em;
+  padding: 1em 5%;
+  max-width: 1250px;
+  min-width: 900px;
+  margin: auto;
 }
 
 .nav-link {
@@ -37,7 +40,6 @@
   color: dodgerblue;
   font-weight: 300;
   border: none;
-  margin-right: 2em;
   cursor: pointer;
 }
 

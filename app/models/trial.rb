@@ -26,6 +26,14 @@ class Trial < ActiveRecord::Base
     end
   end
 
+  def increase_view_count
+    if number_of_views
+      update(number_of_views: number_of_views + 1)
+    else
+      update(number_of_views: 1)
+    end
+  end
+
   def self.search(query)
     Trial.basic_search(query)
   end

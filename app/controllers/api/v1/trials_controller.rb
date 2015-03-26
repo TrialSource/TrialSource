@@ -1,5 +1,5 @@
 class Api::V1::TrialsController < ApplicationController
-  before_action :set_trial, only: [:update, :destroy, :show]
+  before_action :set_trial, only: [:update, :destroy, :show, :views]
   before_action :authenticate_user, only: [:create, :update]
 
   def index
@@ -18,6 +18,11 @@ class Api::V1::TrialsController < ApplicationController
   def show
     render json: @trial
   end
+
+  def views
+    @trial.increase_view_count
+  end
+
 
   def doctor
     render json: Trial.where(doctor_id: params[:doctor])

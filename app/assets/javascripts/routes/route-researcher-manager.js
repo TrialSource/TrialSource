@@ -38,10 +38,10 @@ app.routeResearcherManager = function(r) {
     $('.r-name').toArray().forEach(function(name, i) {
       $(name).click(function(e) {
         var detailTemplate = _.template(app.researcherDetail, { variable: 'm' });
-        $('.researcher-list-actual').html(detailTemplate({ researcher: researchers[i] }));
+        $('.researcher-list-actual').html(detailTemplate({ researcher: listState[i] }));
         $('.bck-btn').click(showList);
         var trials = [];
-        $.getJSON('/api/v1/trials/doctor', { doctor: researchers[i].id }).done(function(data) {
+        $.getJSON('/api/v1/trials/doctor', { doctor: listState[i].id }).done(function(data) {
           trials = data.trials;
           var trialsTemplate = _.template(app.trialListing.admin, { variable: 'm' });
           $('.rslts-list').html(trialsTemplate({ results: trials }));

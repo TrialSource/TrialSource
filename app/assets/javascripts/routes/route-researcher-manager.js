@@ -39,18 +39,23 @@ app.routeResearcherManager = function(r) {
       $(name).click(function(e) {
         var detailTemplate = _.template(app.researcherDetail, { variable: 'm' });
         $('.researcher-list-actual').html(detailTemplate({ researcher: listState[i] }));
-        $('.bck-btn').click(showList);
         var trials = [];
         $.getJSON('/api/v1/trials/doctor', { doctor: listState[i].id }).done(function(data) {
           trials = data.trials;
-          var trialsTemplate = _.template(app.trialListing.admin, { variable: 'm' });
-          $('.rslts-list').html(trialsTemplate({ results: trials }));
-          addTrialListeners(trials);
-          activateDeleteButton(i);
-          activateEditButton(i);
+          displayResearcherDetail(trials, i);
         });
+        $('.researcher-search').attr('disabled', true);
       });
     });
+  }
+
+  function displayResearcherDetail(trials, index) {
+    var trialsTemplate = _.template(app.trialListing.admin, { variable: 'm' });
+    $('.rslts-list').html(trialsTemplate({ results: trials }));
+    addTrialListeners(trials, index);
+    activateDeleteButton(index);
+    activateEditButton(index);
+    $('.bck-btn').click(showList);
   }
 
   function activateDeleteButton(i) {
@@ -87,12 +92,14 @@ app.routeResearcherManager = function(r) {
     })
   }
 
-  function addTrialListeners(trials) {
+  function addTrialListeners(trials, j) {
     $('.rslt-name').toArray().forEach(function(trial, i) {
       $(trial).click(function(e) {
         var trialDetailTemplate = _.template(app.trialDetail.readable, { variable: 'm' });
         $('.rslts-list').html(trialDetailTemplate({ trial: trials[i] }));
-        $('.t-detail-container').find('.bck-btn').remove();
+        $('.bck-btn').click(function() {
+          displayResearcherDetail(trials, j)
+        })
       })
     })
   }
@@ -119,6 +126,7 @@ app.routeResearcherManager = function(r) {
     var listTemplate = _.template(app.researcherListing, { variable: 'm' });
     $('.researcher-list-actual').html(listTemplate({ drs: listState }));
     addNameListeners();
+    $('.researcher-search').removeAttr('disabled');
   }
 
   function grabResearcher() {

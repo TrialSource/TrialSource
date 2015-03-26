@@ -15,7 +15,12 @@ class Api::V1::ConditionsController < ApplicationController
   end
 
   def trials
-    render json: Condition.matching_trials(params[:condition], params[:exclusions], params[:location])
+    if params[:range].empty?
+      range = 50
+    else
+      range = params[:range]
+    end
+    render json: Condition.matching_trials(params[:condition], params[:exclusions], params[:location], range)
   end
 
   def update

@@ -18,7 +18,7 @@ class Trial < ActiveRecord::Base
     Trial.where(:archived == false)
   end
 
-  def search_appearance
+  def increase_appearance_count
     if number_of_appearances
       update(number_of_appearances: number_of_appearances + 1)
     else

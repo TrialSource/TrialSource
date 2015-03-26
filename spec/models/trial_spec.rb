@@ -27,7 +27,7 @@ RSpec.describe Trial, type: :model do
   describe "#search_appearance" do
     it "increases the number of appearances for a trial" do
       trial = Trial.create(name: "asthma study", description: "asthma study", location: "Durham, NC", primary_contact_email: "bill@example.com",principal: "Bill Smith", active: true, conditions_attributes: [{name: "asthma"}])
-      trial.search_appearance
+      trial.increase_appearance_count
 
       expect(trial.number_of_appearances).to eq(1)
     end

@@ -7,6 +7,8 @@ class Trial < ActiveRecord::Base
   validates :location, presence: true
   validates :primary_contact_email, presence: true
   validates :principal, presence: true
+  geocoded_by :location
+  after_validation :geocode, :if => :location_changed?
 
   accepts_nested_attributes_for :conditions
   accepts_nested_attributes_for :exclusions

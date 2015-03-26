@@ -1,0 +1,11 @@
+## webapp
+
+webserver_name: #aws.com
+deploy_directory: #/data/temp
+app_name: trialsource
+
+rubyTmpDir: /usr/local/src
+rubyUrl: http://cache.ruby-lang.org/pub/ruby/2.2/ruby-2.2.1.tar.gz
+rubyCompressedFile: ruby-2.2.1.tar.gz
+rubyName: ruby-2.2.1
+tmpRubyPath: "{{rubyTmpDir}}/{{rubyName}}"

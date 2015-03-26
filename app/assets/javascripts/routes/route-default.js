@@ -43,14 +43,19 @@ app.routeDefault = function() {
   $('.search-form').submit(function(e) {
     e.preventDefault();
 
-    searchTerm = $('#condition-search').val();
-
-    if (!verifySearch()) {
+    if (!validateInput()) {
       return;
     }
 
+    searchTerm = $('#condition-search').val();
+
     $.getJSON('/api/v1/search', { type: 'condition', query: $('#condition-search').val() }).done(function(data) {
       console.log(data);
+      if (data.searches[1].length === 0) {
+        $('.srch-error-message').text('sorry, no matches');
+        $('.login-error-message').text('');
+        return;
+      }
       var excludeList = [];
       data.searches[1].forEach(function(item) {
         item.forEach(function(contra) {
@@ -80,7 +85,7 @@ app.routeDefault = function() {
 
       url = encodeURIComponent(url);
 
-      document.location.hash = 'search/' + url + '/10024';
+      document.location.hash = 'search/' + url;
 
       // $.getJSON(url).done(function(data) {
       // document.location.hash = 'search/' + url;
@@ -115,15 +120,6 @@ app.routeDefault = function() {
     })
   });
 
-  function verifySearch() {
-    if ($('.condition-field').val() === '') {
-      $('.srch-error-message').text('search term required');
-      $('.login-error-message').text('');
-      return false;
-    }
-    return true;
-  }
-
   function verifyLogin() {
     if (!$('.un-field').val() || !$('.pw-field').val()) {
       $('.login-error-message').text('email and password required');
@@ -154,5 +150,14 @@ app.routeDefault = function() {
 
   function loginResearcher(id) {
     document.location.hash = 'researcher/' + id + '/trials/';
+  }
+
+  function validateInput() {
+    if (!$('#condition-search').val()) {
+      $('.srch-error-message').text('search term required');
+      $('.login-error-message').text('');
+      return false;
+    }
+    return true;
   }
 }

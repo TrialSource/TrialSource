@@ -3,6 +3,8 @@ app.bounce = function(secure) {
   var id = $('body').data('id');
   var type = $('body').data('type');
 
+  $('.modal-wrapper').removeClass('visible');
+
   if (!secure && type) {
     if (type === 'Doctor') {
       redirectResearcher(id);

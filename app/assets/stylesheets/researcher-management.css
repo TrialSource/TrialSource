@@ -121,3 +121,9 @@
 .r-detail-name {
   text-align: center;
 }
+
+.d-bck-btn {
+  display: block;
+  /*margin-left: auto;
+  margin-right: auto;*/
+}

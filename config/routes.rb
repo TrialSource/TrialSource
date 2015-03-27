@@ -13,8 +13,10 @@ Rails.application.routes.draw do
         end
       end
       resources :trials do
-        collection do
+        member do
           post :views
+        end
+        collection do
           get :doctor
           get :org
         end

@@ -12,7 +12,7 @@ app.routeOrganizationTrials = function(r) {
   });
 
   function showList() {
-    var listTemplate = _.template(app.trialListing.admin, { variable: 'm' });
+    var listTemplate = _.template(app.trialListing.researcher, { variable: 'm' });
     $('.trial-list').html(listTemplate({ results: listState }));
     addNameListeners();
   }

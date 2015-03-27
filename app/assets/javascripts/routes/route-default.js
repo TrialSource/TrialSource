@@ -11,11 +11,12 @@ app.routeDefault = function() {
     console.log(data);
     var numTrials = data.conditions[0];
     var numOrgs = data.conditions[1];
-    $('.numTrials').text('search over ' + numTrials + ' trials');
-    $('.numConditions').text('treating ' + data.conditions[2].length + ' conditions');
-    $('.numOrgs').text('across ' + numOrgs + ' institutions');
+    $('.num-trials-actual').text(numTrials);
+    $('.num-conditions-actual').text(data.conditions[2].length);
+    $('.num-orgs-actual').text(numOrgs);
     console.log('we have ' + numTrials + ' trials at ' + numOrgs + ' organizations in our database');
     var conditions = data.conditions[2];
+
     $('#condition-search').keyup(function(e) {
       if (!((e.keyCode >= 65 && e.keyCode <= 90) || e.keyCode === 32 || e.keyCode === 189)) {
         return;

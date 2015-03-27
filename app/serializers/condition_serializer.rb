@@ -1,3 +1,3 @@
 class ConditionSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :id, :name, :number_of_searches
 end

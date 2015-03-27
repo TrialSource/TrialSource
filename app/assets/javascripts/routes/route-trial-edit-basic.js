@@ -5,6 +5,8 @@ app.routeEditTrialBasic = function(r) {
 
   $('#main-content').html($('#edit-study').html());
 
+  app.addressAutofill();
+
   var currentTrial;
 
   $.getJSON('/api/v1/trials/' + r.params.tid).done(function(data) {
@@ -49,6 +51,12 @@ app.routeEditTrialBasic = function(r) {
 
   function validateForm() {
     var isValid = true
+
+    if (!$('.trial-email-input').val().match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[A-Za-z]{2,4}/)) {
+      $('.error-message').text('not a valid email');
+      isValid = false;
+    }
+
     $('.trial-input').toArray().forEach(function(item) {
       if (!$(item).val() || $(item).val() === '') {
         isValid = false;

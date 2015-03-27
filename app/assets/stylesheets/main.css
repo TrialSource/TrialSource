@@ -20,10 +20,11 @@ input {
 #main-content {
   margin: auto;
   position: relative;
+  min-height: 700px;
   height: 87.5%;
   min-width: 900px;
-  max-width: 1250px;
-  padding: 0 5%;
+  max-width: 1200px;
+  padding: 0 7.5%;
 }
 
 .not-found {

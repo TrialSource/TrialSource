@@ -25,6 +25,12 @@ app.routeCreateTrialBasic = function(r) {
 
   function validateForm() {
     var isValid = true
+
+    if (!$('.trial-email-input').val().match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[A-Za-z]{2,4}/)) {
+      $('.error-message').text('not a valid email');
+      isValid = false;
+    }
+
     $('.trial-input').toArray().forEach(function(item) {
       if (!$(item).val() || $(item).val() === '') {
         isValid = false;
@@ -107,13 +113,6 @@ app.routeCreateTrialBasic = function(r) {
     dropdownParent: document.querySelector('body'),
   });
 
-
-
-  $('.test-it').click(function() {
-    console.log($('.contra-selector').val());
-    grabExclusions();
-  })
-
   function grabExclusionNames() {
     var exclusionNames = [];
 
@@ -169,6 +168,5 @@ app.routeCreateTrialBasic = function(r) {
 
     return conditionIds;
   }
-
 
 }

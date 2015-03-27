@@ -46,6 +46,10 @@ app.routeSearchResults = function(r) {
         var detailTemplate = _.template(app.trialDetail.readable, { variable: 'm' });
         $('.rslts-list').html(detailTemplate({ trial: trials[i] }));
         $('.bck-btn').click(showAllResults);
+        $.ajax({
+          type: "POST",
+          url: '/api/v1/trials/' + trials[i].id + '/views',
+        });
       });
     });
   }

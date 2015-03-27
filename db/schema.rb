@@ -61,17 +61,6 @@ ActiveRecord::Schema.define(version: 20150327150700) do
     t.string   "user_type"
   end
 
-  create_table "notifications", force: :cascade do |t|
-    t.string   "encrypted_email"
-    t.string   "encrypted_email_salt"
-    t.string   "encrypted_email_iv"
-    t.string   "condition"
-    t.integer  "condition_id"
-    t.integer  "exclusion_ids"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-  end
-
   create_table "organizations", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

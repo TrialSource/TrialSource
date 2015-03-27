@@ -92,6 +92,25 @@
   position: absolute;
   width: 100%;
   left: 50%;
-  top: 37.5%;
+  top: 36%;
   -webkit-transform: translate(-50%, -50%);
+}
+
+.numTrials {
+  color: slateblue;
+  margin-left: -25%;
+}
+
+.numOrgs {
+  color: purple;
+}
+
+.numConditions {
+  color: indigo;
+  margin-left: 25%;
+}
+
+.num-trials-actual, .num-conditions-actual, .num-orgs-actual {
+  font-weight: 700;
+  color: inherit;
 }

@@ -17,10 +17,20 @@ RSpec.describe Condition, type: :model do
       included_trial = Trial.create(name: "asthma study", description: "asthma study", location: "Durham, NC", primary_contact_email: "bill@example.com",principal: "Bill Smith", active: true, conditions_attributes: [{name: "asthma"}], exclusions_attributes: [{name: "diabetes"}])
       excluded_trial = Trial.create(name: "other asthma study", description: "asthma study", location: "New York, NY", primary_contact_email: "bill@example.com",principal: "Bill Smith", active: true, conditions_attributes: [{name: "asthma"}], exclusions_attributes: [{name: "heart conditions"}])
 
-      results = Condition.included_trials("asthma", excluded_trial.exclusions.first.id.to_s)
+      results = Condition.matching_trials("asthma", excluded_trial.exclusions.first.id.to_s, "Durham,NC", 50)
 
       expect(results).to match_array([included_trial])
     end
   end
 
+  describe "#increase_search_count" do
+    it "increases the number of searches for a condition" do
+      trial = Trial.create(name: "asthma study", description: "asthma study", location: "Durham, NC", primary_contact_email: "bill@example.com",principal: "Bill Smith", active: true, conditions_attributes: [{name: "asthma"}])
+      condition = Condition.last
+      condition.increase_search_count
+
+      expect(condition.number_of_searches).to eq(1)
+    end
   end
+
+end

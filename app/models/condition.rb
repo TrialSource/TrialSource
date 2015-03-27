@@ -30,11 +30,21 @@ class Condition < ActiveRecord::Base
     matching_trials
   end
 
+  def increase_search_count
+    if number_of_searches
+      update(number_of_searches: number_of_searches + 1)
+    else
+      update(number_of_searches: 1)
+    end
+  end
+
   private
+
 
 
   def self.trials_for_condition(condition)
     conditions = Condition.where(Condition.arel_table[:name].matches(condition.downcase))
+    conditions.each {|c| c.increase_search_count}
     @trials = Set.new
     conditions.each do |c|
       @trials += c.trials

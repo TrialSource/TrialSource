@@ -11,6 +11,9 @@ app.routeDefault = function() {
     console.log(data);
     var numTrials = data.conditions[0];
     var numOrgs = data.conditions[1];
+    $('.numTrials').text('search over ' + numTrials + ' trials');
+    $('.numConditions').text('treating ' + data.conditions[2].length + ' conditions');
+    $('.numOrgs').text('across ' + numOrgs + ' institutions');
     console.log('we have ' + numTrials + ' trials at ' + numOrgs + ' organizations in our database');
     var conditions = data.conditions[2];
     $('#condition-search').keyup(function(e) {
@@ -87,75 +90,12 @@ app.routeDefault = function() {
 
       document.location.hash = 'search/' + url;
 
-      // $.getJSON(url).done(function(data) {
-      // document.location.hash = 'search/' + url;
-      // console.log(data.conditions);
-      // })
     });
-  }
-
-  $('.login-form').submit(function(e) {
-    e.preventDefault();
-
-    if (!verifyLogin()) {
-      return;
-    }
-    var login = getLogin();
-
-    $.ajax({
-      type: "POST",
-      url: '/api/v1/sessions',
-      data: JSON.stringify(login),
-      contentType : 'application/json',
-      dataType: 'json'
-    }).done(function(data) {
-      if (data.sessions[1] === "Organization") {
-        loginOrganization(data.sessions[0]);
-      } else {
-        loginResearcher(data.sessions[0]);
-      }
-      document.location.reload(true);
-    }).fail(function(data) {
-      $('.login-error-message').text('invalid login credentials')
-    })
-  });
-
-  function verifyLogin() {
-    if (!$('.un-field').val() || !$('.pw-field').val()) {
-      $('.login-error-message').text('email and password required');
-      $('.srch-error-message').text('');
-      return false;
-    }
-
-    var emailEntry = $('.un-field').val().toLowerCase();
-    if (!emailEntry.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[A-Za-z]{2,4}/) || emailEntry.match(/ /)) {
-      $('.login-error-message').text('not a valid email');
-      $('.srch-error-message').text('');
-      return false;
-    }
-
-    return true;
-  }
-
-  function getLogin() {
-    return {
-      email: $('.un-field').val(),
-      password: $('.pw-field').val()
-    };
-  }
-
-  function loginOrganization(orgId) {
-    document.location.hash = 'admin/' + orgId;
-  }
-
-  function loginResearcher(id) {
-    document.location.hash = 'researcher/' + id + '/trials/';
   }
 
   function validateInput() {
     if (!$('#condition-search').val()) {
       $('.srch-error-message').text('search term required');
-      $('.login-error-message').text('');
       return false;
     }
     return true;

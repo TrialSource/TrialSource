@@ -2,18 +2,22 @@
   display: inline-block;
   height: 50%;
   position: relative;
+  float: left;
+  margin-top: 7.5%;
 }
 
+
 .admin-nav-container {
-  width: 32.5%;
+  width: 33%;
 }
 
 .admin-nav-divider {
   box-sizing: border-box;
-  width: 1px;
+  width: .5%;
   border-left: 1px solid black;
   height: 25%;
-  -webkit-transform: translateY(-50%);
+  margin-right: -.45%;
+  -webkit-transform: translateY(50%);
 }
 
 .admin-nav-link {

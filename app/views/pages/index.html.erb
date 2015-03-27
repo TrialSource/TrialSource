@@ -66,9 +66,10 @@
 
         <form class="geo-form">
           <h3 class="geo-label geo-element">filter by location</h3>
-          <input type="text" class="zip-input geo-element" placeholder="your zip code" max-length="5" />
+          <input type="text" class="zip-input geo-element" placeholder="your zip code" maxlength="5" />
           <input type="text" class="range-input geo-element" placeholder="max distance (mi)" />
           <button class="reg-btn geo-submit geo-element">filter</button>
+          <p class="error-message"></p>
         </form>
 
       </div>
@@ -161,6 +162,7 @@
       <div class="trials-toolbox">
         <h2 class="researcher-creation-label">tools</h2>
         <button class="reg-btn new-t-btn">new trial listing</button>
+        <input class="search-trials-input" placeholder="search trials"/>
       </div>
 
       <div class="trials-list-container">

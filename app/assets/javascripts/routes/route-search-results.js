@@ -16,10 +16,16 @@ app.routeSearchResults = function(r) {
 
   $('.geo-form').submit(function(e) {
     e.preventDefault();
-    alert('fire');
+
+    if (!validateInput()) {
+      $('.error-message').text('invalid input');
+      return;
+    }
+
+    $('.error-message').text('');
+
     var url = decodeURIComponent(r.params.criteria) + '&&location=' + $('.zip-input').val() + '&&range=' + $('.range-input').val();
     $.getJSON(url).done(function(data) {
-      $('#main-content').html($('#search-results').html());
       trials = data.conditions;
       showAllResults();
       console.log(trials);
@@ -48,5 +54,17 @@ app.routeSearchResults = function(r) {
     var url = decodeURIComponent(r.params.criteria);
     searchTerm = url.match(/condition=(.*)(?=&&)/)[1];
     exclusions = url.match(/exclusions=(.*)/)[1].split(',');
+  }
+
+  function validateInput() {
+    var zip = $('.zip-input').val();
+    var range = $('.range-input').val();
+    if (!zip && !range) {
+      return true;
+    }
+    if (zip.match(/[.]/) || !Number(zip) || range.match(/[.]/) || !Number(range) || zip.length < 5) {
+      return false;
+    }
+    return true;
   }
 };

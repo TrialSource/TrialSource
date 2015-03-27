@@ -27,10 +27,13 @@ app.routeResearcherManager = function(r) {
       data: JSON.stringify(researcher),
       contentType : 'application/json',
       dataType: 'json'
-    }).done(function() {
-      researchers.push(researcher.doctor);
+    }).done(function(data) {
+      researchers.push(data.doctor);
       listState = researchers;
+      $('.error-message').text('');
       showList();
+    }).fail(function(err) {
+      console.log(err);
     });
   }
 
@@ -61,7 +64,7 @@ app.routeResearcherManager = function(r) {
   function activateDeleteButton(i) {
     $('.del-btn').click(function() {
       var modalTemplate = _.template(app.modals.deleteResearcher, { variable: 'm' });
-      $('.modal-wrapper').html(modalTemplate({ researcher: researchers[i] }));
+      $('.modal-wrapper').html(modalTemplate({ researcher: listState[i] }));
       $('.modal-wrapper').toggleClass('visible');
       $('.cancel-delete').click(function() {
         $('.modal-wrapper').removeClass('visible');
@@ -70,12 +73,12 @@ app.routeResearcherManager = function(r) {
         if ($('.modal-title').text().toLowerCase() === $('.delete-confirmation').val().toLowerCase()) {
           $.ajax({
             type: "DELETE",
-            url: '/api/v1/doctors/' + researchers[i].id,
+            url: '/api/v1/doctors/' + listState[i].id,
             contentType : 'application/json',
             dataType: 'json',
           }).done(function(data) {
-            researchers.splice(i, 1);
-            listState = researchers;
+            researchers.splice(researchers.indexOf(listState[i]), 1);
+            listState.splice(i, 1);
             $('.modal-wrapper').removeClass('visible');
             showList();
           });
@@ -107,8 +110,13 @@ app.routeResearcherManager = function(r) {
   function validateInput() {
     var isValid = true;
 
+    if (!$('.researcher-email-input').val().match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[A-Za-z]{2,4}/)) {
+      $('.error-message').text('not a valid email');
+      isValid = false;
+    }
+
     if ($('.researcher-password-one').val() !== $('.researcher-password-two').val()) {
-      isValid = false
+      isValid = false;
       $('.error-message').text('passwords must match');
     }
 

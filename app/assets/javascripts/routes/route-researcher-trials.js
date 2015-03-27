@@ -111,6 +111,5 @@ app.routeResearcherTrials = function(r) {
 
       return ref;
     }
-
   });
 }

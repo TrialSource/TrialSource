@@ -43,7 +43,7 @@ app.routeSearchResults = function(r) {
   function addNameListeners() {
     $('.rslt-name').toArray().forEach(function(name, i) {
       $(name).click(function(e) {
-        var detailTemplate = _.template(app.trialDetail.readable, { variable: 'm' });
+        var detailTemplate = _.template(app.trialDetail.search, { variable: 'm' });
         $('.rslts-list').html(detailTemplate({ trial: trials[i] }));
         $('.bck-btn').click(showAllResults);
         $.ajax({

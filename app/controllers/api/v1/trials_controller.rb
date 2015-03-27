@@ -21,6 +21,7 @@ class Api::V1::TrialsController < ApplicationController
 
   def views
     @trial.increase_view_count
+    render json: @trial
   end
 
 

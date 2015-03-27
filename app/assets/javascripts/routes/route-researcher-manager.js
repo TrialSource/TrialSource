@@ -98,7 +98,7 @@ app.routeResearcherManager = function(r) {
   function addTrialListeners(trials, j) {
     $('.rslt-name').toArray().forEach(function(trial, i) {
       $(trial).click(function(e) {
-        var trialDetailTemplate = _.template(app.trialDetail.readable, { variable: 'm' });
+        var trialDetailTemplate = _.template(app.trialDetail.admin, { variable: 'm' });
         $('.rslts-list').html(trialDetailTemplate({ trial: trials[i] }));
         $('.bck-btn').click(function() {
           displayResearcherDetail(trials, j)

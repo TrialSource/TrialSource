@@ -44,6 +44,7 @@
   text-align: center;
   font-weight: 400;
   margin-top: .65em;
+  background: transparent;
 }
 
 .researcher-tools {
@@ -68,7 +69,8 @@
 
 .manage-researchers-header {
   text-align: center;
-  margin: .5em 0;
+  margin-top: -1em;
+  margin-bottom: .5em;
   font-weight: 300;
 }
 

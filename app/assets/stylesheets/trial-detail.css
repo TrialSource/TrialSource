@@ -1,21 +1,64 @@
 .t-detail-header {
   text-align: center;
-  width: 75%;
-  margin: auto;
-  margin-top: 1em;
+  width: 78%;
+  font-weight: 300;
+  margin: .3em auto .3em;
+  font-size: 1.5em;
 }
 
 .t-detail-subhead {
   text-align: center;
+  font-style: oblique;
+  font-weight: 300;
+  font-size: 1.3em;
+}
+
+.t-detail-subtitle {
+  text-align: center;
+  font-weight: 400;
+  font-size: 1em;
+  margin-bottom: .25em;
+  margin-top: 1em;
+
 }
 
 .t-detail-org {
   text-align: center;
+  font-weight: 300;
+  font-size: 1em;
+}
+
+.t-detail-description {
+  text-align: justify;
+  font-weight: 300;
+  line-height: 1.4em;
+  margin-top: 1em;
+  background: rgba(0, 0, 0, .04);
+  padding: .35em .6em;
+  color: black;
+  box-sizing: border-box;
+}
+
+.t-detail-stats {
+  margin-top: 1em;
+  text-align: center;
+  font-weight: 300;
+  display: inline-block;
+  width: 47.5%;
+}
+
+.t-detail-stats + .t-detail-stats {
+  float: right;
+}
+
+.t-detail-contact {
+  text-align: center;
+  margin-bottom: 1em;
 }
 
 .sub-dtl-wrap {
-  width: 50%;
-  margin: 25px auto;
+  width: 75%;
+  margin: .25 auto;
 }
 
 .btn-wrp {
@@ -31,4 +74,8 @@
 
 .td-btn + .td-btn {
   margin-left: 1em;
+}
+
+.td-bck-btn {
+  width: 68px;
 }

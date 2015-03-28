@@ -40,13 +40,17 @@ end
 doctors = Doctor.all
 
 CSV.foreach(file, :headers => true) do |row|
+  doctor = doctors.sample
   Trial.create(
     :name => row[1],
     :description => row[2],
-    conditions_attributes: {:name=> row[3]},
+    :conditions_attributes => {:name=> row[3]},
     :start_on => row[4],
     :estimated_completed_on => row[5],
     :location => "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.state}",
-    :doctor_id => doctors.sample.id
+    :doctor_id => doctor.id,
+    :primary_contact_email => doctor.email,
+    :principal => "#{doctor.first_name} #{doctor.last_name}",
+    :active => true
   )
 end

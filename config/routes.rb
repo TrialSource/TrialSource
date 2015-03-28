@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  namespace :api do
+  namespace :api, :defaults => { format: "json" } do
     namespace :v1 do
       resources :doctors do
         collection do
@@ -18,6 +18,11 @@ Rails.application.routes.draw do
         end
         collection do
           get :doctor
+          get :org
+        end
+      end
+      resources :data do
+        collection do
           get :org
         end
       end

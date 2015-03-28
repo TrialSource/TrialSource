@@ -1,6 +1,6 @@
 .rslts-elem {
   display: inline-block;
-  height: 85%;
+  height: 80%;
 }
 
 .ctrl-elem {
@@ -135,4 +135,11 @@
   text-align: center;
   font-size: 1.15em;
   font-weight: 300;
+}
+
+.s-results-header {
+  margin-top: -1.3em;
+  text-align: center;
+  font-weight: 300;
+  margin-bottom: .3em;
 }

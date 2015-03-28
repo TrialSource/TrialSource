@@ -50,7 +50,7 @@
   display: inline-block;
   box-sizing: border-box;
   width: 33%;
-  height: 75%;
+  height: 85%;
   border: 1px solid lightgrey;
   vertical-align: top;
   margin-right: .5%;
@@ -62,7 +62,7 @@
   box-sizing: border-box;
   border: 1px solid lightgrey;
   width: 66%;
-  height: 75%;
+  height: 85%;
   overflow: auto;
 }
 

@@ -69,7 +69,6 @@
   font-size: 2.25em;
   font-weight: 300;
   text-align: center;
-  margin-top: 1em;
   margin-bottom: -1.25em;
 }
 
@@ -93,7 +92,7 @@
   display: inline-block;
   text-align: left;
   position: absolute;
-  padding-left: 25%;
+  padding-left: 22%;
   width: 100%;
   left: 50%;
   top: 36%;
@@ -103,7 +102,7 @@
 
 .numTrials {
   color: dodgerblue;
-  margin-left: 12.5%;
+  margin-left: 12%;
 }
 
 .nt-vis {
@@ -114,24 +113,24 @@
 
 .numConditions {
   color: #1a80e0;
-  margin-left: 25%;
+  margin-left: 24%;
 }
 
 .nc-vis {
   visibility: visible;
   opacity: 1;
-  margin-left: 12.5%;
+  margin-left: 12%;
 }
 
 .numOrgs {
   color: #176fc1;
-  margin-left: 37.5%;
+  margin-left: 36%;
 }
 
 .no-vis {
   visibility: visible;
   opacity: 1;
-  margin-left: 25%;
+  margin-left: 24%;
 }
 
 .num-trials-actual, .num-conditions-actual, .num-orgs-actual {

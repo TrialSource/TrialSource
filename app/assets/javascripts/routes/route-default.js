@@ -14,6 +14,9 @@ app.routeDefault = function() {
     $('.num-trials-actual').text(numTrials);
     $('.num-conditions-actual').text(data.conditions[2].length);
     $('.num-orgs-actual').text(numOrgs);
+
+    enterStats();
+
     console.log('we have ' + numTrials + ' trials at ' + numOrgs + ' organizations in our database');
     var conditions = data.conditions[2];
 
@@ -73,6 +76,18 @@ app.routeDefault = function() {
     });
 
   });
+
+  function enterStats() {
+    setTimeout(function() {
+      $('.numTrials').addClass('nt-vis');
+    }, 500);
+    setTimeout(function() {
+      $('.numConditions').addClass('nc-vis');
+    }, 1600);
+    setTimeout(function() {
+      $('.numOrgs').addClass('no-vis');
+    }, 2700);
+  }
 
   function initializeExclusionForm() {
     $('#exclusion-form').submit(function(e) {

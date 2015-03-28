@@ -21,7 +21,7 @@
 .lp-form {
   position: absolute;
   left: 50%;
-  top: 40%;
+  top: 37.5%;
   -webkit-transform: translate(-50%, -50%);
 }
 
@@ -50,7 +50,7 @@
 }
 
 .lp-form-element + .lp-form-element {
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 .lp-input:focus {
@@ -60,7 +60,7 @@
 .landing-page-divider {
   box-sizing: border-box;
   width: 1px;
-  border-right: 1px solid darkgrey;
+  border-right: 1px solid lightgrey;
   height: 50%;
   -webkit-transform: translateY(25%);
 }
@@ -80,6 +80,9 @@
 
 .lp-stat {
   font-weight: 300;
+  visibility: hidden;
+  opacity: 0;
+  transition: all .8s;
 }
 
 .lp-stat + .lp-stat {
@@ -88,25 +91,46 @@
 
 .stat-container {
   display: inline-block;
-  text-align: center;
+  text-align: left;
   position: absolute;
+  padding-left: 25%;
   width: 100%;
   left: 50%;
   top: 36%;
-  -webkit-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-49%, -50%);
+  white-space: nowrap;
 }
 
 .numTrials {
-  color: slateblue;
-  margin-left: -25%;
+  color: dodgerblue;
+  margin-left: 12.5%;
 }
 
-.numOrgs {
-  color: purple;
+.nt-vis {
+  visibility: visible;
+  opacity: 1;
+  margin-left: 0%;
 }
 
 .numConditions {
-  color: indigo;
+  color: #1a80e0;
+  margin-left: 25%;
+}
+
+.nc-vis {
+  visibility: visible;
+  opacity: 1;
+  margin-left: 12.5%;
+}
+
+.numOrgs {
+  color: #176fc1;
+  margin-left: 37.5%;
+}
+
+.no-vis {
+  visibility: visible;
+  opacity: 1;
   margin-left: 25%;
 }
 

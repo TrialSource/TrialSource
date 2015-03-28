@@ -14,34 +14,13 @@ app.routeDefault = function() {
     $('.num-trials-actual').text(numTrials);
     $('.num-conditions-actual').text(data.conditions[2].length);
     $('.num-orgs-actual').text(numOrgs);
+
+    enterStats();
+
     console.log('we have ' + numTrials + ' trials at ' + numOrgs + ' organizations in our database');
     var conditions = data.conditions[2];
 
-    $('#condition-search').keyup(function(e) {
-      if (!((e.keyCode >= 65 && e.keyCode <= 90) || e.keyCode === 32 || e.keyCode === 189)) {
-        return;
-      }
-
-      var searchField = document.getElementById('condition-search');
-      var term = $('#condition-search').val();
-      var searchTerm = term.toLowerCase();
-      var index = -1;
-
-      for (var i = 0; i < conditions.length; ++i) {
-        if (conditions[i].name.toLowerCase().indexOf(searchTerm) === 0) {
-          index = i;
-          break;
-        }
-      }
-
-      if (index === -1) {
-        return;
-      }
-
-      searchField.value = term + conditions[index].name.slice(term.length);
-      searchField.setSelectionRange(term.length, conditions[index].name.length);
-
-    })
+    app.initializeAutofill(document.getElementById('condition-search'), conditions);
   });
 
   $('.search-form').submit(function(e) {
@@ -73,6 +52,18 @@ app.routeDefault = function() {
     });
 
   });
+
+  function enterStats() {
+    setTimeout(function() {
+      $('.numTrials').addClass('nt-vis');
+    }, 500);
+    setTimeout(function() {
+      $('.numConditions').addClass('nc-vis');
+    }, 1600);
+    setTimeout(function() {
+      $('.numOrgs').addClass('no-vis');
+    }, 2700);
+  }
 
   function initializeExclusionForm() {
     $('#exclusion-form').submit(function(e) {

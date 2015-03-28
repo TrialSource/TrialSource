@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  namespace :api do
+  namespace :api, :defaults => { format: "json" } do
     namespace :v1 do
       resources :doctors do
         collection do
@@ -21,11 +21,17 @@ Rails.application.routes.draw do
           get :org
         end
       end
+      resources :data do
+        collection do
+          get :org
+        end
+      end
       resources :exclusions
       resources :archives
       resources :sessions, only: [:create]
       delete 'logout' => 'sessions#destroy'
       resource :search, only: [:show]
+      resources :notifications
     end
   end
   resources :pages

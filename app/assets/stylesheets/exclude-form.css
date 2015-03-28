@@ -4,7 +4,7 @@
   box-sizing: content-box;
   width: 350px;
   max-height: 40%;
-  overflow: auto;
+  overflow: scroll;
   font-size: 1em;
   top: 37.5%;
 }

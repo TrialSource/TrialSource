@@ -11,6 +11,7 @@
   max-width: 1100px;
   min-width: 900px;
   margin: auto;
+  margin-bottom: 50px;
 }
 
 .nav-link {
@@ -77,6 +78,7 @@
   width: 100%;
   text-align: center;
   height: 22px;
+  font-size: .85em;
   font-weight: 300;
 }
 

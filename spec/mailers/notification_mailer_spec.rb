@@ -1,13 +1,13 @@
-require 'spec_helper'
-# require "rails_helper"
+require 'rails_helper'
 
-RSpec.describe LoginMailer, type: :mailer do
+RSpec.describe NotificationMailer, type: :mailer do
+
   before :each do
     ActionMailer::Base.delivery_method = :test
     ActionMailer::Base.perform_deliveries = true
     ActionMailer::Base.deliveries = []
-    @login = FactoryGirl.create(:login)
-    LoginMailer.welcome_email(@login).deliver_now
+    @notification = FactoryGirl.create(:notification)
+    NotificationMailer.notification_email(@notification).deliver_now
   end
 
   after :each do
@@ -18,12 +18,12 @@ RSpec.describe LoginMailer, type: :mailer do
     expect(ActionMailer::Base.deliveries.count).to eq 1
   end
 
-  it 'renders the receiver email' do
-    expect(ActionMailer::Base.deliveries.first.to).to eq [@login.email]
+  it 'displays the recipient email' do
+    expect(ActionMailer::Base.deliveries.first.to).to eq [@notification.email]
   end
 
   it 'should set the subject to the correct subject' do
-    expect(ActionMailer::Base.deliveries.first.subject).to eq 'Welcome to TrialSource!'
+    expect(ActionMailer::Base.deliveries.first.subject).to eq 'New Trial on TrialSource'
   end
 
   it 'displays the sender email' do

@@ -67,9 +67,9 @@ ActiveRecord::Schema.define(version: 20150327150700) do
     t.string   "encrypted_email_iv"
     t.string   "condition"
     t.integer  "condition_id"
-    t.integer  "exclusion_ids"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.integer  "exclusion_ids",        default: [],              array: true
   end
 
   create_table "organizations", force: :cascade do |t|

@@ -20,7 +20,6 @@ app.routeResearcherManager = function(r) {
       return;
     }
     var researcher = grabResearcher();
-    clearForm();
     $.ajax({
       type: "POST",
       url: '/api/v1/doctors/',
@@ -31,9 +30,10 @@ app.routeResearcherManager = function(r) {
       researchers.push(data.doctor);
       listState = researchers;
       $('.error-message').text('');
+      clearForm();
       showList();
     }).fail(function(err) {
-      console.log(err);
+      $('.error-message').text('email already in use');
     });
   }
 

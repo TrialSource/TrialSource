@@ -3,11 +3,9 @@ app.routeSearchResults = function(r) {
     return;
   }
 
-  var searchTerm, exclusions;
-  grabSearchCriteria();
-
   var trials = [];
   $('#main-content').html($('#search-results').html());
+  setHeader();
   $.getJSON(decodeURIComponent(r.params.criteria) + '&&location=&&range=').done(function(data) {
     trials = data.conditions;
     showAllResults();
@@ -56,8 +54,12 @@ app.routeSearchResults = function(r) {
 
   function grabSearchCriteria() {
     var url = decodeURIComponent(r.params.criteria);
-    searchTerm = url.match(/condition=(.*)(?=&&)/)[1];
-    exclusions = url.match(/exclusions=(.*)/)[1].split(',');
+    return url.match(/condition=(.*)(?=&&)/)[1];
+  }
+
+  function setHeader() {
+    var searchTerm = grabSearchCriteria();
+    $('.s-results-header').text('your results for "' + searchTerm + '"');
   }
 
   function validateInput() {

@@ -6,6 +6,7 @@ app.routeResearcherManager = function(r) {
   var listState = [];
   $('#main-content').html($('#manage-researchers').html());
   $.getJSON('/api/v1/doctors/org', { org: r.params.id }).done(function(data) {
+    console.log(data);
     researchers = data.doctors;
     listState = researchers;
     showList();
@@ -26,10 +27,13 @@ app.routeResearcherManager = function(r) {
       data: JSON.stringify(researcher),
       contentType : 'application/json',
       dataType: 'json'
-    }).done(function() {
-      researchers.push(researcher.doctor);
+    }).done(function(data) {
+      researchers.push(data.doctor);
       listState = researchers;
+      $('.error-message').text('');
       showList();
+    }).fail(function(err) {
+      console.log(err);
     });
   }
 
@@ -37,25 +41,30 @@ app.routeResearcherManager = function(r) {
     $('.r-name').toArray().forEach(function(name, i) {
       $(name).click(function(e) {
         var detailTemplate = _.template(app.researcherDetail, { variable: 'm' });
-        $('.researcher-list-actual').html(detailTemplate({ researcher: researchers[i] }));
-        $('.bck-btn').click(showList);
+        $('.researcher-list-actual').html(detailTemplate({ researcher: listState[i] }));
         var trials = [];
-        $.getJSON('/api/v1/trials/doctor', { doctor: researchers[i].id }).done(function(data) {
+        $.getJSON('/api/v1/trials/doctor', { doctor: listState[i].id }).done(function(data) {
           trials = data.trials;
-          var trialsTemplate = _.template(app.trialListing.admin, { variable: 'm' });
-          $('.rslts-list').html(trialsTemplate({ results: trials }));
-          addTrialListeners(trials);
-          activateDeleteButton(i);
-          activateEditButton(i);
+          displayResearcherDetail(trials, i);
         });
+        $('.researcher-search').attr('disabled', true);
       });
     });
+  }
+
+  function displayResearcherDetail(trials, index) {
+    var trialsTemplate = _.template(app.trialListing.admin, { variable: 'm' });
+    $('.rslts-list').html(trialsTemplate({ results: trials }));
+    addTrialListeners(trials, index);
+    activateDeleteButton(index);
+    activateEditButton(index);
+    $('.bck-btn').click(showList);
   }
 
   function activateDeleteButton(i) {
     $('.del-btn').click(function() {
       var modalTemplate = _.template(app.modals.deleteResearcher, { variable: 'm' });
-      $('.modal-wrapper').html(modalTemplate({ researcher: researchers[i] }));
+      $('.modal-wrapper').html(modalTemplate({ researcher: listState[i] }));
       $('.modal-wrapper').toggleClass('visible');
       $('.cancel-delete').click(function() {
         $('.modal-wrapper').removeClass('visible');
@@ -64,12 +73,12 @@ app.routeResearcherManager = function(r) {
         if ($('.modal-title').text().toLowerCase() === $('.delete-confirmation').val().toLowerCase()) {
           $.ajax({
             type: "DELETE",
-            url: '/api/v1/doctors/' + researchers[i].id,
+            url: '/api/v1/doctors/' + listState[i].id,
             contentType : 'application/json',
             dataType: 'json',
           }).done(function(data) {
-            researchers.splice(i, 1);
-            listState = researchers;
+            researchers.splice(researchers.indexOf(listState[i]), 1);
+            listState.splice(i, 1);
             $('.modal-wrapper').removeClass('visible');
             showList();
           });
@@ -86,12 +95,14 @@ app.routeResearcherManager = function(r) {
     })
   }
 
-  function addTrialListeners(trials) {
+  function addTrialListeners(trials, j) {
     $('.rslt-name').toArray().forEach(function(trial, i) {
       $(trial).click(function(e) {
-        var trialDetailTemplate = _.template(app.trialDetail.readable, { variable: 'm' });
+        var trialDetailTemplate = _.template(app.trialDetail.admin, { variable: 'm' });
         $('.rslts-list').html(trialDetailTemplate({ trial: trials[i] }));
-        $('.t-detail-container').find('.bck-btn').remove();
+        $('.bck-btn').click(function() {
+          displayResearcherDetail(trials, j)
+        })
       })
     })
   }
@@ -99,8 +110,13 @@ app.routeResearcherManager = function(r) {
   function validateInput() {
     var isValid = true;
 
+    if (!$('.researcher-email-input').val().match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[A-Za-z]{2,4}/)) {
+      $('.error-message').text('not a valid email');
+      isValid = false;
+    }
+
     if ($('.researcher-password-one').val() !== $('.researcher-password-two').val()) {
-      isValid = false
+      isValid = false;
       $('.error-message').text('passwords must match');
     }
 
@@ -118,6 +134,7 @@ app.routeResearcherManager = function(r) {
     var listTemplate = _.template(app.researcherListing, { variable: 'm' });
     $('.researcher-list-actual').html(listTemplate({ drs: listState }));
     addNameListeners();
+    $('.researcher-search').removeAttr('disabled');
   }
 
   function grabResearcher() {

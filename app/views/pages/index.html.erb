@@ -18,6 +18,12 @@
       <a class="nav-link nav-link-contact">contact</a>
       <div class="login-logout-wrapper">
         <button class="login-logout">login</button>
+        <form class="login-form">
+          <input class="login-element un-field" type="text" placeholder="email" />
+          <input class="login-element pw-field" type="password" placeholder="password" />
+          <button class="reg-btn lgn-btn login-element">login</button>
+          <p class="login-error-message"></p>
+        </form>
       </div>
     </nav>
 
@@ -29,7 +35,7 @@
 
     <script type="text/html" id="landing-page">
 
-      <h1 class="tagline"><em>The</em> source for interventive clinical trials.</h1>
+      <h1 class="tagline"><em>The</em> source for interventional clinical trials.</h1>
 
       <div class="search-form-container lp-element lp-form-container xcld-frm-cntnr">
 
@@ -37,7 +43,6 @@
 
         <form class="lp-form search-form">
           <input class="lp-input lp-form-element" id="condition-search" type="text" placeholder="condition" />
-          <input class="lp-input lp-form-element zip-field" type="text" placeholder="zip code" maxlength="5"/>
           <button class="reg-btn lp-search-button lp-form-element">search</button>
           <p class="error-message srch-error-message"> </p>
         </form>
@@ -47,21 +52,30 @@
       <div class="landing-page-divider lp-element"></div>
 
       <div class="search-form-container lp-element lp-form-container">
+        <div class="stat-container">
 
-        <h1 class="lp-header">Research Login</h1>
+        <h1 class="lp-stat numTrials">search over <span class="num-trials-actual"></span> trials</h1>
+        <h1 class="lp-stat numOrgs">across <span class="num-orgs-actual"></span> institutions</h1>
+        <h1 class="lp-stat numConditions">treating <span class="num-conditions-actual"></span> conditions</h1>
 
-        <form class="lp-form login-form">
-          <input class="lp-input lp-form-element un-field" type="text" placeholder="email" />
-          <input class="lp-input lp-form-element pw-field" type="password" placeholder="password" />
-          <button class="reg-btn lp-login-button lp-form-element">login</button>
-          <p class="error-message login-error-message"> </p>
-        </form>
-
+        </div>
       </div>
 
     </script>
 
     <script type="text/html" id="search-results">
+
+      <div class="rslts-elem rslts-toolbox">
+
+        <form class="geo-form">
+          <h3 class="geo-label geo-element">filter by location</h3>
+          <input type="text" class="zip-input geo-element" placeholder="your zip code" maxlength="5" />
+          <input type="text" class="range-input geo-element" placeholder="max distance (mi)" />
+          <button class="reg-btn geo-submit geo-element">filter</button>
+          <p class="error-message"></p>
+        </form>
+
+      </div>
 
       <div class="rslts-elem rslts-cntnr">
 
@@ -151,6 +165,7 @@
       <div class="trials-toolbox">
         <h2 class="researcher-creation-label">tools</h2>
         <button class="reg-btn new-t-btn">new trial listing</button>
+        <input class="search-trials-input" placeholder="search trials"/>
       </div>
 
       <div class="trials-list-container">
@@ -167,11 +182,12 @@
       <h1 class="trial-form-header">New Trial Listing</h1>
 
       <form class="create-trial-form">
-        <input class="trial-input trial-condition-input" type="text" placeholder="condition" />
+        <p class="trial-contra-label">conditions that your trial aims to treat/study</p>
+        <select class="trial-input trial-condition-input" multiple="multiple"></select>
         <input class="trial-input trial-title-input" type="text" placeholder="title" />
-        <input class="trial-input trial-principal-input" type="text" placeholder="principal" />
+        <input class="trial-input trial-principal-input" type="text" placeholder="principal investigator" />
         <input class="trial-input trial-email-input" type="text" placeholder="contact email" />
-        <input class="trial-input trial-location-input" type="text" placeholder="location" />
+        <input class="trial-input trial-location-input" id="autocomplete" type="text" placeholder="location" />
         <input class="trial-input trial-start-input" type="text" placeholder="start date" />
         <input class="trial-input trial-complete-input" type="text" placeholder="est. complete date" />
         <p class="trial-contra-label">add criteria below to include in the exclusion form for your trial </p>
@@ -190,9 +206,9 @@
       <form class="create-trial-form">
         <input class="trial-input trial-condition-input" type="text" placeholder="condition" />
         <input class="trial-input trial-title-input" type="text" placeholder="title" />
-        <input class="trial-input trial-principal-input" type="text" placeholder="principal" />
+        <input class="trial-input trial-principal-input" type="text" placeholder="principal investigator" />
         <input class="trial-input trial-email-input" type="text" placeholder="contact email" />
-        <input class="trial-input trial-location-input" type="text" placeholder="location" />
+        <input class="trial-input trial-location-input" id="autocomplete" type="text" placeholder="location" />
         <input class="trial-input trial-start-input" type="text" placeholder="start date" />
         <input class="trial-input trial-complete-input" type="text" placeholder="est. complete date" />
         <textarea class="trial-input trial-abstract-input" placeholder="description"></textarea>

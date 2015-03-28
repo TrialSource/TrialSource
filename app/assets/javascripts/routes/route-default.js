@@ -9,9 +9,14 @@ app.routeDefault = function() {
 
   $.getJSON('/api/v1/conditions').done(function(data) {
     console.log(data);
-    var numTrials = data.conditions[0][1];
-    console.log('we have ' + numTrials + ' trials in our database');
-    var conditions = data.conditions[1];
+    var numTrials = data.conditions[0];
+    var numOrgs = data.conditions[1];
+    $('.num-trials-actual').text(numTrials);
+    $('.num-conditions-actual').text(data.conditions[2].length);
+    $('.num-orgs-actual').text(numOrgs);
+    console.log('we have ' + numTrials + ' trials at ' + numOrgs + ' organizations in our database');
+    var conditions = data.conditions[2];
+
     $('#condition-search').keyup(function(e) {
       if (!((e.keyCode >= 65 && e.keyCode <= 90) || e.keyCode === 32 || e.keyCode === 189)) {
         return;
@@ -23,7 +28,7 @@ app.routeDefault = function() {
       var index = -1;
 
       for (var i = 0; i < conditions.length; ++i) {
-        if (conditions[i].toLowerCase().indexOf(searchTerm) === 0) {
+        if (conditions[i].name.toLowerCase().indexOf(searchTerm) === 0) {
           index = i;
           break;
         }
@@ -33,8 +38,8 @@ app.routeDefault = function() {
         return;
       }
 
-      searchField.value = term + conditions[index].slice(term.length);
-      searchField.setSelectionRange(term.length, conditions[index].length);
+      searchField.value = term + conditions[index].name.slice(term.length);
+      searchField.setSelectionRange(term.length, conditions[index].name.length);
 
     })
   });
@@ -42,14 +47,19 @@ app.routeDefault = function() {
   $('.search-form').submit(function(e) {
     e.preventDefault();
 
-    searchTerm = $('#condition-search').val();
-
-    if (!verifySearch()) {
+    if (!validateInput()) {
       return;
     }
 
+    searchTerm = $('#condition-search').val();
+
     $.getJSON('/api/v1/search', { type: 'condition', query: $('#condition-search').val() }).done(function(data) {
       console.log(data);
+      if (data.searches[1].length === 0) {
+        $('.srch-error-message').text('sorry, no matches');
+        $('.login-error-message').text('');
+        return;
+      }
       var excludeList = [];
       data.searches[1].forEach(function(item) {
         item.forEach(function(contra) {
@@ -79,79 +89,16 @@ app.routeDefault = function() {
 
       url = encodeURIComponent(url);
 
-      document.location.hash = 'search/' + url + '/10024';
+      document.location.hash = 'search/' + url;
 
-      // $.getJSON(url).done(function(data) {
-      // document.location.hash = 'search/' + url;
-      // console.log(data.conditions);
-      // })
     });
   }
 
-  $('.login-form').submit(function(e) {
-    e.preventDefault();
-
-    if (!verifyLogin()) {
-      return;
-    }
-    var login = getLogin();
-
-    $.ajax({
-      type: "POST",
-      url: '/api/v1/sessions',
-      data: JSON.stringify(login),
-      contentType : 'application/json',
-      dataType: 'json'
-    }).done(function(data) {
-      if (data.sessions[1] === "Organization") {
-        loginOrganization(data.sessions[0]);
-      } else {
-        loginResearcher(data.sessions[0]);
-      }
-      document.location.reload(true);
-    }).fail(function(data) {
-      $('.login-error-message').text('invalid login credentials')
-    })
-  });
-
-  function verifySearch() {
-    if ($('.condition-field').val() === '') {
+  function validateInput() {
+    if (!$('#condition-search').val()) {
       $('.srch-error-message').text('search term required');
-      $('.login-error-message').text('');
       return false;
     }
     return true;
-  }
-
-  function verifyLogin() {
-    if (!$('.un-field').val() || !$('.pw-field').val()) {
-      $('.login-error-message').text('email and password required');
-      $('.srch-error-message').text('');
-      return false;
-    }
-
-    var emailEntry = $('.un-field').val().toLowerCase();
-    if (!emailEntry.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[A-Za-z]{2,4}/) || emailEntry.match(/ /)) {
-      $('.login-error-message').text('not a valid email');
-      $('.srch-error-message').text('');
-      return false;
-    }
-
-    return true;
-  }
-
-  function getLogin() {
-    return {
-      email: $('.un-field').val(),
-      password: $('.pw-field').val()
-    };
-  }
-
-  function loginOrganization(orgId) {
-    document.location.hash = 'admin/' + orgId;
-  }
-
-  function loginResearcher(id) {
-    document.location.hash = 'researcher/' + id + '/trials/';
   }
 }

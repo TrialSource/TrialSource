@@ -4,6 +4,9 @@ app.routeCreateTrialBasic = function(r) {
   }
 
   $('#main-content').html($('#create-study').html());
+
+  app.addressAutofill();
+
   $('.trial-start-input').pickadate({
     format: 'mmmm d, yyyy'
   });
@@ -22,6 +25,12 @@ app.routeCreateTrialBasic = function(r) {
 
   function validateForm() {
     var isValid = true
+
+    if (!$('.trial-email-input').val().match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[A-Za-z]{2,4}/)) {
+      $('.error-message').text('not a valid email');
+      isValid = false;
+    }
+
     $('.trial-input').toArray().forEach(function(item) {
       if (!$(item).val() || $(item).val() === '') {
         isValid = false;
@@ -37,9 +46,8 @@ app.routeCreateTrialBasic = function(r) {
   function grabTrialInfo() {
     return {
       trial: {
-        conditions_attributes: [
-          { name: $('.trial-condition-input').val() },
-        ],
+        condition_ids: grabConditionIds(),
+        conditions_attributes: grabConditionNames(),
         exclusion_ids: grabExclusionIds(),
         exclusions_attributes: grabExclusionNames(),
         principal: $('.trial-principal-input').val(),
@@ -94,10 +102,16 @@ app.routeCreateTrialBasic = function(r) {
     dropdownParent: document.querySelector('body'),
   });
 
-  $('.test-it').click(function() {
-    console.log($('.contra-selector').val());
-    grabExclusions();
-  })
+  $.getJSON('/api/v1/conditions').done(function(data) {
+    var contraTemplate = _.template(app.contraOption, { variable: 'm' });
+    $('.trial-condition-input').html(contraTemplate({ contras: data.conditions[2] }));
+  });
+
+  $('.trial-condition-input').select2({
+    tags: true,
+    theme: 'classic',
+    dropdownParent: document.querySelector('body'),
+  });
 
   function grabExclusionNames() {
     var exclusionNames = [];
@@ -125,6 +139,34 @@ app.routeCreateTrialBasic = function(r) {
     }
 
     return exclusionIds;
+  }
+
+  function grabConditionNames() {
+    var conditionNames = [];
+
+    if ($('.trial-condition-input').val()) {
+      $('.trial-condition-input').val().forEach(function(item) {
+        if (!Number(item)) {
+          conditionNames.push({ name: item });
+        }
+      });
+    }
+
+    return conditionNames;
+  }
+
+  function grabConditionIds() {
+    var conditionIds = [];
+
+    if ($('.trial-condition-input').val()) {
+      $('.trial-condition-input').val().forEach(function(item) {
+        if (Number(item)) {
+          conditionIds.push(Number(item));
+        }
+      });
+    }
+
+    return conditionIds;
   }
 
 }

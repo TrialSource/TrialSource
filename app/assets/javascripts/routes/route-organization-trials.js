@@ -12,7 +12,7 @@ app.routeOrganizationTrials = function(r) {
   });
 
   function showList() {
-    var listTemplate = _.template(app.trialListing.admin, { variable: 'm' });
+    var listTemplate = _.template(app.trialListing.researcher, { variable: 'm' });
     $('.trial-list').html(listTemplate({ results: listState }));
     addNameListeners();
   }
@@ -20,8 +20,8 @@ app.routeOrganizationTrials = function(r) {
   function addNameListeners() {
     $('.rslt-name').toArray().forEach(function(name, i) {
       $(name).click(function(e) {
-        var detailTemplate = _.template(app.trialDetail.readable, { variable: 'm' });
-        $('.trial-list').html(detailTemplate({ trial: trials[i] }));
+        var detailTemplate = _.template(app.trialDetail.admin, { variable: 'm' });
+        $('.trial-list').html(detailTemplate({ trial: listState[i] }));
         $('.bck-btn').click(showList);
       });
     });

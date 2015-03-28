@@ -23,4 +23,23 @@ RSpec.describe Trial, type: :model do
       expect(results).to match_array([condition_match])
     end
   end
+
+  describe "#increase_appearance_count" do
+    it "increases the number of appearances for a trial" do
+      trial = Trial.create(name: "asthma study", description: "asthma study", location: "Durham, NC", primary_contact_email: "bill@example.com",principal: "Bill Smith", active: true, conditions_attributes: [{name: "asthma"}])
+      trial.increase_appearance_count
+
+      expect(trial.number_of_appearances).to eq(1)
+    end
+  end
+
+  describe "#increase_view_count" do
+    it "increases the number of views for a trial" do
+      trial = Trial.create(name: "asthma study", description: "asthma study", location: "Durham, NC", primary_contact_email: "bill@example.com",principal: "Bill Smith", active: true, conditions_attributes: [{name: "asthma"}])
+      trial.increase_view_count
+
+      expect(trial.number_of_views).to eq(1)
+    end
+  end
+
 end

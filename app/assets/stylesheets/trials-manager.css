@@ -4,8 +4,9 @@
 
 .new-t-btn {
   display: block;
-  width: 75%;
-  margin:auto;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 1em;
   font-size: 1.25em;
   font-weight: 300;
   height: 2em;

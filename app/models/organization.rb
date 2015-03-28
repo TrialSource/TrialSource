@@ -1,5 +1,5 @@
 class Organization < ActiveRecord::Base
-	has_one :login, as: :user
+	has_one :login, as: :user, dependent: :destroy
 	accepts_nested_attributes_for :login
 	has_many :doctors
 	has_many :trials, :through => :doctors

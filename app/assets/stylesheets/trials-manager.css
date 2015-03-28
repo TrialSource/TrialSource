@@ -17,7 +17,6 @@
 .trial-list {
   list-style: none;
   padding: .5em;
-  padding-top: 0;
 }
 
 .trial-listing {
@@ -41,7 +40,7 @@
   display: inline-block;
   box-sizing: border-box;
   width: 24%;
-  height: 80%;
+  height: 85%;
   border: 1px solid lightgrey;
   vertical-align: top;
   margin-right: .5%;
@@ -53,7 +52,7 @@
   box-sizing: border-box;
   border: 1px solid lightgrey;
   width: 75%;
-  height: 80%;
+  height: 85%;
   overflow: auto;
 }
 

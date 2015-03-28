@@ -15,26 +15,37 @@
 }
 
 .modal-actual {
-  width: 35%;
+  width: 40%;
   background: white;
-  border: 5px solid tomato;
+  border: 5px solid firebrick;
   border-radius: 10px;
-  height: 35%;
   position: absolute;
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
   text-align: center;
-  padding-top: 2em;
+  padding: 1em;
+  min-width: 441px;
+  box-sizing: border-box;
 }
 
 .modal-title, .modal-subtitle, .modal-instruction{
   text-align: center;
+  color: firebrick;
+}
+
+.modal-instruction {
+  margin-top: .75em;
+}
+
+.modal-title {
+  font-size: 2em;
+  margin-bottom: .5em;
 }
 
 .delete-confirmation {
   display: block;
-  margin: 1em auto;
+  margin: .75em auto 1em;
   height: 35px;
   width: 350px;
   font-size: 1.25em;
@@ -42,7 +53,7 @@
 }
 
 .delete-confirmation:focus {
-  border: 1px solid tomato;
+  border: 1px solid firebrick;
 }
 
 .mdl-btn {
@@ -50,6 +61,7 @@
   width: 150px;
   font-size: 1.25em;
   border: none;
+  cursor: pointer;
 }
 
 .mdl-btn + .mdl-btn {
@@ -57,11 +69,13 @@
 }
 
 .confirm-delete {
-  background: tomato;
+  background: firebrick;
+  color: white;
 }
 
 .cancel-delete {
   background: dodgerblue;
+  color: white;
 }
 
 .modal-error-message {

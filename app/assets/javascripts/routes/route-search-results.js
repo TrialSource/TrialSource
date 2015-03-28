@@ -3,6 +3,8 @@ app.routeSearchResults = function(r) {
     return;
   }
 
+  console.log(grabExclusionIds());
+
   var trials = [];
   $('#main-content').html($('#search-results').html());
   setHeader();
@@ -52,13 +54,20 @@ app.routeSearchResults = function(r) {
     });
   }
 
-  function grabSearchCriteria() {
+  function grabSearchTerm() {
     var url = decodeURIComponent(r.params.criteria);
     return url.match(/condition=(.*)(?=&&)/)[1];
   }
 
+  function grabExclusionIds() {
+    var url = decodeURIComponent(r.params.criteria);
+    var ids = url.match(/exclusions=(.*)/)[1].split(',');
+    ids.splice(ids.length - 1, 1);
+    return ids;
+  }
+
   function setHeader() {
-    var searchTerm = grabSearchCriteria();
+    var searchTerm = grabSearchTerm();
     $('.s-results-header').text('your results for "' + searchTerm + '"');
   }
 

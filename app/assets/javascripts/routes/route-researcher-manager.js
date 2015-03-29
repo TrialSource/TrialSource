@@ -6,7 +6,6 @@ app.routeResearcherManager = function(r) {
   var listState = [];
   $('#main-content').html($('#manage-researchers').html());
   $.getJSON('/api/v1/doctors/org', { org: r.params.id }).done(function(data) {
-    console.log(data);
     researchers = data.doctors;
     listState = researchers;
     showList();

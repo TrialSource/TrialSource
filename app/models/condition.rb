@@ -11,7 +11,18 @@ class Condition < ActiveRecord::Base
     exclusions = trials.flatten.map do |t|
       t.exclusions
     end
-    [trials.flatten.count, exclusions]
+    final_exclusions = []
+    exclusions.flatten.each do |e|
+      if final_exclusions.present?
+        if final_exclusions.any? {|fe| fe.id != e.id}
+          final_exclusions << e
+        end
+      else
+        final_exclusions << e
+      end
+    end
+    binding.pry
+    [trials.flatten.count, final_exclusions]
   end
 
 

@@ -198,13 +198,19 @@
       <h1 class="trial-form-header">Edit Trial Listing</h1>
 
       <form class="create-trial-form">
-        <input class="trial-input trial-condition-input" type="text" placeholder="condition" />
+        <p class="edit-t-label">trial name</p>
         <input class="trial-input trial-title-input" type="text" placeholder="title" />
+        <p class="edit-t-label split-label">primary contact email</p>
+        <p class="edit-t-label split-label">principal investigator(s)</p>
         <input class="trial-input trial-principal-input" type="text" placeholder="principal investigator" />
         <input class="trial-input trial-email-input" type="text" placeholder="contact email" />
+        <p class="edit-t-label">location</p>
         <input class="trial-input trial-location-input" id="autocomplete" type="text" placeholder="location" />
+        <p class="edit-t-label split-label">est. complete date</p>
+        <p class="edit-t-label split-label">start date</p>
         <input class="trial-input trial-start-input" type="text" placeholder="start date" />
         <input class="trial-input trial-complete-input" type="text" placeholder="est. complete date" />
+        <p class="edit-t-label">trial description</p>
         <textarea class="trial-input trial-abstract-input" placeholder="description"></textarea>
         <button class="reg-btn trial-submit">edit trial listing</button>
         <button class="cancel-edit">cancel edit</button>
@@ -213,6 +219,7 @@
 
     </script>
 
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
     <%= javascript_include_tag "application" %>
 
   </body>

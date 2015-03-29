@@ -8,7 +8,6 @@ app.routeDefault = function() {
   $('#main-content').html($('#landing-page').html());
 
   $.getJSON('/api/v1/conditions').done(function(data) {
-    console.log(data);
     var numTrials = data.conditions[0];
     var numOrgs = data.conditions[1];
     $('.num-trials-actual').text(numTrials);
@@ -17,7 +16,6 @@ app.routeDefault = function() {
 
     enterStats();
 
-    console.log('we have ' + numTrials + ' trials at ' + numOrgs + ' organizations in our database');
     var conditions = data.conditions[2];
 
     app.initializeAutofill(document.getElementById('condition-search'), conditions);
@@ -33,7 +31,6 @@ app.routeDefault = function() {
     searchTerm = $('#condition-search').val();
 
     $.getJSON('/api/v1/search', { type: 'condition', query: $('#condition-search').val() }).done(function(data) {
-      console.log(data);
       if (data.searches[1].length === 0) {
         $('.srch-error-message').text('sorry, no matches');
         $('.login-error-message').text('');
@@ -41,9 +38,7 @@ app.routeDefault = function() {
       }
       var excludeList = [];
       data.searches[1].forEach(function(item) {
-        item.forEach(function(contra) {
-          excludeList.push(contra);
-        });
+        excludeList.push(item);
       });
 
       var listTemplate = _.template(app.exclusionFormTemplate, { variable: 'm' });

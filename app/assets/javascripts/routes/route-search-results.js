@@ -3,15 +3,12 @@ app.routeSearchResults = function(r) {
     return;
   }
 
-  console.log(grabExclusionIds());
-
   var trials = [];
   $('#main-content').html($('#search-results').html());
   setHeader();
   $.getJSON(decodeURIComponent(r.params.criteria) + '&&location=&&range=').done(function(data) {
     trials = data.conditions;
     showAllResults();
-    console.log(trials);
   });
 
   $('.geo-form').submit(function(e) {
@@ -28,11 +25,8 @@ app.routeSearchResults = function(r) {
     $.getJSON(url).done(function(data) {
       trials = data.conditions;
       showAllResults();
-      console.log(trials);
     });
   });
-
-  console.log(decodeURIComponent(r.params.criteria));
 
   function showAllResults() {
     var listTemplate = _.template(app.trialListing.search, { variable: 'm' });

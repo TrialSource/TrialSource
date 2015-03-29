@@ -41,9 +41,10 @@ app.routeDefault = function() {
       }
       var excludeList = [];
       data.searches[1].forEach(function(item) {
-        item.forEach(function(contra) {
-          excludeList.push(contra);
-        });
+        excludeList.push(item);
+        // item.forEach(function(contra) {
+        //   excludeList.push(contra);
+        // });
       });
 
       var listTemplate = _.template(app.exclusionFormTemplate, { variable: 'm' });

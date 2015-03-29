@@ -12,7 +12,7 @@ class Api::V1::TrialsController < ApplicationController
     Notification.where(condition_id: @trial.conditions.each {|c| c.id}).present?) &&
     Notification.where(exclusion_ids: @trial.exclusions.none? {|c| c.id}).empty?
       if @trial.save
-        NotificationMailer.notification_email(@notifications.each {|n| n.email}).deliver_now
+        NotificationMailer.notification_email(@notifications.each {|n| n.email}).deliver_now if @notifications
         render json: @trial
       else
         render json: "Invalid parameters"

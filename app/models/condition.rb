@@ -21,7 +21,6 @@ class Condition < ActiveRecord::Base
         final_exclusions << e
       end
     end
-    binding.pry
     [trials.flatten.count, final_exclusions]
   end
 

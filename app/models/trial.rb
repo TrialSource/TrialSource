@@ -13,6 +13,8 @@ class Trial < ActiveRecord::Base
   accepts_nested_attributes_for :conditions
   accepts_nested_attributes_for :exclusions
 
+  acts_as_copy_target
+
 
   def self.current
     Trial.where(:archived == false)

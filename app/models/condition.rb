@@ -14,10 +14,10 @@ class Condition < ActiveRecord::Base
     final_exclusions = []
     exclusions.flatten.each do |e|
       if final_exclusions.present?
-         is_unique = true
-         final_exclusions.each do |fe|
-          is_unique = false if fe.id == e.id
-        end
+        is_unique = true
+        final_exclusions.each do |fe|
+        is_unique = false if fe.id == e.id
+      end
       final_exclusions << e if is_unique
       else
         final_exclusions << e

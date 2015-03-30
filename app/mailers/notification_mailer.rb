@@ -1,4 +1,4 @@
-class NotificationMailer < ApplicationMailer
+class NotificationMailer < ActionMailer::Base
   default from: 'notifications@trialsource.herokuapp.com'
 
   def notification_email(notification)

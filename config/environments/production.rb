@@ -60,9 +60,25 @@ Rails.application.configure do
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
 
+config.action_mailer.delivery_method = :smtp
+
+# config.action_mailer.smtp_settings = {
+#     :address              => 'smtp.sendgrid.net',
+#     :port                 => '587',
+#     :authentication       => :plain,
+#     :user_name            => ENV['SENDGRID_USERNAME'],
+#     :password             => ENV['SENDGRID_PASSWORD'],
+#     :domain               => 'trialsource.herokuapp.com/',
+#     :enable_starttls_auto => true
+#   }
+
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_options = {from: 'notifications@trialsource.herokuapp.com'}
+
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { host: 'trialsource.herokuapp.com/' }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to

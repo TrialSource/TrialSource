@@ -3,9 +3,10 @@ class Api::V1::DoctorsController < ApplicationController
   before_action :authenticate_user, only: [:create, :update]
 
   def create
-    doctor = Doctor.new(doctor_params)
-    if doctor.save
-      render json: doctor
+    @doctor = Doctor.new(doctor_params)
+    if @doctor.save
+      LoginMailer.welcome_email(@doctor).deliver_now
+      render json: @doctor
     else
       render json: "Invalid parameters"
     end

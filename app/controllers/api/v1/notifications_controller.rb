@@ -2,6 +2,7 @@ class Api::V1::NotificationsController < ApplicationController
 
   def create
     notification = Notification.new(notification_params)
+    notification.exclusion_ids = params[:exclusion_ids].split(",").map{|e| e.to_i}
     if notification.save
       render json: notification
     else

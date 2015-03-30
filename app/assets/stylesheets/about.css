@@ -1,0 +1,36 @@
+.about-cntnr {
+  width: 70%;
+  margin: 3em auto 1em;
+  border: 1px solid lightgrey;
+  padding: 2em;
+  padding-bottom: 0;
+  box-sizing: border-box;
+}
+
+.about-p {
+  font-size: 1em;
+  line-height: 1.8em;
+  font-weight: 300;
+  margin: 1.5em 0;
+}
+
+.about-q {
+  font-weight: 400;
+  font-size: 1.5em;
+}
+
+.about-link {
+  color: dodgerblue;
+  -webkit-transition: all .15s;
+  font-size: .75em;
+}
+
+.about-link:hover {
+  color: darkorange;
+}
+
+.about-link-line {
+  width: 75%;
+  opacity: .4;
+  margin: auto;
+}

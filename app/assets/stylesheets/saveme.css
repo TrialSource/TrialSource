@@ -1,0 +1,53 @@
+.signup-container {
+  width: 75%;
+  max-height: 90%;
+  overflow: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  border: 1px solid lightgrey;
+}
+
+.saveme-email-input, .signup-submit {
+  display: block;
+  margin: 1em auto;
+  width: 75%;
+  font-size: 1em;
+  text-align: center;
+  height: 35px;
+  font-weight: 300;
+}
+
+.saveme-email-input:focus {
+  border: 1px solid dodgerblue;
+}
+
+.signup-submit {
+  margin-bottom: 1.5em;
+}
+
+.signup-exclusion-list {
+  width: 75%;
+  margin: 1em auto;
+}
+
+.saveme-instructions {
+  font-size: .85em;
+  font-weight: 400;
+  text-align: center;
+  width: 80%;
+  margin: 1.25em auto;
+  line-height: 1.6em;
+}
+
+.saveme-error-message {
+  position: absolute;
+  text-align: center;
+  font-size: .85em;
+  font-weight: 300;
+  top: 100%;
+  -webkit-transform: translateY(-125%);
+  width: 100%;
+  color: tomato
+}

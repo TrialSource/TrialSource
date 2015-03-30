@@ -12,6 +12,7 @@ gem 'textacular'
 gem 'geocoder'
 gem 'geokit-rails'
 gem 'mailcatcher'
+gem 'postgres-copy'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

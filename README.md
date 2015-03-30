@@ -25,7 +25,7 @@ http://luxsci.com/blog/what-makes-a-web-site-hipaa-secure.html
 #### Application Level
 
 - All TrialSource access is to be logged
-- Audit all changes in the `versions` table -- including who, when, and what
+- Audit all changes including who, when, and what
 - Database snapshots/backups and geographic redundancy are coordinated by Security Officer
 - PHI must not be sent directly through email. Any sharing of data must require website signup and login
 - All application access is SSL-secured

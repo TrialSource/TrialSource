@@ -5,8 +5,9 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  -webkit-transform: translate(-50%, -50%);
   border: 1px solid lightgrey;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
 }
 
 .saveme-email-input, .signup-submit {
@@ -47,7 +48,8 @@
   font-size: .85em;
   font-weight: 300;
   top: 100%;
-  -webkit-transform: translateY(-125%);
   width: 100%;
-  color: tomato
+  color: tomatol
+  -webkit-transform: translateY(-125%);
+  -moz-transform: translateY(-125%);
 }

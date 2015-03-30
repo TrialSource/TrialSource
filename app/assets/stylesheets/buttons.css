@@ -6,6 +6,7 @@
   cursor: pointer;
   text-align: center;
   -webkit-transition: all .1s;
+  -moz-transition: all .1s;
 }
 
 .reg-btn:hover {
@@ -15,4 +16,5 @@
 .reg-btn:active {
   background: darkorange;
   -webkit-transition: none;
+  -moz-transition: none;
 }

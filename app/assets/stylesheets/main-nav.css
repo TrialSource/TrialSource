@@ -17,6 +17,7 @@
 .nav-link {
   vertical-align: center;
   -webkit-transition: all .1s;
+  -moz-transition: all .1s;
 }
 
 .nav-link:hover {
@@ -51,10 +52,11 @@
 }
 
 .top-form {
-  -webkit-transform: none;
   top: 100%;
   left: -200%;
   background: rgba(0, 0, 0, .05);
+  -webkit-transform: none;
+  -moz-transform: none;
 }
 
 .login-form {
@@ -72,6 +74,7 @@
   opacity: 0;
   visibility: hidden;
   -webkit-transition: all .15s;
+  -moz-transition: all .15s;
 }
 
 .login-element {

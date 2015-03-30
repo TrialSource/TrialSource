@@ -14,8 +14,9 @@
   position: absolute;
   left: 50%;
   top: 25%;
-  -webkit-transform: translate(-50%, -50%);
   text-align: center;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
 }
 
 .lp-form {
@@ -23,6 +24,7 @@
   left: 50%;
   top: 37.5%;
   -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
 }
 
 .lp-form-element {
@@ -63,6 +65,7 @@
   border-right: 1px solid lightgrey;
   height: 50%;
   -webkit-transform: translateY(25%);
+  -moz-transform: translateY(25%);
 }
 
 .tagline {
@@ -96,8 +99,9 @@
   width: 100%;
   left: 50%;
   top: 36%;
-  -webkit-transform: translate(-49%, -50%);
   white-space: nowrap;
+  -webkit-transform: translate(-49%, -50%);
+  -moz-transform: translate(-49%, -50%);
 }
 
 .numTrials {

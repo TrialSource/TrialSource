@@ -72,9 +72,6 @@ app.routeEditTrialBasic = function(r) {
   function grabTrialInfo() {
     return {
       trial: {
-        conditions_attributes: [
-          { name: $('.trial-condition-input').val(), id: currentTrial.conditions[0].id },
-        ],
         principal: $('.trial-principal-input').val(),
         active: 'active',
         primary_contact_email: $('.trial-email-input').val(),

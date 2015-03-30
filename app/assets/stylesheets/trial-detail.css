@@ -79,3 +79,28 @@
 .td-bck-btn {
   width: 68px;
 }
+
+.more-info-btn, .more-info-input {
+  text-align: center;
+  display: block;
+  height: 35px;
+  width: 50%;
+  margin: 1em auto;
+  font-size: 1.15em;
+  font-weight: 300;
+}
+
+.more-info-btn {
+  margin-bottom: .1em;
+}
+
+.more-info-input:focus {
+  border: 1px solid dodgerblue;
+}
+
+.more-info-error-message {
+  color: tomato;
+  text-align: center;
+  font-weight: 300;
+  font-size: .9em;
+}

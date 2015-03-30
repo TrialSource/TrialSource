@@ -13,9 +13,7 @@
 
     <nav class="main-nav">
       <a class="nav-link nav-title" href="#">trialSource</a>
-      <a class="nav-link nav-link-about">about</a>
-      <a class="nav-link nav-link-faq">faq</a>
-      <a class="nav-link nav-link-contact">contact</a>
+      <a class="nav-link nav-link-about" href="#about">about</a>
       <div class="login-logout-wrapper">
         <button class="login-logout">login</button>
         <form class="login-form">
@@ -72,8 +70,9 @@
           <input type="text" class="zip-input geo-element" placeholder="your zip code" maxlength="5" />
           <input type="text" class="range-input geo-element" placeholder="max distance (mi)" />
           <button class="reg-btn geo-submit geo-element">filter</button>
-          <p class="error-message"></p>
         </form>
+        <button class="reg-btn clear-geo-btn geo-element">clear location</button>
+        <p class="error-message"></p>
 
       </div>
 
@@ -230,6 +229,34 @@
           <button class="reg-btn signup-submit">save my info</button>
           <p class="saveme-error-message"></p>
         </form>
+
+      </div>
+
+    </script>
+
+    <script type="text/html" id="about">
+
+      <div class="about-cntnr">
+
+      </h3 class="about-q">About trialSource:</h3>
+
+        <p class="about-p">trialSource seeks to put agency into the hands of patients seeking trials and their physicians. We streamline the process of identifying interventional trials with a higher likelihood of viability. Member organizations can post trials with a variety of information including exclusion criteria. When a person searches for a condition, trialSource compiles a survey of all exclusion criteria from all relevant trials. Once the survey is completed and submitted, trialSource returns a list of all potentially viable trials, allows the user to narrow results geographically, and facilitates contact between researcher and patient.</p>
+
+        </h3 class="about-q">Why become a member organization?</h3>
+
+        <p class="about-p">On average, 15-20% of trials never enroll a single patient*, and patient recruitment is the number one cost driver for clinical trials**. Through making the process of finding applicable clinical trials easier for patients, trialSource seeks to drastically reduce this number and help member organizations fill trials in a quick and cost effective manner.</p>
+
+        </h3 class="about-q">How do I sign up?</h3>
+
+        <p class="about-p">To sign up, please contact us at info@trialsource.org</p>
+
+        <hr class="about-link-line">
+
+        <p class="about-p">
+          <a class="about-link" target="_blank" href="http://www.pharmaceutical-technology.com/features/featurethe-numbers-game-boosting-clinical-trial-enrolment-4171654/">*The numbers game: boosting clinical trial enrolment</a>
+          </br>
+          <a class="about-link" target="_blank" href="http://www.slideshare.net/asijits/clinical-trial-recruitment-retention">**Clinical Trial Recruitment and Retention</a>
+        </p>
 
       </div>
 

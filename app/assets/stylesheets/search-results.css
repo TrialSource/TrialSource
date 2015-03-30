@@ -114,7 +114,7 @@
   display: inline-block;
   position: relative;
   width: 75%;
-  height: 95%;
+  height: 90%;
   border: 1px solid lightgrey;
   overflow: auto;
   float: right;
@@ -122,7 +122,7 @@
 
 .rslts-toolbox {
   width: 24%;
-  height: 95%;
+  height: 90%;
   border: 1px solid lightgrey;
   overflow: auto;
 }

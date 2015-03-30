@@ -100,10 +100,18 @@
   width: 49.1%;
 }
 
-.trial-complete-input, .trial-email-input {
+.trial-complete-input, .trial-email-input, .split-label {
   display: inline-block;
   width: 49.1%;
   float: right;
+}
+
+.edit-t-label {
+  text-align: center;
+  font-weight: 400;
+  font-size: .9em;
+  margin-top: 1em;
+  margin-bottom: -.4em;
 }
 
 .trial-contra-label {

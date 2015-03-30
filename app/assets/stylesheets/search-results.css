@@ -112,6 +112,7 @@
 
 .rslts-cntnr {
   display: inline-block;
+  position: relative;
   width: 75%;
   height: 95%;
   border: 1px solid lightgrey;

@@ -11,7 +11,6 @@ gem 'faker'
 gem 'textacular'
 gem 'geocoder'
 gem 'geokit-rails'
-gem 'postgres-copy'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

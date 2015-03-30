@@ -2,7 +2,7 @@
 
 ## Information
 
-To run TrialSource, simply type within the root of the directory:
+To run TrialSource, simply type within the root of the TrialSource directory:
 
     $ vagrant up
 

@@ -167,5 +167,4 @@ app.routeCreateTrialBasic = function(r) {
 
     return conditionIds;
   }
-
 }

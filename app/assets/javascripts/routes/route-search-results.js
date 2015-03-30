@@ -79,7 +79,9 @@ app.routeSearchResults = function(r) {
         $('.more-info-error-message').text('application requested!');
         $('.more-info-error-message').css('color', 'seagreen');
         $('.more-info-input').attr('disabled', true);
+        $('.more-info-input').css('color', 'darkgrey');
         $('.more-info-btn').attr('disabled', true);
+        $('.more-info-btn').css('background', 'darkgrey');
       }
     });
   }

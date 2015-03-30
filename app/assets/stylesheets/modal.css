@@ -24,7 +24,7 @@
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
   text-align: center;
-  padding: 1em;
+  padding: 2em;
   min-width: 441px;
   box-sizing: border-box;
 }
@@ -79,9 +79,14 @@
 }
 
 .modal-error-message {
-  color: tomato;
+  color: firebrick;
   font-size: .9em;
   font-weight: 300;
   text-align: center;
   margin-top: 1.5em;
+  position: absolute;
+  width:100%;
+  top: 100%;
+  -webkit-transform: translateY(-275%);
+  margin-left: -2em;
 }

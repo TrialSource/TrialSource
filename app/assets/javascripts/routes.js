@@ -3,6 +3,10 @@ app.routes = function() {
     app.routeDefault();
   });
 
+  app.router.add('about', function() {
+    app.routeAbout();
+  })
+
   app.router.add('search/:criteria', function(r) {
     app.routeSearchResults(r);
   });

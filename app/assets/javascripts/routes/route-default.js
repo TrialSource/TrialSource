@@ -30,16 +30,16 @@ app.routeDefault = function() {
 
     searchTerm = $('#condition-search').val();
 
-    $.getJSON('/api/v1/search', { type: 'condition', query: $('#condition-search').val() }).done(function(data) {
+    $.getJSON('/api/v1/search', { type: 'condition', query: searchTerm }).done(function(data) {
       if (data.searches[1].length === 0) {
         $('.srch-error-message').text('sorry, no matches');
         $('.login-error-message').text('');
         return;
       }
-      var excludeList = [];
-      data.searches[1].forEach(function(item) {
-        excludeList.push(item);
-      });
+
+      var excludeList = data.searches[1];
+
+      excludeList = app.sortExclusions(excludeList);
 
       var listTemplate = _.template(app.exclusionFormTemplate, { variable: 'm' });
       $('.xcld-frm-cntnr').html(listTemplate({ exclusions: excludeList }));

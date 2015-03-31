@@ -1,12 +1,9 @@
 #exclusion-form {
-  border: 1px solid lightgrey;
-  padding: 15px;
-  box-sizing: content-box;
+  position: relative;
   width: 350px;
-  max-height: 40%;
-  overflow: scroll;
   font-size: 1em;
   top: 37.5%;
+  height: 50%;
 }
 
 .excl-lbl {
@@ -30,7 +27,13 @@
 }
 
 .checkbox-wrapper {
-  width: 80%;
+  position: relative;
+  height: 75%;
+  overflow: scroll;
+  border: 1px solid lightgrey;
+  padding: 15px;
+  box-sizing: border-box;
+  width: 100%;
   margin: auto;
 }
 

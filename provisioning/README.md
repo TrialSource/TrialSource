@@ -3,6 +3,6 @@
 It installs and provisions:
 
 - Ruby 2.2.1
-- PostgreSQL
-- Passenger
+- PostgreSQL database
+- Passenger web
 - ec2 instance

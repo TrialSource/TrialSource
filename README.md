@@ -2,9 +2,10 @@
 
 ## Information
 
-To run TrialSource, simply type within the root of the TrialSource directory:
+To run create an environment to run TrialSource, simply type within the root of the TrialSource directory:
 
     $ vagrant up
+    $ vagrant provision
 
 Configuration is handled within the `Vagrantfile` which points to our Ansible playbook
 

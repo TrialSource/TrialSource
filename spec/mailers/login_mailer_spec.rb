@@ -6,8 +6,9 @@ RSpec.describe LoginMailer, type: :mailer do
     ActionMailer::Base.delivery_method = :test
     ActionMailer::Base.perform_deliveries = true
     ActionMailer::Base.deliveries = []
-    @login = FactoryGirl.create(:login)
-    LoginMailer.welcome_email(@login).deliver_now
+    @doctor = FactoryGirl.create(:doctor,
+                            :login_attributes => {email: "#{Faker::Name.first_name}@user.com", password: "password"})
+    LoginMailer.welcome_email(@doctor).deliver_now
   end
 
   after :each do
@@ -19,7 +20,7 @@ RSpec.describe LoginMailer, type: :mailer do
   end
 
   it 'renders the receiver email' do
-    expect(ActionMailer::Base.deliveries.first.to).to eq [@login.email]
+    expect(ActionMailer::Base.deliveries.first.to).to eq [@doctor.login.email]
   end
 
   it 'should set the subject to the correct subject' do
@@ -27,6 +28,6 @@ RSpec.describe LoginMailer, type: :mailer do
   end
 
   it 'displays the sender email' do
-    expect(ActionMailer::Base.deliveries.first.from).to eq ['notifications@trialsource.herokuapp.com']
+    expect(ActionMailer::Base.deliveries.first.from).to eq ['notifications@trialsource.org']
   end
 end

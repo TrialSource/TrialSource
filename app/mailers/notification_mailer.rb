@@ -3,7 +3,7 @@ class NotificationMailer < ActionMailer::Base
 
   def notification_email(notification)
     @notification = notification
-    #@url = 'http://www.trialsource.com'
+    @url = 'http://www.trialsource.org'
     mail(to: @notification.email, subject: 'New Trial on TrialSource')
   end
 end

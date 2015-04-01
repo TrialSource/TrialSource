@@ -1,34 +1,43 @@
 .signup-container {
+  box-sizing: border-box;
+  position: relative;
   width: 75%;
-  max-height: 90%;
-  overflow: auto;
   position: absolute;
   left: 50%;
   top: 50%;
-  -webkit-transform: translate(-50%, -50%);
   border: 1px solid lightgrey;
+  padding: 1.5em;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
 }
 
 .saveme-email-input, .signup-submit {
   display: block;
   margin: 1em auto;
-  width: 75%;
+  width: 85%;
   font-size: 1em;
   text-align: center;
   height: 35px;
   font-weight: 300;
 }
 
+.checkbox-cntnr {
+  position: relative;
+  height: 300px;
+  overflow: scroll;
+  border: 1px solid lightgrey;
+  padding: 15px;
+  box-sizing: border-box;
+  width: 100%;
+  margin: auto;
+}
+
 .saveme-email-input:focus {
   border: 1px solid dodgerblue;
 }
 
-.signup-submit {
-  margin-bottom: 1.5em;
-}
-
 .signup-exclusion-list {
-  width: 75%;
+  width: 85%;
   margin: 1em auto;
 }
 
@@ -37,17 +46,20 @@
   font-weight: 400;
   text-align: center;
   width: 80%;
-  margin: 1.25em auto;
+  margin: auto;
   line-height: 1.6em;
 }
 
 .saveme-error-message {
+  z-index: 100;
+  margin-left: -1.8em;
   position: absolute;
   text-align: center;
   font-size: .85em;
   font-weight: 300;
   top: 100%;
-  -webkit-transform: translateY(-125%);
   width: 100%;
-  color: tomato
+  color: tomato;
+  -webkit-transform: translateY(-175%);
+  -moz-transform: translateY(-175%);
 }

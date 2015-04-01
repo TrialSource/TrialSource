@@ -22,11 +22,12 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  -webkit-transform: translate(-50%, -50%);
   text-align: center;
   padding: 2em;
   min-width: 441px;
   box-sizing: border-box;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
 }
 
 .modal-title, .modal-subtitle, .modal-instruction{
@@ -87,6 +88,7 @@
   position: absolute;
   width:100%;
   top: 100%;
-  -webkit-transform: translateY(-275%);
   margin-left: -2em;
+  -webkit-transform: translateY(-275%);
+  -moz-transform: translateY(-275%);
 }

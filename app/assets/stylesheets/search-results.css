@@ -50,6 +50,7 @@
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
 }
 
 .rslts-list {
@@ -88,6 +89,7 @@
 .rslt-name {
   cursor: pointer;
   -webkit-transition: all .1s;
+  -moz-transition: all .1s;
 }
 
 .rslt-name:hover {
@@ -114,7 +116,7 @@
   display: inline-block;
   position: relative;
   width: 75%;
-  height: 95%;
+  height: 90%;
   border: 1px solid lightgrey;
   overflow: auto;
   float: right;
@@ -122,7 +124,7 @@
 
 .rslts-toolbox {
   width: 24%;
-  height: 95%;
+  height: 90%;
   border: 1px solid lightgrey;
   overflow: auto;
 }
@@ -138,9 +140,31 @@
   font-weight: 300;
 }
 
+.clear-geo-btn {
+  margin-bottom: 2em;
+}
+
 .s-results-header {
   margin-top: -1.3em;
   text-align: center;
   font-weight: 300;
   margin-bottom: .3em;
+}
+
+.excl-selections {
+  padding: 12.5%;
+  list-style: none;
+  padding-top: 2em;
+}
+
+.excl-selection {
+  font-weight: 300;
+  font-size: .9em;
+  margin-top: .75em;
+}
+
+.rslts-toolbox-line {
+  width: 60%;
+  margin: auto;
+  opacity: .30;
 }

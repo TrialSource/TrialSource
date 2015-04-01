@@ -85,6 +85,7 @@
   font-weight: 300;
   cursor: pointer;
   -webkit-transition: all .1s;
+  -moz-transition: all .1s;
 }
 
 .cancel-edit:hover {

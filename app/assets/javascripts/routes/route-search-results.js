@@ -14,10 +14,35 @@ app.routeSearchResults = function(r) {
       showAllResults();
       initializeGeoform();
       initializeGeoClear();
+      populateExclReminders();
     } else {
       app.populateSaveMe(grabSearchTerm(), grabExclusionIds());
     }
   });
+
+  function populateExclReminders() {
+    $.getJSON('/api/v1/search', { type: 'condition', query: grabSearchTerm() }).done(function(data) {
+      exclNames = buildExclusionList(grabExclusionIds(), data.searches[1])
+      var listCntnr = $('.excl-selections');
+      listCntnr.append('<li class="excl-selection-header">Results for patient with the following attributes:</li>');
+      exclNames.forEach(function(item) {
+        listCntnr.append('<li class="excl-selection">' + item + '</li>');
+      });
+    });
+  }
+
+  function buildExclusionList(ids, objects) {
+    var list = [];
+    for (var i = 0; i < ids.length; ++i) {
+      for (var j = 0; j < objects.length; ++j) {
+        if (Number(ids[i]) === objects[j].id) {
+          list.push(objects[j].name);
+          break;
+        }
+      }
+    }
+    return app.sortExclusions(list);
+  }
 
   function initializeGeoform() {
 
@@ -79,7 +104,9 @@ app.routeSearchResults = function(r) {
         $('.more-info-error-message').text('application requested!');
         $('.more-info-error-message').css('color', 'seagreen');
         $('.more-info-input').attr('disabled', true);
+        $('.more-info-input').css('color', 'darkgrey');
         $('.more-info-btn').attr('disabled', true);
+        $('.more-info-btn').css('background', 'darkgrey');
       }
     });
   }

@@ -22,6 +22,7 @@
 .about-link {
   color: dodgerblue;
   -webkit-transition: all .15s;
+  -moz-transition: all .15s;
   font-size: .75em;
 }
 

@@ -2,7 +2,8 @@ class Api::V1::DataController < ApplicationController
 
   def index
     @conditions = Condition.all
-    @max = Condition.order("number_of_searches ASC").first
+    max = Condition.maximum(:number_of_searches)
+    @max = Condition.find_by(number_of_searches: max )
   end
 
   def org

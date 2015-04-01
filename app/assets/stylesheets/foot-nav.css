@@ -1,0 +1,21 @@
+/*.footer-nav {
+  position: fixed;
+  top: 100%;
+  -webkit-transform: translateY(-115%);
+  text-align: center;
+  width: 100%;
+  height: 1em;
+  margin: 0;
+}*/
+
+.disclaimer {
+  position: fixed;
+  left: 50%;
+  color: red;
+  text-align: center;
+  font-size: .65em;
+  font-weight: 300;
+  vertical-align: top;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+}

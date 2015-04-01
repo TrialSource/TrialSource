@@ -8,6 +8,7 @@
   </head>
 
   <body data-id="<%= session[:user_id] %>" data-type="<%= session[:user_type] %>">
+    <p class="disclaimer">This is a prototype and does not contain any real information. All doctors, institutions and trials are fabricated.</p>
 
     <div class="modal-wrapper"></div>
 
@@ -27,8 +28,7 @@
 
     <div id="main-content"></div>
 
-    <nav class="footer-nav">
-
+    <nav class="footer-nav" hidden>
     </nav>
 
     <script type="text/html" id="landing-page">
@@ -74,6 +74,10 @@
         <button class="reg-btn clear-geo-btn geo-element">clear location</button>
         <p class="error-message"></p>
 
+        <hr class="rslts-toolbox-line">
+
+        <ul class="excl-selections"></ul>
+
       </div>
 
       <div class="rslts-elem rslts-cntnr">
@@ -98,12 +102,6 @@
 
       <div class="admin-nav-element admin-nav-container">
         <h2 class="admin-nav-link"><a class="admin-nav-link-actual admin-trial-link">Trials</a></h2>
-      </div>
-
-      <div class="admin-nav-element admin-nav-divider"></div>
-
-      <div class="admin-nav-element admin-nav-container">
-        <h2 class="admin-nav-link"><a class="admin-nav-link-actual">Overview</a></h2>
       </div>
 
     </script>

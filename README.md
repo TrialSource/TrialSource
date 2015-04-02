@@ -2,16 +2,17 @@
 
 ## Information
 
-To run TrialSource, simply type within the root of the TrialSource directory:
+To create a working environment for running Trialsource -- simply type within the root of the directory:
 
     $ vagrant up
+    $ vagrant provision
 
 Configuration is handled within the `Vagrantfile` which points to our Ansible playbook
 
 Contact appointed security officer for Ansible password
 
 
-## The Health Insurance Portability and Accountability Act (HIPAA) compliance
+## The Health Insurance Portability and Accountability Act (HIPAA) compliance info
 
 Outlined below are the basic standards and practices followed by this app for HIPAA compliance.
 

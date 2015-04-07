@@ -50,7 +50,7 @@ class Condition < ActiveRecord::Base
   end
 
   private
-
+  
   def self.trials_for_condition(condition)
     conditions = Condition.where(Condition.arel_table[:name].matches(condition.downcase))
     conditions.each {|c| c.increase_search_count}

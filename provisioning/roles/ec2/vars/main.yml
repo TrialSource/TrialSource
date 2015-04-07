@@ -12,7 +12,7 @@ instances:
     example.com:
       elastic_ip: "54.247.104.88"
       name: "example.com"
- 
+      
   staging:
     example.com:
       elastic_ip: "54.247.89.191"

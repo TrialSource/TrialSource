@@ -34,7 +34,7 @@ app.populateSaveMe = function(condition, exclusionIds) {
         }
       }
     }
-    return list;
+    return app.sortExclusions(list);
   }
 
   function verifyForm() {

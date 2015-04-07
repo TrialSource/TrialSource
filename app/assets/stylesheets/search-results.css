@@ -140,9 +140,31 @@
   font-weight: 300;
 }
 
+.clear-geo-btn {
+  margin-bottom: 2em;
+}
+
 .s-results-header {
   margin-top: -1.3em;
   text-align: center;
   font-weight: 300;
   margin-bottom: .3em;
+}
+
+.excl-selections {
+  padding: 12.5%;
+  list-style: none;
+  padding-top: 2em;
+}
+
+.excl-selection {
+  font-weight: 300;
+  font-size: .9em;
+  margin-top: .75em;
+}
+
+.rslts-toolbox-line {
+  width: 60%;
+  margin: auto;
+  opacity: .30;
 }

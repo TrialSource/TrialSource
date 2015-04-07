@@ -1,0 +1,29 @@
+- name: Install PostgreSQL
+  yum: name={{item}} state=present
+  with_items:
+    - postgresql
+    - postgresql-devel
+    - postgresql-server
+    - python-psycopg2
+  register: postgresql_installed
+
+- name: Initialize DB
+  command: service postgresql initdb creates=/var/lib/pgsql/data
+
+- name: Start PostgreSQL
+  service: name=postgresql state=started
+
+- name: Create the PostgreSQL user
+  postgresql_user: name={{app_name}} password={{database_password}}
+  sudo_user: postgres
+
+- name: Create the application DB
+  postgresql_db: name={{app_name}} owner={{app_name}} state=present
+  sudo_user: postgres
+
+- name: Copy valid pg_hba.conf
+  template: src=pg_hba.conf.j2 dest=/var/lib/pgsql/data/pg_hba.conf
+  notify: Restart PostgreSQL
+
+# - name: Copy valid postgresql.conf
+#   template: src=postgresql.conf.j2 dest=/etc/postgresql/9.3/main/postgresql.conf

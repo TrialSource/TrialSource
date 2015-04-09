@@ -6,9 +6,7 @@ class Condition < ActiveRecord::Base
   def self.search(query)
     trials = trials_for_condition(query)
     @conditions.each {|c| c.increase_search_count}
-    all_exclusions = find_exclusions(trials)
-    exclusions = remove_duplicate_exclusions(all_exclusions)
-    [trials.count, exclusions]
+    [trials.count, find_exclusions(trials)]
   end
 
   def self.matching_trials(condition, current_exclusions, location, range)
@@ -57,22 +55,6 @@ class Condition < ActiveRecord::Base
       @exclusions += t.exclusions
     end
     @exclusions
-  end
-
-  def self.remove_duplicate_exclusions(exclusions)
-    final_exclusions = []
-    exclusions.each do |e|
-      if final_exclusions.empty?
-        final_exclusions << e
-      else
-        is_unique = true
-        final_exclusions.each do |fe|
-          is_unique = false if fe.id == e.id
-        end
-        final_exclusions << e if is_unique
-      end
-    end
-    final_exclusions
   end
 
   def self.trials_for_location(matching_trials, location, range)

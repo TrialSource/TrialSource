@@ -16,7 +16,7 @@ class Api::V1::OrganizationsController < ApplicationController
   end
 
   def show
-    render json: @organization
+    render json: [@organization, @organization.conditions.count]
   end
 
   def update

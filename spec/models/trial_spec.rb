@@ -41,4 +41,13 @@ RSpec.describe Trial, type: :model do
     end
   end
 
+  describe "#notifications" do
+    it "finds requested notifications for a trial" do
+      notification = Notification.create(email: "bob@email.com", condition: "asthma")
+      trial = create(:trial, conditions_attributes: [{name: "asthma"}])
+
+      expect(trial.requested_notifications).to match_array([notification])
+    end
+  end
+
 end

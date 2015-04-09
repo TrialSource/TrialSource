@@ -38,4 +38,16 @@ class Trial < ActiveRecord::Base
   def self.search(query)
     Trial.basic_search(query)
   end
+
+  def requested_notifications
+    @notifications = []
+    conditions.each do |condition|
+      @notifications << (Notification.where(condition: condition.name))
+      @notifications << (Notification.where(condition_id: condition.id))
+    end
+    exclusions.each do |exclusion|
+      @notifications << (Notification.where(exclusion_ids: exclusion.id))
+    end
+    @notifications.first
+  end
 end

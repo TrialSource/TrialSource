@@ -8,15 +8,15 @@ class Api::V1::TrialsController < ApplicationController
 
   def create
     @trial = Trial.new(trial_params)
-    @notifications = (Notification.where(condition: @trial.conditions.each {|c| c.name}).present? ||
-    Notification.where(condition_id: @trial.conditions.each {|c| c.id}).present?) &&
-    Notification.where(exclusion_ids: @trial.exclusions.none? {|c| c.id}).empty?
-      if @trial.save
-        NotificationMailer.notification_email(@notifications.each {|n| n.email}).deliver_now if @notifications
-        render json: @trial
-      else
-        render json: "Invalid parameters"
+    if @trial.save
+      @trial.requested_notifications.each do |notification|
+        binding.pry
+        NotificationMailer.notification_email(notification).deliver_now if @notifications.present?
       end
+      render json: @trial
+    else
+      render json: "Invalid parameters"
+    end
   end
 
   def show
